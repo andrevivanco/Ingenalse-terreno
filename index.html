@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="INGENALSE">
 <meta name="theme-color" content="#004F9D">
-<title>INGENALSE - Visita Tecnica</title>
+<title>INGENALSE - Visita Técnica</title>
 <style>
 :root{
   --azul:#004F9D;--azul-dark:#003A7A;--amarillo:#FCE84D;
@@ -143,7 +143,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       <span class="logo-txt">ngenalse</span>
     </div>
     <div class="header-info">
-      <h1 id="header-title">Visita Tecnica</h1>
+      <h1 id="header-title">Visita Técnica</h1>
       <p id="header-sub">Selecciona o crea una visita</p>
     </div>
     <div class="header-actions">
@@ -163,7 +163,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
   <div id="screen-inicio">
     <div class="empty-state" style="margin-bottom:20px">
       <div class="ico">&#127981;</div>
-      <h3>Visita Tecnica INGENALSE</h3>
+      <h3>Visita Técnica INGENALSE</h3>
       <p>Registra levantamientos en terreno. Los datos se guardan automaticamente en tu celular.</p>
     </div>
     <button class="btn-nav prim" style="width:100%;margin-bottom:10px" onclick="nuevaVisita()">+ Nueva visita</button>
@@ -179,7 +179,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
     <div id="tab-0">
       <p class="tip">Completa lo que tengas disponible. El informe se adapta automaticamente.</p>
       <div class="sec-label">Identificacion de la visita</div>
-      <div class="field-group"><label class="field-lbl">Cliente / Minera</label><input type="text" id="f-minera" placeholder="Ej: Codelco Division El Salvador"></div>
+      <div class="field-group"><label class="field-lbl">Cliente / Minera</label><input type="text" id="f-minera" placeholder="Ej: Codelco División El Salvador"></div>
       <div class="field-group"><label class="field-lbl">Division / Planta <span class="opt-tag">opcional</span></label><input type="text" id="f-division" placeholder="Ej: Planta concentradora"></div>
       <div class="field-group"><label class="field-lbl">Localidad <span class="opt-tag">opcional</span></label><input type="text" id="f-localidad" placeholder="Ej: Diego de Almagro"></div>
       <div class="field-group"><label class="field-lbl">Fecha de visita</label><input type="date" id="f-fecha"></div>
@@ -189,7 +189,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       <div class="sec-label">Agenda <span class="opt-tag">opcional</span></div>
       <div class="field-group"><textarea id="f-agenda" placeholder="Tema 1: ..."></textarea></div>
       <div class="sec-label">Objetivo <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-objetivo" placeholder="Describir el proposito de la visita..."></textarea></div>
+      <div class="field-group"><textarea id="f-objetivo" placeholder="Describir el propósito de la visita..."></textarea></div>
     </div>
     <div id="tab-1" style="display:none">
       <p class="tip">Agrega uno o mas equipos. Cada equipo tiene su propia inspeccion y guia fotografica.</p>
@@ -219,40 +219,40 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
   </div>
 
   <div id="screen-equipo" style="display:none">
-    <div class="sec-label">Identificacion</div>
+    <div class="sec-label">Identificación</div>
     <div class="field-group"><label class="field-lbl">ID / TAG</label><input type="text" id="eq-tag" placeholder="Ej: ESP-C2"></div>
     <div class="field-group"><label class="field-lbl">Nombre del equipo</label><input type="text" id="eq-nombre" placeholder="Ej: Espesador de concentrado 2"></div>
     <div class="field-group"><label class="field-lbl">Diametro <span class="opt-tag">opcional</span></label><input type="text" id="eq-diam" placeholder="Ej: 30 m"></div>
     <div class="sec-label">Tipo de equipo</div>
     <div class="card" style="padding:14px">
-      <div class="field-group"><label class="field-lbl">Aplicacion</label><div class="rg" id="g-aplic"><div class="rb" onclick="sel(this,'g-aplic')">Concentracion</div><div class="rb" onclick="sel(this,'g-aplic')">Relaves</div><div class="rb" onclick="sel(this,'g-aplic')">Clarificador</div><div class="rb" onclick="sel(this,'g-aplic')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Aplicacion</label><div class="rg" id="g-aplic"><div class="rb" onclick="sel(this,'g-aplic')">Concentración</div><div class="rb" onclick="sel(this,'g-aplic')">Relaves</div><div class="rb" onclick="sel(this,'g-aplic')">Clarificador</div><div class="rb" onclick="sel(this,'g-aplic')">Otro</div></div></div>
       <div class="field-group"><label class="field-lbl">Tipo</label><div class="rg" id="g-tipo"><div class="rb" onclick="sel(this,'g-tipo')">Convencional</div><div class="rb" onclick="sel(this,'g-tipo')">High-Rate</div><div class="rb" onclick="sel(this,'g-tipo')">High-Density</div><div class="rb" onclick="sel(this,'g-tipo')">Deep-Cone</div></div></div>
-      <div class="field-group"><label class="field-lbl">Soporte accionamiento</label><div class="rg" id="g-sop"><div class="rb" onclick="sel(this,'g-sop')">Columna central</div><div class="rb" onclick="sel(this,'g-sop')">Sobre puente</div><div class="rb" onclick="sel(this,'g-sop')">Traccion periferica</div><div class="rb" onclick="sel(this,'g-sop')">Otro</div></div></div>
-      <div class="field-group"><label class="field-lbl">Sistema de levante</label><div class="rg" id="g-lev"><div class="rb" onclick="sel(this,'g-lev')">Hidraulico</div><div class="rb" onclick="sel(this,'g-lev')">Electrico</div><div class="rb" onclick="sel(this,'g-lev')">No aplica</div><div class="rb" onclick="sel(this,'g-lev')">Otro</div></div></div>
-      <div class="field-group"><label class="field-lbl">Estanque</label><div class="rg" id="g-const"><div class="rb" onclick="sel(this,'g-const')">Hormigon</div><div class="rb" onclick="sel(this,'g-const')">Metalico</div><div class="rb" onclick="sel(this,'g-const')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Soporte accionamiento</label><div class="rg" id="g-sop"><div class="rb" onclick="sel(this,'g-sop')">Columna central</div><div class="rb" onclick="sel(this,'g-sop')">Sobre puente</div><div class="rb" onclick="sel(this,'g-sop')">Tracción periférica</div><div class="rb" onclick="sel(this,'g-sop')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Sistema de levante</label><div class="rg" id="g-lev"><div class="rb" onclick="sel(this,'g-lev')">Hidraulico</div><div class="rb" onclick="sel(this,'g-lev')">Eléctrico</div><div class="rb" onclick="sel(this,'g-lev')">No aplica</div><div class="rb" onclick="sel(this,'g-lev')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Estanque</label><div class="rg" id="g-const"><div class="rb" onclick="sel(this,'g-const')">Hormigón</div><div class="rb" onclick="sel(this,'g-const')">Metálico</div><div class="rb" onclick="sel(this,'g-const')">Otro</div></div></div>
       <div class="field-group"><label class="field-lbl">Alto torque</label><div class="rg" id="g-torq"><div class="rb" onclick="sel(this,'g-torq')">Si</div><div class="rb" onclick="sel(this,'g-torq')">No</div></div></div>
       <div class="field-group"><label class="field-lbl">Detalle <span class="opt-tag">opcional</span></label><textarea id="eq-detalle" placeholder="Solo si aplica..."></textarea></div>
     </div>
-    <div class="sec-label">Parametros operativos <span class="opt-tag">opcional</span></div>
+    <div class="sec-label">Parámetros operativos <span class="opt-tag">opcional</span></div>
     <div class="card" style="padding:14px">
-      <div class="params-header"><span>Parametro</span><span>Diseno</span><span>Actual</span><span>Solic.</span></div>
+      <div class="params-header"><span>Parametro</span><span>Diseño</span><span>Actual</span><span>Solic.</span></div>
       <div id="params-body"></div>
     </div>
-    <div class="sec-label">Inspeccion visual</div>
+    <div class="sec-label">Inspección visual</div>
     <div class="tip">Marca solo lo inspeccionado. Lo no marcado se omite del informe.</div>
-    <div class="sec-label">Mecanica</div>
+    <div class="sec-label">Mecánica</div>
     <div class="card" style="padding:0 14px"><div id="checks-mec"></div></div>
     <div id="pg-mec"></div>
     <div class="sec-label" style="margin-top:12px">Estructural</div>
     <div class="card" style="padding:0 14px"><div id="checks-est"></div></div>
     <div id="pg-est"></div>
-    <div class="sec-label" style="margin-top:12px">Electrica / Instrumentacion</div>
+    <div class="sec-label" style="margin-top:12px">Eléctrica / Instrumentación</div>
     <div class="card" style="padding:0 14px"><div id="checks-ele"></div></div>
     <div id="pg-ele"></div>
-    <div class="sec-label" style="margin-top:12px">Fotos panoramicas</div>
+    <div class="sec-label" style="margin-top:12px">Fotos panorámicas</div>
     <div id="pg-panorama"></div>
     <div class="sec-label">Observaciones del equipo <span class="opt-tag">opcional</span></div>
-    <div class="field-group"><textarea id="eq-obs" placeholder="Notas especificas de este equipo..."></textarea></div>
+    <div class="field-group"><textarea id="eq-obs" placeholder="Notas específicas de este equipo..."></textarea></div>
     <div style="height:20px"></div>
   </div>
 </div>
@@ -286,16 +286,16 @@ var checks = {};
 var deferredInstall = null;
 
 var PARAMS = [
-  ['Caudal entrada','m3/h'],
-  ['Caudal salida','m3/h'],
-  ['Solidos alim.','%'],
-  ['Solidos desc.','%'],
-  ['Densidad pulpa','t/m3'],
+  ['Caudal entrada','m³/h'],
+  ['Caudal salida','m³/h'],
+  ['Sólidos alim.','%'],
+  ['Sólidos desc.','%'],
+  ['Densidad pulpa','t/m³'],
   ['Floculante','g/t']
 ];
-var MEC_I = ['Sistema alimentacion','Rastras','Puente','Motores y reductores','Barandas y accesos','Sistema descarga'];
-var EST_I = ['Paredes y muro','Base y cono','Canaletas rebalse','Cimentacion','Apoyo puente','Columna y eje'];
-var ELE_I = ['Tableros electricos','Cables y tuberias','Sensores e instrumentos'];
+var MEC_I = ['Sistema de alimentación','Rastras','Puente','Motores y reductores','Barandas y accesos','Sistema descarga'];
+var EST_I = ['Paredes y muro','Base y cono','Canaletas de rebalse','Cimentación','Apoyo puente','Columna y eje'];
+var ELE_I = ['Tableros eléctricos','Cables y tuberías','Sensores e instrumentos'];
 
 var FOTO_GUIAS = {
   panorama:[
@@ -306,22 +306,22 @@ var FOTO_GUIAS = {
     {t:'Mecanismo drive y reductores',d:'Fotografía el conjunto drive: carcasa, reductores y placa identificadora.'},
     {t:'Rastras y brazos',d:'Captura los brazos de rastras. Si hay deformaciones o danos, enfoca esas zonas.'},
     {t:'Sistema de alimentacion feedwell',d:'Fotografía el feedwell y canaleta de entrada. Documenta estado de deflectores.'},
-    {t:'Sistema de descarga underflow',d:'Fotos del spigot, bombas de descarga y canerias. Documenta valvulas y sellos.'},
-    {t:'Motores y transmision',d:'Fotografía los motores electricos, poleas y correas. Muestra cubiertas y ventilacion.'}
+    {t:'Sistema de descarga underflow',d:'Fotos del spigot, bombas de descarga y cañerías. Documenta válvulas y sellos.'},
+    {t:'Motores y transmision',d:'Fotografía los motores eléctricos, poleas y correas. Muestra cubiertas y ventilación.'}
   ],
   est:[
     {t:'Muro perimetral y rebalse',d:'Fotografía el muro y canaleta de rebalse. Documenta fisuras o filtraciones.'},
-    {t:'Base radier y cono',d:'Captura la zona del radier y cono central. Documenta grietas o acumulacion de solidos.'},
+    {t:'Base radier y cono',d:'Captura la zona del radier y cono central. Documenta grietas o acumulación de sólidos.'},
     {t:'Apoyo puente y columna',d:'Fotografía los apoyos del puente en el muro y la columna central.'}
   ],
   ele:[
-    {t:'Tablero de control y fuerza',d:'Fotografía el tablero electrico abierto y cerrado. Captura la placa de identificacion.'},
-    {t:'Sensores e instrumentacion',d:'Fotografía torquimetro, sensor zero-speed y otros instrumentos.'},
-    {t:'Cableado y conduit',d:'Documenta el estado del cableado, bandejas y tuberias conduit.'}
+    {t:'Tablero de control y fuerza',d:'Fotografía el tablero eléctrico abierto y cerrado. Captura la placa de identificación.'},
+    {t:'Sensores e instrumentación',d:'Fotografía torquímetro, sensor zero-speed y otros instrumentos.'},
+    {t:'Cableado y conduit',d:'Documenta el estado del cableado, bandejas y tuberías conduit.'}
   ],
   anom:[
-    {t:'Anomalia detectada de cerca',d:'Fotografía de cerca el dano o condicion anormal. Incluye referencia de escala si es posible.'},
-    {t:'Contexto de la anomalia',d:'Toma una foto mas abierta que muestre donde esta ubicada la anomalia en el equipo.'}
+    {t:'Anomalía detectada de cerca',d:'Fotografía de cerca el dano o condicion anormal. Incluye referencia de escala si es posible.'},
+    {t:'Contexto de la anomalia',d:'Toma una foto más abierta que muestre dónde está ubicada la anomalía en el equipo.'}
   ],
   op:[
     {t:'Oportunidad comercial',d:'Fotografía el componente o zona que sustenta la oportunidad comercial identificada.'}
@@ -365,7 +365,7 @@ function mostrarPantalla(id){
 }
 
 function irAInicio(){
-  document.getElementById('header-title').textContent='Visita Tecnica';
+  document.getElementById('header-title').textContent='Visita Técnica';
   document.getElementById('header-sub').textContent='Selecciona o crea una visita';
   document.getElementById('nav-back').style.display='none';
   document.getElementById('nav-next').textContent='Comenzar';
@@ -515,7 +515,7 @@ function renderListaEquipos(){
     var d=document.createElement('div'); d.className='eq-item';
     var inspCount=Object.values(eq.checks||{}).filter(function(v){return v!=='nd';}).length;
     var fotoTotal=contarFotos(eq.photoCounts||{});
-    var badge=inspCount>0?'<span class="eq-badge ok">'+inspCount+' inspeccionados</span>':'<span class="eq-badge vacio">Sin inspeccion</span>';
+    var badge=inspCount>0?'<span class="eq-badge ok">'+inspCount+' inspeccionados</span>':'<span class="eq-badge vacio">Sin inspección</span>';
     if(fotoTotal>0)badge+=' <span class="eq-badge parcial">'+fotoTotal+' fotos guiadas</span>';
     d.innerHTML='<div class="eq-item-info"><h4>'+(eq.tag||'Sin TAG')+' - '+(eq.nombre||'Sin nombre')+'</h4>'+badge+'</div><span class="eq-item-arrow">&#8250;</span>';
     d.onclick=(function(idx){return function(){abrirEquipo(idx);};})(i);
@@ -642,7 +642,7 @@ function buildPhotoGuide(containerId,guias,zone){
   var c=document.getElementById(containerId); if(!c||!guias||guias.length===0)return;
   c.innerHTML='';
   var header=document.createElement('div'); header.className='photo-guide-header';
-  header.innerHTML='<p>Guia fotografica</p>';
+  header.innerHTML='<p>Guía fotográfica</p>';
   c.appendChild(header);
   guias.forEach(function(guia,idx){
     var item=document.createElement('div'); item.className='photo-item';
@@ -670,7 +670,7 @@ function renderResumen(){
   var html='';
   var genRows='';
   if(gen.minera)genRows+=rr('Cliente',gen.minera);
-  if(gen.division)genRows+=rr('Division',gen.division);
+  if(gen.division)genRows+=rr('División',gen.division);
   if(gen.fecha)genRows+=rr('Fecha',gen.fecha);
   if(gen.redactor)genRows+=rr('Redactor',gen.redactor);
   if(genRows)html+='<div class="resumen-section"><h4>Datos generales</h4><div class="card" style="padding:12px 14px">'+genRows+'</div></div>';
@@ -682,7 +682,7 @@ function renderResumen(){
       var iRows='';
       allI.forEach(function(item,i){var s=(eq.checks||{})[allK[i]];if(s&&s!=='nd')iRows+='<div class="resumen-row"><span class="rl">'+item+'</span>'+(s==='ok'?'<span class="badge-ok">OK</span>':'<span class="badge-nok">Daño</span>')+'</div>';});
       var fTotal=contarFotos(eq.photoCounts||{});
-      html+='<div class="card" style="padding:12px 14px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--azul);margin-bottom:8px">'+(eq.tag||'-')+' - '+(eq.nombre||'-')+'</div>'+(iRows||'<p style="font-size:12px;color:var(--texto-ter)">Sin items inspeccionados</p>')+(fTotal>0?'<p style="font-size:12px;color:var(--texto-sec);margin-top:8px">'+fTotal+' foto(s) registrada(s)</p>':'')+'</div>';
+      html+='<div class="card" style="padding:12px 14px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--azul);margin-bottom:8px">'+(eq.tag||'-')+' - '+(eq.nombre||'-')+'</div>'+(iRows||'<p style="font-size:12px;color:var(--texto-ter)">Sin ítems inspeccionados</p>')+(fTotal>0?'<p style="font-size:12px;color:var(--texto-sec);margin-top:8px">'+fTotal+' foto(s) registrada(s)</p>':'')+'</div>';
     });
     html+='</div>';
   }
@@ -704,18 +704,39 @@ function generarInforme(){
   var eqs=currentVisita.equipos||[];
   var L=[];
 
-  L.push('Eres el asistente tecnico de INGENALSE S.A., empresa especializada en ingenieria de flotacion, sedimentacion y filtrado para mineria.');
+  L.push('=== CONTEXTO DE LA EMPRESA ===');
+  L.push('INGENALSE S.A. es una empresa chilena especializada en ingeniería, flotación, sedimentación y filtrado para la industria minera. Sus principales áreas de servicio son:');
+  L.push('- Ingeniería: conceptual, básica, de detalle y en terreno para proyectos mineros.');
+  L.push('- Equipos de sedimentación: espesadores convencionales, High-Rate, High-Density y Deep-Cone. Suministro de mecanismos de accionamiento (drives), rastras, feedwells, muros metálicos y componentes críticos.');
+  L.push('- Equipos de flotación: diseño, fabricación y suministro de celdas de flotación y bancos completos.');
+  L.push('- Servicios EPCM: ingeniería, procura, construcción y montaje de proyectos de plantas concentradoras.');
+  L.push('- Repuestos y suministros: componentes para espesadores y celdas, incluyendo drives D80-EL2, rotores, difusores, ejes, poleas y otros.');
+  L.push('Sus clientes son principalmente grandes mineras chilenas como Codelco (Chuquicamata, El Salvador, Ministro Hales, El Teniente), Anglo American, y mineras medianas en Chile y Bolivia.');
+  L.push('El equipo comercial realiza visitas técnicas a plantas concentradoras para levantar el estado de los equipos de sedimentación y flotación, identificar necesidades de mantención, reposición o mejora, y generar propuestas técnico-comerciales.');
   L.push('');
-  L.push('Redacta un REPORTE DE VISITA TECNICA profesional basandote en los datos de levantamiento.');
+  L.push('=== TU ROL ===');
+  L.push('Eres el asistente técnico de INGENALSE S.A. Tu tarea es generar un Reporte de Visita Técnica profesional y un archivo Word (.docx) descargable con ese informe.');
   L.push('');
-  L.push('INSTRUCCIONES:');
-  L.push('1. Redacta en prosa tecnica formal, NO como lista de datos crudos.');
-  L.push('2. Estructura: Resumen Ejecutivo, Objetivo, Asistentes, Agenda, Notas y Antecedentes, Registro por Equipo, Acciones y Compromisos, Oportunidades Comerciales.');
-  L.push('3. El Resumen Ejecutivo sintetiza el proposito, equipos evaluados y conclusiones en 2-3 parrafos.');
-  L.push('4. Por cada equipo: describe el estado general, parametros operativos, resultados de inspeccion visual con enfasis en danos, y observaciones especificas.');
-  L.push('5. Omite completamente secciones sin datos. No escribas "no se registro informacion".');
-  L.push('6. El usuario adjuntara todas las fotos de la visita junto con este mensaje. Analiza cada foto e incorporala naturalmente en la seccion del informe que corresponda segun su contenido. Describe brevemente lo que observas en cada imagen y referencialas como (Foto adjunta: descripcion breve).');
-  L.push('7. Tono tecnico y formal apropiado para ingenieria minera.');
+  L.push('=== INSTRUCCIONES PARA EL INFORME ===');
+  L.push('1. Redacta en prosa técnica formal. NUNCA presentes los datos como lista cruda — cada sección debe tener párrafos bien construidos.');
+  L.push('2. Estructura obligatoria: Resumen Ejecutivo → Objetivo del Documento → Asistentes → Agenda → Notas y Antecedentes → Registro por Equipo → Acciones y Compromisos → Oportunidades Comerciales.');
+  L.push('3. Resumen Ejecutivo: 2-3 párrafos que sinteticen el propósito de la visita, los equipos evaluados, los hallazgos más relevantes y el valor que INGENALSE puede aportar.');
+  L.push('4. Por cada equipo inspeccionado: describe sus características, estado operativo, parámetros medidos vs diseño, resultados de la inspección visual (con énfasis técnico en los daños o anomalías detectadas y su posible causa e impacto), y observaciones específicas.');
+  L.push('5. En Acciones y Compromisos: presenta cada ítem como acción concreta con responsable.');
+  L.push('6. En Oportunidades Comerciales: redacta cada oportunidad como propuesta de valor concreta, vinculándola con los hallazgos técnicos de la visita y la experiencia de INGENALSE en ese tipo de solución.');
+  L.push('7. Omite completamente las secciones sin datos — no uses frases como "no se registró información".');
+  L.push('8. Las fotos adjuntas: analiza cada imagen, identifica su contenido técnico y referencíalas en la sección correspondiente del informe con una descripción de lo observado.');
+  L.push('9. Usa terminología técnica propia de plantas concentradoras: espesador, feedwell, rastra, drive, underflow, overflow, launder, torque, spigot, pulpa, relave, concentrado, etc.');
+  L.push('');
+  L.push('=== INSTRUCCIONES PARA EL ARCHIVO WORD ===');
+  L.push('Una vez redactado el informe, genera un archivo Word (.docx) descargable con el siguiente formato:');
+  L.push('- Portada: Logo INGENALSE (texto "INGENALSE S.A." en azul #004F9D), nombre del cliente, título "REPORTE DE VISITA TÉCNICA", fecha, responsable.');
+  L.push('- Encabezado en cada página: "INGENALSE S.A." a la izquierda, título del reporte a la derecha, línea separadora en amarillo #FCE84D.');
+  L.push('- Pie de página: número de página centrado, línea separadora en gris #C0C0C0.');
+  L.push('- Títulos de sección: fuente Arial, negrita, color azul #004F9D, tamaño 13pt.');
+  L.push('- Texto de cuerpo: Arial 11pt, color negro, interlineado 1.15.');
+  L.push('- Tablas con encabezado en azul #004F9D con texto blanco, filas alternas en gris claro.');
+  L.push('- Las fotos adjuntas: inclúyelas en la sección correspondiente con pie de foto descriptivo.');
   L.push('');
   L.push('============================');
   L.push('DATOS DEL LEVANTAMIENTO:');
@@ -772,9 +793,12 @@ function generarInforme(){
   L.push('============================');
   L.push('FIN DE DATOS.');
   L.push('');
-  L.push('IMPORTANTE: El usuario adjuntara junto a este mensaje todas las fotos tomadas durante la visita.');
-  L.push('Analiza el contenido de cada foto, identificalas por su contenido tecnico, e incorporalas al informe en la seccion que corresponda.');
-  L.push('Redacta el informe completo ahora.');
+  L.push('ADJUNTA JUNTO A ESTE MENSAJE todas las fotos tomadas durante la visita antes de enviar.');
+  L.push('');
+  L.push('Una vez que tengas el prompt y las fotos listos:');
+  L.push('1. Redacta el informe completo en prosa técnica formal.');
+  L.push('2. Genera el archivo Word (.docx) descargable con el informe y las fotos incluidas en las secciones correspondientes.');
+  L.push('El archivo debe quedar listo para entregar al cliente sin edición adicional.');
 
   var texto=L.join('\n');
   if(navigator.clipboard&&navigator.clipboard.writeText){
@@ -795,14 +819,14 @@ function mostrarModalInforme(texto){
     '<h3 style="font-size:17px;font-weight:700;color:#004F9D;margin-bottom:8px">Texto copiado al portapapeles</h3>'+
     '<p style="font-size:14px;color:#444;line-height:1.6;margin-bottom:16px">El prompt para generar el informe esta listo. Sigue estos pasos:</p>'+
     '<div style="background:#F0F6FF;border-radius:10px;padding:14px;margin-bottom:16px">'+
-    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Como generar el informe con fotos:</p>'+
+    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Cómo obtener el informe Word listo:</p>'+
     '<p style="font-size:13px;color:#333;line-height:1.9">'+
-    '1. Abre <strong>Claude.ai</strong> en tu celular o computador<br>'+
-    '2. Crea una conversacion nueva<br>'+
-    '3. Pega el texto copiado<br>'+
-    '4. Adjunta todas las fotos que tomaste durante la visita<br>'+
-    '5. Envia — Claude analizara cada foto y la incorporara en la seccion correcta del informe<br>'+
-    '6. Copia el informe a Word</p>'+
+    '1️⃣ Abre <strong>Claude.ai</strong> en tu computador o celular<br>'+
+    '2️⃣ Crea una conversación nueva<br>'+
+    '3️⃣ Pega el texto copiado<br>'+
+    '4️⃣ Adjunta <strong>todas las fotos</strong> tomadas en la visita<br>'+
+    '5️⃣ Envía — Claude redactará el informe y generará el archivo Word<br>'+
+    '6️⃣ Descarga el <strong>.docx</strong> listo para entregar</p>'+
     '</div>'+
     '<textarea id="txt-informe" style="width:100%;height:90px;font-size:11px;padding:8px;border:1px solid #ddd;border-radius:8px;resize:none;font-family:monospace;color:#666" readonly>'+texto.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'+
     '<div style="display:flex;gap:10px;margin-top:16px">'+
