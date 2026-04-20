@@ -5,78 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Ingenalse Terreno">
+<meta name="apple-mobile-web-app-title" content="INGENALSE">
 <meta name="theme-color" content="#004F9D">
-<title>INGENALSE — Visita Técnica</title>
-<link rel="manifest" href="#" id="manifest-link">
+<title>INGENALSE - Visita Tecnica</title>
 <style>
 :root{
-  --azul:#004F9D;
-  --azul-dark:#003A7A;
-  --amarillo:#FCE84D;
-  --gris:#C0C0C0;
-  --gris-claro:#F5F5F5;
-  --gris-medio:#E8E8E8;
-  --texto:#1A1A1A;
-  --texto-sec:#666;
-  --texto-ter:#999;
-  --borde:#DEDEDE;
-  --verde:#27AE60;
-  --rojo:#E74C3C;
-  --blanco:#FFFFFF;
-  --radio:10px;
-  --radio-sm:6px;
-  --sombra:0 2px 8px rgba(0,0,0,0.08);
+  --azul:#004F9D;--azul-dark:#003A7A;--amarillo:#FCE84D;
+  --gris:#C0C0C0;--gris-claro:#F5F5F5;--gris-medio:#E8E8E8;
+  --texto:#1A1A1A;--texto-sec:#666;--texto-ter:#999;
+  --borde:#DEDEDE;--verde:#27AE60;--rojo:#E74C3C;--blanco:#FFFFFF;
+  --radio:10px;--radio-sm:6px;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--gris-claro);color:var(--texto)}
-
-/* ── HEADER ── */
-.header{background:var(--azul);color:#fff;position:fixed;top:0;left:0;right:0;z-index:100;-webkit-user-select:none}
+.header{background:var(--azul);color:#fff;position:fixed;top:0;left:0;right:0;z-index:100}
 .header-main{display:flex;align-items:center;gap:10px;padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top))}
-.logo-wrap{background:#fff;border-radius:var(--radio-sm);padding:5px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.logo-box{background:#fff;border-radius:6px;padding:5px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0}
 .logo-mark{display:flex;align-items:center;position:relative;width:32px;height:22px}
 .logo-c{border-radius:50%;position:absolute}
 .logo-c1{width:20px;height:20px;border:4px solid var(--amarillo);left:0;top:1px}
 .logo-c2{width:20px;height:20px;border:4px solid #ccc;left:10px;top:1px}
 .logo-diamond{width:6px;height:10px;background:var(--azul);border-radius:2px;position:absolute;left:13px;top:6px;z-index:1}
-.logo-txt{font-size:13px;font-weight:700;color:var(--azul);letter-spacing:-0.3px}
+.logo-txt{font-size:13px;font-weight:700;color:var(--azul)}
 .header-info{flex:1;min-width:0}
 .header-info h1{font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.header-info p{font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.header-actions{display:flex;gap:6px;flex-shrink:0}
-.icon-btn{background:rgba(255,255,255,0.15);border:none;border-radius:var(--radio-sm);padding:7px 10px;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:5px}
-.icon-btn span{font-size:12px;display:none}
+.header-info p{font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px}
+.header-actions button{background:rgba(255,255,255,0.15);border:none;border-radius:6px;padding:7px 10px;color:#fff;font-size:14px;cursor:pointer}
 .header-prog{height:3px;background:rgba(255,255,255,0.2)}
 .header-prog-fill{height:100%;background:var(--amarillo);transition:width 0.3s}
-.header-tabs{display:flex;overflow-x:auto;padding:0 14px;gap:0;scrollbar-width:none;border-top:1px solid rgba(255,255,255,0.1)}
+.header-tabs{display:flex;overflow-x:auto;padding:0 14px;scrollbar-width:none;border-top:1px solid rgba(255,255,255,0.1)}
 .header-tabs::-webkit-scrollbar{display:none}
 .tab-btn{flex-shrink:0;padding:8px 14px;font-size:12px;color:rgba(255,255,255,0.6);border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none}
 .tab-btn.active{color:#fff;border-bottom-color:var(--amarillo)}
-
-/* ── SCROLL CONTAINER ── */
-.scroll-area{position:fixed;top:var(--header-h,110px);bottom:var(--nav-h,80px);left:0;right:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px;padding-bottom:20px}
-
-/* ── CARDS ── */
+.scroll-area{position:fixed;top:110px;bottom:80px;left:0;right:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px;padding-bottom:20px}
 .card{background:var(--blanco);border-radius:var(--radio);border:1px solid var(--borde);margin-bottom:12px;overflow:hidden}
-.card-header{background:var(--azul);color:#fff;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
-.card-header h3{font-size:13px;font-weight:600}
 .card-body{padding:14px}
 .sec-label{font-size:11px;font-weight:600;color:var(--azul);text-transform:uppercase;letter-spacing:0.5px;margin:14px 0 8px;padding-left:8px;border-left:3px solid var(--amarillo)}
 .sec-label:first-child{margin-top:0}
 label.field-lbl{display:block;font-size:12px;color:var(--texto-sec);margin-bottom:5px;font-weight:500}
 .opt-tag{font-size:10px;color:var(--texto-ter);background:var(--gris-medio);border-radius:8px;padding:1px 6px;margin-left:4px;font-weight:400}
-input[type=text],input[type=date],textarea,select{width:100%;font-size:15px;padding:10px 12px;border:1px solid var(--borde);border-radius:var(--radio-sm);background:#fff;color:var(--texto);font-family:inherit;-webkit-appearance:none;appearance:none}
+input[type=text],input[type=date],textarea{width:100%;font-size:15px;padding:10px 12px;border:1px solid var(--borde);border-radius:var(--radio-sm);background:#fff;color:var(--texto);font-family:inherit;-webkit-appearance:none}
 input[type=text]:focus,input[type=date]:focus,textarea:focus{outline:none;border-color:var(--azul)}
 textarea{min-height:72px;resize:vertical;line-height:1.5}
 .field-group{margin-bottom:12px}
-
-/* ── RADIO GRID ── */
 .rg{display:grid;grid-template-columns:1fr 1fr;gap:7px}
 .rb{border:1.5px solid var(--borde);border-radius:var(--radio-sm);padding:9px 10px;font-size:13px;cursor:pointer;text-align:center;background:#fff;color:var(--texto);user-select:none;transition:all 0.12s}
 .rb.on{background:#EBF3FF;border-color:var(--azul);color:var(--azul);font-weight:600}
-
-/* ── CHECK ROWS ── */
 .check-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gris-claro)}
 .check-row:last-child{border-bottom:none}
 .check-row-label{font-size:13px;color:var(--texto);flex:1;padding-right:10px;line-height:1.3}
@@ -84,37 +58,29 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .chk{padding:5px 11px;font-size:12px;border:1px solid var(--borde);border-radius:20px;cursor:pointer;background:#fff;color:var(--texto-sec);font-weight:500;transition:all 0.12s}
 .chk.ok{background:#E8F8EE;border-color:var(--verde);color:#1A7A40}
 .chk.nok{background:#FEE;border-color:var(--rojo);color:#A0201A}
-
-/* ── FOTOS ── */
-.photo-guide{margin-top:10px}
+.photo-guide{margin-top:12px}
+.photo-guide-header{display:flex;align-items:center;justify-content:space-between;margin:14px 0 8px;padding-left:8px;border-left:3px solid var(--amarillo)}
+.photo-guide-header p{font-size:11px;font-weight:600;color:var(--azul);text-transform:uppercase;letter-spacing:0.5px}
+.photo-guide-header span{font-size:11px;color:var(--texto-ter);background:var(--gris-medio);border-radius:8px;padding:1px 7px}
 .photo-item{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;margin-bottom:8px}
 .photo-item-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .photo-item-num{width:24px;height:24px;border-radius:50%;background:var(--azul);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .photo-item-title{font-size:13px;font-weight:600;color:var(--texto)}
 .photo-item-desc{font-size:12px;color:var(--texto-sec);line-height:1.5;margin-bottom:10px;padding-left:34px}
-.photo-item-footer{display:flex;align-items:center;gap:8px;padding-left:34px}
+.photo-item-footer{display:flex;align-items:center;gap:10px;padding-left:34px;flex-wrap:wrap}
 .photo-cam-btn{display:flex;align-items:center;gap:7px;padding:8px 14px;background:var(--azul);color:#fff;border:none;border-radius:var(--radio-sm);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit}
 .photo-counter{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--texto-sec)}
-.photo-counter-btns{display:flex;align-items:center;gap:4px}
-.cnt-btn{width:26px;height:26px;border-radius:50%;border:1px solid var(--borde);background:var(--blanco);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;font-family:inherit;color:var(--texto)}
-.cnt-num{font-size:14px;font-weight:700;color:var(--azul);min-width:18px;text-align:center}
-.photo-guide-header{display:flex;align-items:center;justify-content:space-between;margin:14px 0 8px;padding-left:8px;border-left:3px solid var(--amarillo)}
-.photo-guide-header p{font-size:11px;font-weight:600;color:var(--azul);text-transform:uppercase;letter-spacing:0.5px}
-.photo-guide-header span{font-size:11px;color:var(--texto-ter);background:var(--gris-medio);border-radius:8px;padding:1px 7px}
-
-/* ── EQUIPOS LIST ── */
-.eq-item{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:border-color 0.12s}
-.eq-item:active{border-color:var(--azul)}
+.cnt-btn{width:28px;height:28px;border-radius:50%;border:1px solid var(--borde);background:var(--blanco);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;font-family:inherit;color:var(--texto)}
+.cnt-num{font-size:15px;font-weight:700;color:var(--azul);min-width:20px;text-align:center}
+.eq-item{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
 .eq-item-info h4{font-size:14px;font-weight:600;color:var(--texto)}
 .eq-item-info p{font-size:12px;color:var(--texto-sec);margin-top:2px}
-.eq-item-arrow{font-size:18px;color:var(--gris);flex-shrink:0}
+.eq-item-arrow{font-size:20px;color:var(--gris);flex-shrink:0}
 .eq-add-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border:2px dashed var(--azul);border-radius:var(--radio);font-size:14px;color:var(--azul);font-weight:600;cursor:pointer;background:rgba(0,79,157,0.04)}
-.eq-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:10px;margin-top:4px}
+.eq-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:10px;margin-top:4px;margin-right:4px}
 .eq-badge.ok{background:#E8F8EE;color:#1A7A40}
 .eq-badge.parcial{background:#FFF8E0;color:#B8860B}
 .eq-badge.vacio{background:var(--gris-medio);color:var(--texto-ter)}
-
-/* ── PARAMS TABLE ── */
 .params-header{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:5px;margin-bottom:6px}
 .params-header span{font-size:11px;color:var(--texto-sec);text-align:center;font-weight:500}
 .params-header span:first-child{text-align:left}
@@ -122,18 +88,13 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .param-row .param-name{font-size:12px;color:var(--texto);line-height:1.3}
 .param-row .param-unit{font-size:10px;color:var(--texto-ter)}
 .param-row input{font-size:13px;padding:7px 6px;text-align:center;border:1px solid var(--borde);border-radius:var(--radio-sm);background:#fff;color:var(--texto);font-family:inherit}
-
-/* ── BORRADORES ── */
 .borrador-item{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;margin-bottom:10px}
-.borrador-meta{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
 .borrador-info h4{font-size:14px;font-weight:600;color:var(--texto)}
 .borrador-info p{font-size:12px;color:var(--texto-sec);margin-top:3px}
 .borrador-actions{display:flex;gap:7px;margin-top:10px}
-.btn-sm{padding:7px 13px;font-size:12px;border-radius:var(--radio-sm);border:1px solid var(--borde);background:#fff;color:var(--texto);cursor:pointer;font-weight:500}
+.btn-sm{padding:7px 13px;font-size:12px;border-radius:var(--radio-sm);border:1px solid var(--borde);background:#fff;color:var(--texto);cursor:pointer;font-weight:500;font-family:inherit}
 .btn-sm.prim{background:var(--azul);color:#fff;border-color:var(--azul)}
 .btn-sm.danger{background:#FEE;color:var(--rojo);border-color:#F5C6C6}
-
-/* ── RESUMEN ── */
 .resumen-section{margin-bottom:14px}
 .resumen-section h4{font-size:12px;font-weight:600;color:var(--azul);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:8px;padding-left:7px;border-left:3px solid var(--amarillo)}
 .resumen-row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--gris-claro);font-size:13px;gap:8px}
@@ -142,59 +103,38 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .rv{color:var(--texto);font-weight:500;text-align:right;word-break:break-word}
 .badge-ok{background:#E8F8EE;color:#1A7A40;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
 .badge-nok{background:#FEE;color:#A0201A;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
-.photo-mini-grid{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
-.photo-mini-grid img{width:52px;height:52px;object-fit:cover;border-radius:var(--radio-sm);border:1px solid var(--borde)}
-
-/* ── NAV BAR ── */
 .nav-bar{position:fixed;bottom:0;left:0;right:0;background:var(--blanco);border-top:1px solid var(--borde);padding:10px 14px;padding-bottom:max(10px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:100}
 .btn-nav{flex:1;padding:12px;font-size:14px;border-radius:var(--radio);border:1.5px solid var(--borde);background:#fff;color:var(--texto);cursor:pointer;font-weight:500;font-family:inherit}
 .btn-nav.prim{flex:2;background:var(--azul);color:#fff;border-color:var(--azul)}
-.btn-nav.prim:active{background:var(--azul-dark)}
 .btn-nav.amarillo{background:var(--amarillo);color:var(--azul);border-color:var(--amarillo);font-weight:700}
-
-/* ── TIP ── */
 .tip{font-size:12px;color:var(--texto-sec);font-style:italic;padding:10px 12px;background:rgba(0,79,157,0.05);border-radius:var(--radio-sm);border-left:3px solid var(--amarillo);margin-bottom:14px;line-height:1.5}
-
-/* ── TOAST ── */
 .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(30,30,30,0.92);color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:999;opacity:0;transition:opacity 0.25s;pointer-events:none;white-space:nowrap}
 .toast.show{opacity:1}
-
-/* ── INSTALL BANNER ── */
 .install-banner{background:var(--azul);color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px;position:fixed;top:0;left:0;right:0;z-index:200;transform:translateY(-100%);transition:transform 0.3s}
 .install-banner.show{transform:translateY(0)}
 .install-banner p{flex:1;font-size:13px;line-height:1.4}
-.install-banner button{background:var(--amarillo);color:var(--azul);border:none;border-radius:var(--radio-sm);padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0}
-
-/* ── EMPTY STATE ── */
+.install-banner button{background:var(--amarillo);color:var(--azul);border:none;border-radius:var(--radio-sm);padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer}
 .empty-state{text-align:center;padding:40px 20px;color:var(--texto-ter)}
 .empty-state .ico{font-size:44px;margin-bottom:14px}
 .empty-state h3{font-size:16px;font-weight:600;color:var(--texto-sec);margin-bottom:8px}
 .empty-state p{font-size:13px;line-height:1.5}
-
-/* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity 0.2s}
 .modal-overlay.show{opacity:1;pointer-events:all}
-.modal{background:#fff;border-radius:var(--radio) var(--radio) 0 0;width:100%;max-height:85vh;overflow-y:auto;padding:20px 16px;padding-bottom:max(20px,env(safe-area-inset-bottom));transform:translateY(100%);transition:transform 0.25s}
+.modal{background:#fff;border-radius:16px 16px 0 0;width:100%;max-height:90vh;overflow-y:auto;padding:20px 16px;padding-bottom:max(20px,env(safe-area-inset-bottom));transform:translateY(100%);transition:transform 0.25s}
 .modal-overlay.show .modal{transform:translateY(0)}
 .modal-handle{width:36px;height:4px;background:var(--gris);border-radius:2px;margin:0 auto 16px}
 .modal h3{font-size:16px;font-weight:700;margin-bottom:14px;color:var(--azul)}
 </style>
 </head>
 <body>
-
-<!-- Install banner -->
 <div class="install-banner" id="install-banner">
-  <p>📲 Instala la app para usarla sin internet en faena</p>
+  <p>Instala la app para usarla sin internet en faena</p>
   <button onclick="installApp()">Instalar</button>
 </div>
-
-<!-- Toast -->
 <div class="toast" id="toast"></div>
-
-<!-- Header -->
 <div class="header" id="main-header">
   <div class="header-main">
-    <div class="logo-wrap">
+    <div class="logo-box">
       <div class="logo-mark">
         <div class="logo-c logo-c1"></div>
         <div class="logo-c logo-c2"></div>
@@ -203,153 +143,125 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       <span class="logo-txt">ngenalse</span>
     </div>
     <div class="header-info">
-      <h1 id="header-title">Visita Técnica</h1>
+      <h1 id="header-title">Visita Tecnica</h1>
       <p id="header-sub">Selecciona o crea una visita</p>
     </div>
     <div class="header-actions">
-      <button class="icon-btn" onclick="irABorradores()" title="Borradores">💾</button>
+      <button onclick="irABorradores()">&#128190;</button>
     </div>
   </div>
   <div class="header-prog"><div class="header-prog-fill" id="prog-fill" style="width:0%"></div></div>
   <div class="header-tabs" id="header-tabs" style="display:none">
-    <button class="tab-btn active" data-tab="0" onclick="irTab(0)">General</button>
-    <button class="tab-btn" data-tab="1" onclick="irTab(1)">Equipos</button>
-    <button class="tab-btn" data-tab="2" onclick="irTab(2)">Notas</button>
-    <button class="tab-btn" data-tab="3" onclick="irTab(3)">Resumen</button>
+    <button class="tab-btn active" onclick="irTab(0)">General</button>
+    <button class="tab-btn" onclick="irTab(1)">Equipos</button>
+    <button class="tab-btn" onclick="irTab(2)">Notas</button>
+    <button class="tab-btn" onclick="irTab(3)">Resumen</button>
   </div>
 </div>
-
-<!-- Scroll area -->
 <div class="scroll-area" id="scroll-area">
 
-  <!-- ════ PANTALLA: INICIO ════ -->
   <div id="screen-inicio">
     <div class="empty-state" style="margin-bottom:20px">
-      <div class="ico">🏭</div>
-      <h3>Visita Técnica INGENALSE</h3>
-      <p>Registra levantamientos en terreno sin necesidad de internet. Los datos se guardan automáticamente.</p>
+      <div class="ico">&#127981;</div>
+      <h3>Visita Tecnica INGENALSE</h3>
+      <p>Registra levantamientos en terreno. Los datos se guardan automaticamente en tu celular.</p>
     </div>
     <button class="btn-nav prim" style="width:100%;margin-bottom:10px" onclick="nuevaVisita()">+ Nueva visita</button>
     <button class="btn-nav" style="width:100%" onclick="irABorradores()">Ver borradores guardados</button>
   </div>
 
-  <!-- ════ PANTALLA: BORRADORES ════ -->
   <div id="screen-borradores" style="display:none">
     <div id="lista-borradores"></div>
-    <button class="eq-add-btn" style="margin-top:4px" onclick="nuevaVisita()">+ Nueva visita</button>
+    <div class="eq-add-btn" onclick="nuevaVisita()" style="margin-top:4px">+ Nueva visita</div>
   </div>
 
-  <!-- ════ PANTALLA: FORMULARIO ════ -->
   <div id="screen-form" style="display:none">
-
-    <!-- TAB 0: General -->
     <div id="tab-0">
-      <p class="tip">Completa lo que tengas disponible. El informe se adapta automáticamente a los datos ingresados.</p>
-
-      <div class="sec-label">Identificación de la visita</div>
-      <div class="field-group"><label class="field-lbl">Cliente / Minera</label><input type="text" id="f-minera" placeholder="Ej: Codelco División El Salvador"></div>
-      <div class="field-group"><label class="field-lbl">División / Planta <span class="opt-tag">opcional</span></label><input type="text" id="f-division" placeholder="Ej: Planta concentradora"></div>
+      <p class="tip">Completa lo que tengas disponible. El informe se adapta automaticamente.</p>
+      <div class="sec-label">Identificacion de la visita</div>
+      <div class="field-group"><label class="field-lbl">Cliente / Minera</label><input type="text" id="f-minera" placeholder="Ej: Codelco Division El Salvador"></div>
+      <div class="field-group"><label class="field-lbl">Division / Planta <span class="opt-tag">opcional</span></label><input type="text" id="f-division" placeholder="Ej: Planta concentradora"></div>
       <div class="field-group"><label class="field-lbl">Localidad <span class="opt-tag">opcional</span></label><input type="text" id="f-localidad" placeholder="Ej: Diego de Almagro"></div>
       <div class="field-group"><label class="field-lbl">Fecha de visita</label><input type="date" id="f-fecha"></div>
       <div class="field-group"><label class="field-lbl">Redactado por</label><input type="text" id="f-redactor" placeholder="Nombre y cargo"></div>
-
       <div class="sec-label">Asistentes <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-asistentes" placeholder="Nombre (Cargo - Empresa)&#10;Nombre (Cargo - Empresa)"></textarea></div>
-
+      <div class="field-group"><textarea id="f-asistentes" placeholder="Nombre (Cargo - Empresa)"></textarea></div>
       <div class="sec-label">Agenda <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-agenda" placeholder="Tema 1: ...&#10;Tema 2: ..."></textarea></div>
-
-      <div class="sec-label">Objetivo de la visita <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-objetivo" placeholder="Describir brevemente el propósito de la visita..."></textarea></div>
+      <div class="field-group"><textarea id="f-agenda" placeholder="Tema 1: ..."></textarea></div>
+      <div class="sec-label">Objetivo <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-objetivo" placeholder="Describir el proposito de la visita..."></textarea></div>
     </div>
-
-    <!-- TAB 1: Equipos -->
     <div id="tab-1" style="display:none">
-      <p class="tip">Agrega uno o más equipos. Cada equipo tiene su propia inspección y registro fotográfico.</p>
+      <p class="tip">Agrega uno o mas equipos. Cada equipo tiene su propia inspeccion y guia fotografica.</p>
       <div id="lista-equipos"></div>
       <div class="eq-add-btn" onclick="abrirModalEquipo()">+ Agregar equipo</div>
     </div>
-
-    <!-- TAB 2: Notas -->
     <div id="tab-2" style="display:none">
-      <p class="tip">Esta sección alimenta directamente el informe. Completa lo que tengas disponible.</p>
-
-      <div class="sec-label">Notas y observaciones generales <span class="opt-tag">opcional</span></div>
+      <p class="tip">Esta seccion alimenta directamente el informe.</p>
+      <div class="sec-label">Notas y observaciones <span class="opt-tag">opcional</span></div>
       <div class="field-group"><textarea id="f-notas" placeholder="Observaciones relevantes de la visita..."></textarea></div>
-
-      <div class="sec-label">Anomalías detectadas <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-anomalias" placeholder="Problemas, daños o riesgos identificados..."></textarea></div>
+      <div class="sec-label">Anomalias detectadas <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-anomalias" placeholder="Problemas, danos o riesgos identificados..."></textarea></div>
       <div id="pg-anom"></div>
-
       <div class="sec-label">Acciones / Compromisos <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-compromisos" placeholder="Acción 1: ...&#10;Acción 2: ..."></textarea></div>
-
+      <div class="field-group"><textarea id="f-compromisos" placeholder="Accion 1: ..."></textarea></div>
       <div class="sec-label">Oportunidades comerciales <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-oportunidades" placeholder="Posibles ofertas, servicios o proyectos detectados..."></textarea></div>
+      <div class="field-group"><textarea id="f-oportunidades" placeholder="Posibles ofertas o proyectos detectados..."></textarea></div>
       <div id="pg-op"></div>
     </div>
-
-    <!-- TAB 3: Resumen -->
     <div id="tab-3" style="display:none">
       <div id="resumen-contenido"></div>
       <div style="margin-top:16px">
-        <button class="btn-nav amarillo" style="width:100%;margin-bottom:10px" onclick="generarInforme()">Generar informe con Claude ↗</button>
-        <button class="btn-nav" style="width:100%" onclick="guardarBorrador()">💾 Guardar borrador</button>
+        <button class="btn-nav amarillo" style="width:100%;margin-bottom:10px" onclick="generarInforme()">Generar informe con Claude</button>
+        <button class="btn-nav" style="width:100%" onclick="guardarBorrador()">Guardar borrador</button>
       </div>
     </div>
   </div>
 
-  <!-- ════ PANTALLA: EQUIPO DETALLE ════ -->
   <div id="screen-equipo" style="display:none">
-    <div class="sec-label">Identificación</div>
+    <div class="sec-label">Identificacion</div>
     <div class="field-group"><label class="field-lbl">ID / TAG</label><input type="text" id="eq-tag" placeholder="Ej: ESP-C2"></div>
     <div class="field-group"><label class="field-lbl">Nombre del equipo</label><input type="text" id="eq-nombre" placeholder="Ej: Espesador de concentrado 2"></div>
-    <div class="field-group"><label class="field-lbl">Diámetro <span class="opt-tag">opcional</span></label><input type="text" id="eq-diam" placeholder="Ej: 30 m"></div>
-
+    <div class="field-group"><label class="field-lbl">Diametro <span class="opt-tag">opcional</span></label><input type="text" id="eq-diam" placeholder="Ej: 30 m"></div>
     <div class="sec-label">Tipo de equipo</div>
     <div class="card" style="padding:14px">
-      <div class="field-group"><label class="field-lbl">Aplicación</label><div class="rg" id="g-aplic"><div class="rb" onclick="sel(this,'g-aplic')">Concentración</div><div class="rb" onclick="sel(this,'g-aplic')">Relaves</div><div class="rb" onclick="sel(this,'g-aplic')">Clarificador</div><div class="rb" onclick="sel(this,'g-aplic')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Aplicacion</label><div class="rg" id="g-aplic"><div class="rb" onclick="sel(this,'g-aplic')">Concentracion</div><div class="rb" onclick="sel(this,'g-aplic')">Relaves</div><div class="rb" onclick="sel(this,'g-aplic')">Clarificador</div><div class="rb" onclick="sel(this,'g-aplic')">Otro</div></div></div>
       <div class="field-group"><label class="field-lbl">Tipo</label><div class="rg" id="g-tipo"><div class="rb" onclick="sel(this,'g-tipo')">Convencional</div><div class="rb" onclick="sel(this,'g-tipo')">High-Rate</div><div class="rb" onclick="sel(this,'g-tipo')">High-Density</div><div class="rb" onclick="sel(this,'g-tipo')">Deep-Cone</div></div></div>
-      <div class="field-group"><label class="field-lbl">Soporte accionamiento</label><div class="rg" id="g-sop"><div class="rb" onclick="sel(this,'g-sop')">Columna central</div><div class="rb" onclick="sel(this,'g-sop')">Sobre puente</div><div class="rb" onclick="sel(this,'g-sop')">Tracción periférica</div><div class="rb" onclick="sel(this,'g-sop')">Otro</div></div></div>
-      <div class="field-group"><label class="field-lbl">Sistema de levante</label><div class="rg" id="g-lev"><div class="rb" onclick="sel(this,'g-lev')">Hidráulico</div><div class="rb" onclick="sel(this,'g-lev')">Eléctrico</div><div class="rb" onclick="sel(this,'g-lev')">No aplica</div><div class="rb" onclick="sel(this,'g-lev')">Otro</div></div></div>
-      <div class="field-group"><label class="field-lbl">Estanque</label><div class="rg" id="g-const"><div class="rb" onclick="sel(this,'g-const')">Hormigón</div><div class="rb" onclick="sel(this,'g-const')">Metálico</div><div class="rb" onclick="sel(this,'g-const')">Otro</div></div></div>
-      <div class="field-group"><label class="field-lbl">Alto torque</label><div class="rg" id="g-torq"><div class="rb" onclick="sel(this,'g-torq')">Sí</div><div class="rb" onclick="sel(this,'g-torq')">No</div></div></div>
+      <div class="field-group"><label class="field-lbl">Soporte accionamiento</label><div class="rg" id="g-sop"><div class="rb" onclick="sel(this,'g-sop')">Columna central</div><div class="rb" onclick="sel(this,'g-sop')">Sobre puente</div><div class="rb" onclick="sel(this,'g-sop')">Traccion periferica</div><div class="rb" onclick="sel(this,'g-sop')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Sistema de levante</label><div class="rg" id="g-lev"><div class="rb" onclick="sel(this,'g-lev')">Hidraulico</div><div class="rb" onclick="sel(this,'g-lev')">Electrico</div><div class="rb" onclick="sel(this,'g-lev')">No aplica</div><div class="rb" onclick="sel(this,'g-lev')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Estanque</label><div class="rg" id="g-const"><div class="rb" onclick="sel(this,'g-const')">Hormigon</div><div class="rb" onclick="sel(this,'g-const')">Metalico</div><div class="rb" onclick="sel(this,'g-const')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Alto torque</label><div class="rg" id="g-torq"><div class="rb" onclick="sel(this,'g-torq')">Si</div><div class="rb" onclick="sel(this,'g-torq')">No</div></div></div>
       <div class="field-group"><label class="field-lbl">Detalle <span class="opt-tag">opcional</span></label><textarea id="eq-detalle" placeholder="Solo si aplica..."></textarea></div>
     </div>
-
-    <div class="sec-label">Parámetros operativos <span class="opt-tag">opcional</span></div>
+    <div class="sec-label">Parametros operativos <span class="opt-tag">opcional</span></div>
     <div class="card" style="padding:14px">
-      <div class="params-header"><span>Parámetro</span><span>Diseño</span><span>Actual</span><span>Solic.</span></div>
+      <div class="params-header"><span>Parametro</span><span>Diseno</span><span>Actual</span><span>Solic.</span></div>
       <div id="params-body"></div>
     </div>
-
-    <div class="sec-label">Inspección visual</div>
+    <div class="sec-label">Inspeccion visual</div>
     <div class="tip">Marca solo lo inspeccionado. Lo no marcado se omite del informe.</div>
+    <div class="sec-label">Mecanica</div>
     <div class="card" style="padding:0 14px"><div id="checks-mec"></div></div>
     <div id="pg-mec"></div>
+    <div class="sec-label" style="margin-top:12px">Estructural</div>
     <div class="card" style="padding:0 14px"><div id="checks-est"></div></div>
     <div id="pg-est"></div>
+    <div class="sec-label" style="margin-top:12px">Electrica / Instrumentacion</div>
     <div class="card" style="padding:0 14px"><div id="checks-ele"></div></div>
     <div id="pg-ele"></div>
-
-    <div class="sec-label">Fotos panorámicas del equipo <span class="opt-tag">opcional</span></div>
+    <div class="sec-label" style="margin-top:12px">Fotos panoramicas</div>
     <div id="pg-panorama"></div>
-
     <div class="sec-label">Observaciones del equipo <span class="opt-tag">opcional</span></div>
-    <div class="field-group"><textarea id="eq-obs" placeholder="Notas específicas de este equipo..."></textarea></div>
-
+    <div class="field-group"><textarea id="eq-obs" placeholder="Notas especificas de este equipo..."></textarea></div>
     <div style="height:20px"></div>
   </div>
-
 </div>
 
-<!-- Nav bar -->
 <div class="nav-bar" id="nav-bar">
-  <button class="btn-nav" id="nav-back" onclick="navBack()" style="display:none">← Atrás</button>
-  <button class="btn-nav prim" id="nav-next" onclick="navNext()">Comenzar →</button>
+  <button class="btn-nav" id="nav-back" onclick="navBack()" style="display:none">Atras</button>
+  <button class="btn-nav prim" id="nav-next" onclick="navNext()">Comenzar</button>
 </div>
 
-<!-- Modal nuevo equipo -->
 <div class="modal-overlay" id="modal-equipo">
   <div class="modal">
     <div class="modal-handle"></div>
@@ -358,855 +270,635 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
     <div class="field-group"><label class="field-lbl">Nombre</label><input type="text" id="m-nombre" placeholder="Ej: Espesador de concentrado 2"></div>
     <div style="display:flex;gap:10px;margin-top:4px">
       <button class="btn-nav" style="flex:1" onclick="cerrarModal()">Cancelar</button>
-      <button class="btn-nav prim" style="flex:2" onclick="confirmarEquipo()">Agregar →</button>
+      <button class="btn-nav prim" style="flex:2" onclick="confirmarEquipo()">Agregar</button>
     </div>
   </div>
 </div>
 
 <script>
-// ════════════════════════════════
-// ESTADO GLOBAL
-// ════════════════════════════════
 var screen = 'inicio';
 var currentTab = 0;
 var currentVisita = null;
 var currentEqIdx = null;
 var sels = {};
 var checks = {};
-var eqPhotos = {};
-var globalPhotos = { anom: [], op: [] };
+var photoCounts = {};
+var globalPhotoCounts = {};
 var deferredInstall = null;
 
 var PARAMS = [
-  ['Caudal entrada','m³/h'],['Caudal salida','m³/h'],
-  ['% sólidos alim.','%'],['% sólidos desc.','%'],
-  ['Densidad pulpa','t/m³'],['Floculante','g/t']
+  ['Caudal entrada','m3/h'],
+  ['Caudal salida','m3/h'],
+  ['Solidos alim.','%'],
+  ['Solidos desc.','%'],
+  ['Densidad pulpa','t/m3'],
+  ['Floculante','g/t']
 ];
-var MEC_I = ['Sistema alimentación','Rastras','Puente','Motores / reductores','Barandas y accesos','Sistema descarga'];
-var EST_I = ['Paredes y muro','Base y cono','Canaletas rebalse','Cimentación','Apoyo puente','Columna / eje'];
-var ELE_I = ['Tableros eléctricos','Cables y tuberías','Sensores e instrumentos'];
+var MEC_I = ['Sistema alimentacion','Rastras','Puente','Motores y reductores','Barandas y accesos','Sistema descarga'];
+var EST_I = ['Paredes y muro','Base y cono','Canaletas rebalse','Cimentacion','Apoyo puente','Columna y eje'];
+var ELE_I = ['Tableros electricos','Cables y tuberias','Sensores e instrumentos'];
 
-// ════════════════════════════════
-// PWA + INSTALL
-// ════════════════════════════════
-var manifestData = {
-  name: 'INGENALSE Visita Técnica',
-  short_name: 'INGENALSE',
-  start_url: '.',
-  display: 'standalone',
-  background_color: '#004F9D',
-  theme_color: '#004F9D',
-  description: 'App de levantamiento técnico en terreno',
-  icons: [{ src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="%23004F9D"/><circle cx="72" cy="96" r="36" fill="none" stroke="%23FCE84D" stroke-width="12"/><circle cx="116" cy="96" r="36" fill="none" stroke="%23fff" stroke-width="10" opacity="0.6"/></svg>', sizes: '192x192', type: 'image/svg+xml' }]
+var FOTO_GUIAS = {
+  panorama:[
+    {t:'Vista panoramica general',d:'Fotografía el equipo completo desde un punto elevado mostrando estanque, puente y mecanismos.'},
+    {t:'Vista desde el puente',d:'Desde el puente hacia el interior del estanque, mostrando nivel de pulpa y feedwell.'}
+  ],
+  mec:[
+    {t:'Mecanismo drive y reductores',d:'Fotografía el conjunto drive: carcasa, reductores y placa identificadora.'},
+    {t:'Rastras y brazos',d:'Captura los brazos de rastras. Si hay deformaciones o danos, enfoca esas zonas.'},
+    {t:'Sistema de alimentacion feedwell',d:'Fotografía el feedwell y canaleta de entrada. Documenta estado de deflectores.'},
+    {t:'Sistema de descarga underflow',d:'Fotos del spigot, bombas de descarga y canerias. Documenta valvulas y sellos.'},
+    {t:'Motores y transmision',d:'Fotografía los motores electricos, poleas y correas. Muestra cubiertas y ventilacion.'}
+  ],
+  est:[
+    {t:'Muro perimetral y rebalse',d:'Fotografía el muro y canaleta de rebalse. Documenta fisuras o filtraciones.'},
+    {t:'Base radier y cono',d:'Captura la zona del radier y cono central. Documenta grietas o acumulacion de solidos.'},
+    {t:'Apoyo puente y columna',d:'Fotografía los apoyos del puente en el muro y la columna central.'}
+  ],
+  ele:[
+    {t:'Tablero de control y fuerza',d:'Fotografía el tablero electrico abierto y cerrado. Captura la placa de identificacion.'},
+    {t:'Sensores e instrumentacion',d:'Fotografía torquimetro, sensor zero-speed y otros instrumentos.'},
+    {t:'Cableado y conduit',d:'Documenta el estado del cableado, bandejas y tuberias conduit.'}
+  ],
+  anom:[
+    {t:'Anomalia detectada de cerca',d:'Fotografía de cerca el dano o condicion anormal. Incluye referencia de escala si es posible.'},
+    {t:'Contexto de la anomalia',d:'Toma una foto mas abierta que muestre donde esta ubicada la anomalia en el equipo.'}
+  ],
+  op:[
+    {t:'Oportunidad comercial',d:'Fotografía el componente o zona que sustenta la oportunidad comercial identificada.'}
+  ]
 };
-var blob = new Blob([JSON.stringify(manifestData)], {type:'application/json'});
-var manifestURL = URL.createObjectURL(blob);
-document.getElementById('manifest-link').setAttribute('href', manifestURL);
-document.getElementById('manifest-link').setAttribute('rel', 'manifest');
 
-window.addEventListener('beforeinstallprompt', function(e) {
-  e.preventDefault();
-  deferredInstall = e;
+// PWA
+if (navigator.serviceWorker) {
+  var swCode = "const C='ing-v1';self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll([self.location.pathname]))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).catch(()=>caches.match(self.location.pathname)))));";
+  var swBlob = new Blob([swCode],{type:'text/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(function(){});
+}
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault(); deferredInstall=e;
   document.getElementById('install-banner').classList.add('show');
 });
-
-function installApp() {
-  if (deferredInstall) {
-    deferredInstall.prompt();
-    deferredInstall.userChoice.then(function() {
-      document.getElementById('install-banner').classList.remove('show');
-      deferredInstall = null;
-    });
-  }
+function installApp(){
+  if(deferredInstall){deferredInstall.prompt();deferredInstall.userChoice.then(function(){document.getElementById('install-banner').classList.remove('show');deferredInstall=null;});}
 }
 
-// Service Worker inline para cache offline
-if ('serviceWorker' in navigator) {
-  var swCode = `
-    const CACHE = 'ingenalse-v1';
-    self.addEventListener('install', e => e.waitUntil(
-      caches.open(CACHE).then(c => c.addAll([self.location.pathname]))
-    ));
-    self.addEventListener('fetch', e => e.respondWith(
-      caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match(self.location.pathname)))
-    ));
-  `;
-  var swBlob = new Blob([swCode], {type:'text/javascript'});
-  var swURL = URL.createObjectURL(swBlob);
-  navigator.serviceWorker.register(swURL).catch(function(){});
-}
-
-// ════════════════════════════════
 // UTILS
-// ════════════════════════════════
-function g(id) { var el=document.getElementById(id); return el ? el.value.trim() : ''; }
-function s(id, v) { var el=document.getElementById(id); if(el) el.value = v||''; }
-function showToast(msg) {
-  var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
-  setTimeout(function(){t.classList.remove('show');},2000);
-}
-function setHeaderH() {
-  var h=document.getElementById('main-header').offsetHeight;
-  document.getElementById('scroll-area').style.top = h+'px';
-}
-function setNavH() {
-  var h=document.getElementById('nav-bar').offsetHeight;
-  document.getElementById('scroll-area').style.bottom = h+'px';
+function g(id){var el=document.getElementById(id);return el?el.value.trim():'';}
+function sv(id,v){var el=document.getElementById(id);if(el)el.value=v||'';}
+function showToast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
+function setLayout(){
+  var hh=document.getElementById('main-header').offsetHeight;
+  var nh=document.getElementById('nav-bar').offsetHeight;
+  var sa=document.getElementById('scroll-area');
+  sa.style.top=hh+'px'; sa.style.bottom=nh+'px';
 }
 
-// ════════════════════════════════
-// NAVEGACIÓN ENTRE PANTALLAS
-// ════════════════════════════════
-function mostrarPantalla(id) {
+// NAVEGACION
+function mostrarPantalla(id){
   ['inicio','borradores','form','equipo'].forEach(function(s){
     var el=document.getElementById('screen-'+s);
-    if(el) el.style.display = id===s?'block':'none';
+    if(el) el.style.display=(id===s)?'block':'none';
   });
-  screen = id;
-  document.getElementById('header-tabs').style.display = id==='form'?'flex':'none';
-  document.getElementById('nav-back').style.display = (id==='inicio')?'none':'block';
-  document.getElementById('nav-next').style.display = 'block';
-  setHeaderH();
+  screen=id;
+  document.getElementById('header-tabs').style.display=(id==='form')?'flex':'none';
+  setLayout();
 }
 
-function irABorradores() {
-  renderBorradores();
-  document.getElementById('header-title').textContent = 'Borradores';
-  document.getElementById('header-sub').textContent = 'Visitas guardadas';
-  document.getElementById('nav-next').textContent = '+ Nueva visita';
-  document.getElementById('nav-next').onclick = nuevaVisita;
-  document.getElementById('nav-back').onclick = function(){ irAInicio(); };
-  mostrarPantalla('borradores');
-  setHeaderH();
-}
-
-function irAInicio() {
-  document.getElementById('header-title').textContent = 'Visita Técnica';
-  document.getElementById('header-sub').textContent = 'Selecciona o crea una visita';
-  document.getElementById('nav-next').textContent = 'Comenzar →';
-  document.getElementById('nav-next').onclick = nuevaVisita;
-  document.getElementById('nav-back').style.display = 'none';
+function irAInicio(){
+  document.getElementById('header-title').textContent='Visita Tecnica';
+  document.getElementById('header-sub').textContent='Selecciona o crea una visita';
+  document.getElementById('nav-back').style.display='none';
+  document.getElementById('nav-next').textContent='Comenzar';
+  document.getElementById('nav-next').onclick=nuevaVisita;
   mostrarPantalla('inicio');
 }
 
-function navBack() {
-  if (screen === 'equipo') {
-    guardarEquipoActual();
-    volverAForm();
-  } else if (screen === 'form') {
-    if (currentTab > 0) { irTab(currentTab-1); }
-    else { irABorradores(); }
-  } else if (screen === 'borradores') {
-    irAInicio();
-  }
+function irABorradores(){
+  renderBorradores();
+  document.getElementById('header-title').textContent='Borradores';
+  document.getElementById('header-sub').textContent='Visitas guardadas';
+  document.getElementById('nav-back').style.display='block';
+  document.getElementById('nav-back').textContent='Atras';
+  document.getElementById('nav-back').onclick=irAInicio;
+  document.getElementById('nav-next').textContent='+ Nueva visita';
+  document.getElementById('nav-next').onclick=nuevaVisita;
+  mostrarPantalla('borradores');
 }
 
-function navNext() {
-  if (screen === 'inicio') { nuevaVisita(); }
-  else if (screen === 'borradores') { nuevaVisita(); }
-  else if (screen === 'form') {
+function navBack(){
+  if(screen==='equipo'){guardarEquipoActual();volverAForm();}
+  else if(screen==='form'){
+    if(currentTab>0){irTab(currentTab-1);}
+    else{irABorradores();}
+  } else if(screen==='borradores'){irAInicio();}
+}
+
+function navNext(){
+  if(screen==='inicio'){nuevaVisita();}
+  else if(screen==='borradores'){nuevaVisita();}
+  else if(screen==='form'){
     autoGuardar();
-    if (currentTab < 3) { irTab(currentTab+1); }
-  } else if (screen === 'equipo') {
-    guardarEquipoActual();
-    volverAForm();
+    if(currentTab<3){irTab(currentTab+1);}
+  } else if(screen==='equipo'){
+    guardarEquipoActual();volverAForm();
   }
 }
 
-// ════════════════════════════════
-// VISITAS Y BORRADORES
-// ════════════════════════════════
-function getBorradores() {
-  try { return JSON.parse(localStorage.getItem('visitas') || '[]'); } catch(e){ return []; }
-}
-function saveBorradores(arr) {
-  try { localStorage.setItem('visitas', JSON.stringify(arr)); } catch(e){ showToast('Error al guardar'); }
-}
+// BORRADORES
+function getBorradores(){try{return JSON.parse(localStorage.getItem('visitas')||'[]');}catch(e){return[];}}
+function saveBorradores(arr){try{localStorage.setItem('visitas',JSON.stringify(arr));}catch(e){showToast('Error al guardar');}}
 
-function nuevaVisita() {
-  currentVisita = {
-    id: Date.now().toString(),
-    creado: new Date().toLocaleDateString('es-CL'),
-    general: {}, equipos: [], notas: {}, globalPhotos: {anom:[],op:[]}
-  };
-  currentEqIdx = null;
-  sels = {}; checks = {}; eqPhotos = {}; globalPhotos = {anom:[],op:[]};
+function nuevaVisita(){
+  currentVisita={id:Date.now().toString(),creado:new Date().toLocaleDateString(),general:{},equipos:[],notas:{},globalPhotoCounts:{}};
+  currentEqIdx=null; sels={}; checks={}; photoCounts={}; globalPhotoCounts={};
   abrirFormulario();
 }
 
-function abrirFormulario() {
-  if (currentVisita && currentVisita.general) {
-    s('f-minera', currentVisita.general.minera);
-    s('f-division', currentVisita.general.division);
-    s('f-localidad', currentVisita.general.localidad);
-    s('f-fecha', currentVisita.general.fecha);
-    s('f-redactor', currentVisita.general.redactor);
-    s('f-asistentes', currentVisita.general.asistentes);
-    s('f-agenda', currentVisita.general.agenda);
-    s('f-objetivo', currentVisita.general.objetivo);
-  }
-  if (currentVisita && currentVisita.notas) {
-    s('f-notas', currentVisita.notas.notas);
-    s('f-anomalias', currentVisita.notas.anomalias);
-    s('f-compromisos', currentVisita.notas.compromisos);
-    s('f-oportunidades', currentVisita.notas.oportunidades);
-  }
-  if (currentVisita && currentVisita.globalPhotos) {
-    globalPhotos = JSON.parse(JSON.stringify(currentVisita.globalPhotos));
-  }
+function abrirFormulario(){
+  var gen=currentVisita.general||{};
+  sv('f-minera',gen.minera); sv('f-division',gen.division); sv('f-localidad',gen.localidad);
+  sv('f-fecha',gen.fecha); sv('f-redactor',gen.redactor); sv('f-asistentes',gen.asistentes);
+  sv('f-agenda',gen.agenda); sv('f-objetivo',gen.objetivo);
+  var not=currentVisita.notas||{};
+  sv('f-notas',not.notas); sv('f-anomalias',not.anomalias);
+  sv('f-compromisos',not.compromisos); sv('f-oportunidades',not.oportunidades);
+  globalPhotoCounts=JSON.parse(JSON.stringify(currentVisita.globalPhotoCounts||{}));
   updateHeaderInfo();
   irTab(0);
   mostrarPantalla('form');
-  actualizarNavForm();
+  document.getElementById('nav-back').style.display='block';
+  document.getElementById('nav-back').textContent='Atras';
+  document.getElementById('nav-back').onclick=navBack;
 }
 
-function updateHeaderInfo() {
-  var minera = g('f-minera') || (currentVisita&&currentVisita.general&&currentVisita.general.minera) || 'Nueva visita';
-  var fecha = g('f-fecha') || (currentVisita&&currentVisita.general&&currentVisita.general.fecha) || '';
-  document.getElementById('header-title').textContent = minera;
-  document.getElementById('header-sub').textContent = fecha || 'Sin fecha';
+function updateHeaderInfo(){
+  var minera=g('f-minera')||(currentVisita&&currentVisita.general&&currentVisita.general.minera)||'Nueva visita';
+  var fecha=g('f-fecha')||(currentVisita&&currentVisita.general&&currentVisita.general.fecha)||'';
+  document.getElementById('header-title').textContent=minera;
+  document.getElementById('header-sub').textContent=fecha||'Sin fecha';
 }
 
-function autoGuardar() {
-  if (!currentVisita) return;
-  currentVisita.general = {
-    minera:g('f-minera'), division:g('f-division'), localidad:g('f-localidad'),
-    fecha:g('f-fecha'), redactor:g('f-redactor'), asistentes:g('f-asistentes'),
-    agenda:g('f-agenda'), objetivo:g('f-objetivo')
-  };
-  currentVisita.notas = {
-    notas:g('f-notas'), anomalias:g('f-anomalias'),
-    compromisos:g('f-compromisos'), oportunidades:g('f-oportunidades')
-  };
-  currentVisita.globalPhotos = JSON.parse(JSON.stringify(globalPhotos));
-  var arr = getBorradores();
-  var idx = arr.findIndex(function(v){return v.id===currentVisita.id;});
-  if (idx>=0) arr[idx]=currentVisita; else arr.unshift(currentVisita);
+function autoGuardar(){
+  if(!currentVisita)return;
+  currentVisita.general={minera:g('f-minera'),division:g('f-division'),localidad:g('f-localidad'),fecha:g('f-fecha'),redactor:g('f-redactor'),asistentes:g('f-asistentes'),agenda:g('f-agenda'),objetivo:g('f-objetivo')};
+  currentVisita.notas={notas:g('f-notas'),anomalias:g('f-anomalias'),compromisos:g('f-compromisos'),oportunidades:g('f-oportunidades')};
+  currentVisita.globalPhotoCounts=JSON.parse(JSON.stringify(globalPhotoCounts));
+  var arr=getBorradores();
+  var idx=arr.findIndex(function(v){return v.id===currentVisita.id;});
+  if(idx>=0)arr[idx]=currentVisita; else arr.unshift(currentVisita);
   saveBorradores(arr);
   updateHeaderInfo();
 }
 
-function guardarBorrador() {
-  autoGuardar();
-  showToast('✓ Borrador guardado');
-}
+function guardarBorrador(){autoGuardar();showToast('Borrador guardado');}
 
-function renderBorradores() {
-  var arr = getBorradores();
-  var c = document.getElementById('lista-borradores');
-  if (arr.length === 0) {
-    c.innerHTML = '<div class="empty-state"><div class="ico">📋</div><h3>Sin borradores</h3><p>Crea una nueva visita para comenzar.</p></div>';
-    return;
-  }
-  c.innerHTML = '';
-  arr.forEach(function(v) {
-    var d = document.createElement('div');
-    d.className = 'borrador-item';
-    var eqs = (v.equipos||[]).length;
-    d.innerHTML = '<div class="borrador-meta"><div class="borrador-info"><h4>'+(v.general&&v.general.minera||'Sin nombre')+'</h4><p>'+(v.general&&v.general.fecha||v.creado||'')+(eqs?' · '+eqs+' equipo(s)':'')+'</p></div></div>'+
+function renderBorradores(){
+  var arr=getBorradores();
+  var c=document.getElementById('lista-borradores');
+  if(arr.length===0){c.innerHTML='<div class="empty-state"><div class="ico">&#128203;</div><h3>Sin borradores</h3><p>Crea una nueva visita para comenzar.</p></div>';return;}
+  c.innerHTML='';
+  arr.forEach(function(v){
+    var d=document.createElement('div'); d.className='borrador-item';
+    var eqs=(v.equipos||[]).length;
+    d.innerHTML='<div class="borrador-info"><h4>'+(v.general&&v.general.minera||'Sin nombre')+'</h4><p>'+(v.general&&v.general.fecha||v.creado||'')+(eqs?' · '+eqs+' equipo(s)':'')+'</p></div>'+
       '<div class="borrador-actions">'+
       '<button class="btn-sm danger" onclick="eliminarBorrador(\''+v.id+'\')">Eliminar</button>'+
-      '<button class="btn-sm" onclick="continuarBorrador(\''+v.id+'\')">Continuar →</button>'+
+      '<button class="btn-sm prim" onclick="continuarBorrador(\''+v.id+'\')">Continuar</button>'+
       '</div>';
     c.appendChild(d);
   });
 }
 
-function continuarBorrador(id) {
-  var arr = getBorradores();
-  currentVisita = arr.find(function(v){return v.id===id;});
-  if (!currentVisita) return;
-  sels={}; checks={}; eqPhotos={};
-  globalPhotos = JSON.parse(JSON.stringify(currentVisita.globalPhotos||{anom:[],op:[]}));
+function continuarBorrador(id){
+  var arr=getBorradores(); currentVisita=arr.find(function(v){return v.id===id;});
+  if(!currentVisita)return;
+  sels={}; checks={}; photoCounts={};
+  globalPhotoCounts=JSON.parse(JSON.stringify(currentVisita.globalPhotoCounts||{}));
   abrirFormulario();
 }
 
-function eliminarBorrador(id) {
-  var arr = getBorradores().filter(function(v){return v.id!==id;});
-  saveBorradores(arr);
-  renderBorradores();
-  showToast('Borrador eliminado');
+function eliminarBorrador(id){
+  saveBorradores(getBorradores().filter(function(v){return v.id!==id;}));
+  renderBorradores(); showToast('Borrador eliminado');
 }
 
-// ════════════════════════════════
-// TABS DEL FORMULARIO
-// ════════════════════════════════
-function irTab(n) {
+// TABS
+function irTab(n){
   [0,1,2,3].forEach(function(i){
-    document.getElementById('tab-'+i).style.display = i===n?'block':'none';
-    var btn=document.querySelector('.tab-btn[data-tab="'+i+'"]');
-    if(btn) btn.classList.toggle('active', i===n);
+    document.getElementById('tab-'+i).style.display=(i===n)?'block':'none';
+    var btns=document.querySelectorAll('.tab-btn');
+    if(btns[i])btns[i].classList.toggle('active',i===n);
   });
-  currentTab = n;
-  document.getElementById('prog-fill').style.width = Math.round((n+1)/4*100)+'%';
-  if (n===1) renderListaEquipos();
-  if (n===2){ renderPhotosGlobal(); }
-  if (n===3) renderResumen();
-  document.getElementById('scroll-area').scrollTop = 0;
+  currentTab=n;
+  document.getElementById('prog-fill').style.width=Math.round((n+1)/4*100)+'%';
+  if(n===1)renderListaEquipos();
+  if(n===2){buildPhotoGuide('pg-anom',FOTO_GUIAS.anom,'anom',globalPhotoCounts);buildPhotoGuide('pg-op',FOTO_GUIAS.op,'op',globalPhotoCounts);}
+  if(n===3)renderResumen();
+  document.getElementById('scroll-area').scrollTop=0;
   actualizarNavForm();
 }
 
-function actualizarNavForm() {
+function actualizarNavForm(){
   var back=document.getElementById('nav-back');
   var next=document.getElementById('nav-next');
-  back.style.display = 'block';
-  back.onclick = navBack;
-  if (currentTab < 3) {
-    next.textContent = currentTab===2?'Ver resumen →':'Siguiente →';
-    next.onclick = navNext;
-  } else {
-    next.style.display = 'none';
-  }
+  back.style.display='block';
+  back.textContent='Atras';
+  back.onclick=navBack;
+  next.style.display=currentTab<3?'flex':'none';
+  next.textContent=currentTab===2?'Ver resumen':'Siguiente';
+  next.onclick=navNext;
+  setLayout();
 }
 
-// ════════════════════════════════
 // EQUIPOS
-// ════════════════════════════════
-function renderListaEquipos() {
-  var c = document.getElementById('lista-equipos');
-  c.innerHTML = '';
-  if (!currentVisita || !currentVisita.equipos) return;
-  currentVisita.equipos.forEach(function(eq, i) {
-    var d = document.createElement('div');
-    d.className = 'eq-item';
-    var inspCount = Object.values(eq.checks||{}).filter(function(v){return v!=='nd';}).length;
-    var totalFotos = Object.values(eq.photos||{}).reduce(function(a,b){return a+(b?b.length:0);},0);
-    var badge = inspCount>0 ? '<span class="eq-badge ok">✓ '+inspCount+' inspeccionados</span>' :
-                '<span class="eq-badge vacio">Sin inspección</span>';
-    if(totalFotos>0) badge += ' <span class="eq-badge parcial">📷 '+totalFotos+'</span>';
-    d.innerHTML = '<div class="eq-item-info"><h4>'+(eq.tag||'Sin TAG')+' — '+(eq.nombre||'Sin nombre')+'</h4>'+badge+'</div><span class="eq-item-arrow">›</span>';
-    d.onclick = (function(idx){return function(){abrirEquipo(idx);};})(i);
+function renderListaEquipos(){
+  var c=document.getElementById('lista-equipos'); c.innerHTML='';
+  if(!currentVisita||!currentVisita.equipos)return;
+  currentVisita.equipos.forEach(function(eq,i){
+    var d=document.createElement('div'); d.className='eq-item';
+    var inspCount=Object.values(eq.checks||{}).filter(function(v){return v!=='nd';}).length;
+    var fotoTotal=contarFotos(eq.photoCounts||{});
+    var badge=inspCount>0?'<span class="eq-badge ok">'+inspCount+' inspeccionados</span>':'<span class="eq-badge vacio">Sin inspeccion</span>';
+    if(fotoTotal>0)badge+=' <span class="eq-badge parcial">'+fotoTotal+' fotos guiadas</span>';
+    d.innerHTML='<div class="eq-item-info"><h4>'+(eq.tag||'Sin TAG')+' - '+(eq.nombre||'Sin nombre')+'</h4>'+badge+'</div><span class="eq-item-arrow">&#8250;</span>';
+    d.onclick=(function(idx){return function(){abrirEquipo(idx);};})(i);
     c.appendChild(d);
   });
 }
 
-function abrirModalEquipo() {
-  document.getElementById('m-tag').value = '';
-  document.getElementById('m-nombre').value = '';
+function contarFotos(pc){
+  var total=0;
+  Object.values(pc).forEach(function(z){if(typeof z==='object')Object.values(z).forEach(function(n){total+=n||0;});});
+  return total;
+}
+
+function abrirModalEquipo(){
+  document.getElementById('m-tag').value='';
+  document.getElementById('m-nombre').value='';
   document.getElementById('modal-equipo').classList.add('show');
   setTimeout(function(){document.getElementById('m-tag').focus();},300);
 }
 
-function cerrarModal() {
-  document.getElementById('modal-equipo').classList.remove('show');
-}
+function cerrarModal(){document.getElementById('modal-equipo').classList.remove('show');}
 
-function confirmarEquipo() {
-  var tag = document.getElementById('m-tag').value.trim();
-  var nombre = document.getElementById('m-nombre').value.trim();
-  if (!tag && !nombre) { showToast('Ingresa al menos un TAG o nombre'); return; }
-  var eq = { tag:tag, nombre:nombre, sels:{}, checks:{}, params:{}, photos:{mec:[],est:[],ele:[],panorama:[]}, obs:'' };
-  currentVisita.equipos.push(eq);
-  autoGuardar();
-  cerrarModal();
+function confirmarEquipo(){
+  var tag=document.getElementById('m-tag').value.trim();
+  var nombre=document.getElementById('m-nombre').value.trim();
+  if(!tag&&!nombre){showToast('Ingresa al menos un TAG o nombre');return;}
+  currentVisita.equipos.push({tag:tag,nombre:nombre,sels:{},checks:{},params:{},photoCounts:{},obs:''});
+  autoGuardar(); cerrarModal();
   abrirEquipo(currentVisita.equipos.length-1);
 }
 
-function abrirEquipo(idx) {
-  currentEqIdx = idx;
-  var eq = currentVisita.equipos[idx];
-  sels = JSON.parse(JSON.stringify(eq.sels||{}));
-  checks = JSON.parse(JSON.stringify(eq.checks||{}));
-  photoCounts = JSON.parse(JSON.stringify(eq.photoCounts||{}));
-
-  s('eq-tag', eq.tag);
-  s('eq-nombre', eq.nombre);
-  s('eq-diam', eq.diam);
-  s('eq-detalle', eq.detalle);
-  s('eq-obs', eq.obs);
-
-  // Restaurar selecciones
+function abrirEquipo(idx){
+  currentEqIdx=idx;
+  var eq=currentVisita.equipos[idx];
+  sels=JSON.parse(JSON.stringify(eq.sels||{}));
+  checks=JSON.parse(JSON.stringify(eq.checks||{}));
+  photoCounts=JSON.parse(JSON.stringify(eq.photoCounts||{}));
+  sv('eq-tag',eq.tag); sv('eq-nombre',eq.nombre); sv('eq-diam',eq.diam);
+  sv('eq-detalle',eq.detalle); sv('eq-obs',eq.obs);
   ['g-aplic','g-tipo','g-sop','g-lev','g-const','g-torq'].forEach(function(gid){
-    document.querySelectorAll('#'+gid+' .rb').forEach(function(b){
-      b.classList.toggle('on', b.textContent===sels[gid]);
-    });
+    document.querySelectorAll('#'+gid+' .rb').forEach(function(b){b.classList.toggle('on',b.textContent===sels[gid]);});
   });
-
   buildParams(eq.params||{});
-  buildChecks('checks-mec', MEC_I, 'm');
-  buildChecks('checks-est', EST_I, 'e');
-  buildChecks('checks-ele', ELE_I, 'l');
-  buildPhotoGuide('pg-mec', FOTO_GUIAS.mec, 'mec');
-  buildPhotoGuide('pg-est', FOTO_GUIAS.est, 'est');
-  buildPhotoGuide('pg-ele', FOTO_GUIAS.ele, 'ele');
-  buildPhotoGuide('pg-panorama', FOTO_GUIAS.panorama, 'panorama');
-
-  document.getElementById('header-title').textContent = (eq.tag||'Equipo')+(eq.nombre?' — '+eq.nombre:'');
-  document.getElementById('header-sub').textContent = 'Editando equipo';
-  document.getElementById('nav-back').textContent = '← Equipos';
-  document.getElementById('nav-back').style.display = 'block';
-  document.getElementById('nav-back').onclick = function(){ guardarEquipoActual(); volverAForm(); };
-  document.getElementById('nav-next').textContent = 'Guardar ✓';
-  document.getElementById('nav-next').onclick = function(){ guardarEquipoActual(); volverAForm(); };
+  buildChecks('checks-mec',MEC_I,'m');
+  buildChecks('checks-est',EST_I,'e');
+  buildChecks('checks-ele',ELE_I,'l');
+  buildPhotoGuide('pg-mec',FOTO_GUIAS.mec,'mec',photoCounts);
+  buildPhotoGuide('pg-est',FOTO_GUIAS.est,'est',photoCounts);
+  buildPhotoGuide('pg-ele',FOTO_GUIAS.ele,'ele',photoCounts);
+  buildPhotoGuide('pg-panorama',FOTO_GUIAS.panorama,'panorama',photoCounts);
+  document.getElementById('header-title').textContent=(eq.tag||'Equipo')+(eq.nombre?' - '+eq.nombre:'');
+  document.getElementById('header-sub').textContent='Editando equipo';
+  document.getElementById('nav-back').style.display='block';
+  document.getElementById('nav-back').textContent='Equipos';
+  document.getElementById('nav-back').onclick=function(){guardarEquipoActual();volverAForm();};
+  document.getElementById('nav-next').style.display='flex';
+  document.getElementById('nav-next').textContent='Guardar';
+  document.getElementById('nav-next').onclick=function(){guardarEquipoActual();volverAForm();};
   mostrarPantalla('equipo');
 }
 
-function guardarEquipoActual() {
-  if (currentEqIdx===null || !currentVisita) return;
-  var eq = currentVisita.equipos[currentEqIdx];
-  eq.tag = g('eq-tag');
-  eq.nombre = g('eq-nombre');
-  eq.diam = g('eq-diam');
-  eq.detalle = g('eq-detalle');
-  eq.obs = g('eq-obs');
-  eq.sels = JSON.parse(JSON.stringify(sels));
-  eq.checks = JSON.parse(JSON.stringify(checks));
-  eq.photoCounts = JSON.parse(JSON.stringify(photoCounts));
-  // Guardar params
-  eq.params = {};
+function guardarEquipoActual(){
+  if(currentEqIdx===null||!currentVisita)return;
+  var eq=currentVisita.equipos[currentEqIdx];
+  eq.tag=g('eq-tag'); eq.nombre=g('eq-nombre'); eq.diam=g('eq-diam');
+  eq.detalle=g('eq-detalle'); eq.obs=g('eq-obs');
+  eq.sels=JSON.parse(JSON.stringify(sels));
+  eq.checks=JSON.parse(JSON.stringify(checks));
+  eq.photoCounts=JSON.parse(JSON.stringify(photoCounts));
+  eq.params={};
   PARAMS.forEach(function(p,i){
-    var d=g('p'+i+'d'),a=g('p'+i+'a'),sv=g('p'+i+'s');
-    if(d||a||sv) eq.params[i]={d:d,a:a,s:sv};
+    var d=g('p'+i+'d'),a=g('p'+i+'a'),s=g('p'+i+'s');
+    if(d||a||s)eq.params[i]={d:d,a:a,s:s};
   });
   autoGuardar();
 }
 
-function volverAForm() {
-  currentEqIdx = null;
+function volverAForm(){
+  currentEqIdx=null;
   updateHeaderInfo();
-  document.getElementById('header-tabs').style.display = 'flex';
-  document.getElementById('nav-back').textContent = '← Atrás';
+  document.getElementById('header-tabs').style.display='flex';
   abrirFormulario();
   irTab(1);
-  setHeaderH();
+  setLayout();
 }
 
-// ════════════════════════════════
-// SELECCIONES Y CHECKS
-// ════════════════════════════════
-function sel(el, gid) {
+// CHECKS Y SELECCIONES
+function sel(el,gid){
   document.querySelectorAll('#'+gid+' .rb').forEach(function(b){b.classList.remove('on');});
-  if (sels[gid]===el.textContent) { sels[gid]=''; return; }
-  el.classList.add('on');
-  sels[gid] = el.textContent;
+  if(sels[gid]===el.textContent){sels[gid]='';return;}
+  el.classList.add('on'); sels[gid]=el.textContent;
 }
 
-function buildChecks(cid, items, pfx) {
-  var c = document.getElementById(cid); if(!c) return;
-  c.innerHTML = '';
-  var secciones = {
-    'm': 'Mecánica', 'e': 'Estructural', 'l': 'Eléctrica / Instrumentación'
-  };
-  if (cid==='checks-mec') { var h=document.createElement('div'); h.className='sec-label'; h.textContent='Mecánica'; c.parentNode.insertBefore(h,c); }
-  if (cid==='checks-est') { var h=document.createElement('div'); h.className='sec-label'; h.textContent='Estructural'; c.parentNode.insertBefore(h,c); }
-  if (cid==='checks-ele') { var h=document.createElement('div'); h.className='sec-label'; h.textContent='Eléctrica / Instrumentación'; c.parentNode.insertBefore(h,c); }
-  items.forEach(function(item, i) {
-    var k = pfx+i;
-    if (!checks[k]) checks[k]='nd';
-    var r = document.createElement('div'); r.className='check-row';
-    r.innerHTML = '<span class="check-row-label">'+item+'</span>'+
-      '<div class="check-btns">'+
-      '<button class="chk'+(checks[k]==='ok'?' ok':'')+ '" id="'+k+'ok" onclick="setChk(\''+k+'\',\'ok\')">OK</button>'+
-      '<button class="chk'+(checks[k]==='nok'?' nok':'')+ '" id="'+k+'nok" onclick="setChk(\''+k+'\',\'nok\')">Daño</button>'+
+function buildChecks(cid,items,pfx){
+  var c=document.getElementById(cid); if(!c)return; c.innerHTML='';
+  items.forEach(function(item,i){
+    var k=pfx+i; if(!checks[k])checks[k]='nd';
+    var r=document.createElement('div'); r.className='check-row';
+    r.innerHTML='<span class="check-row-label">'+item+'</span><div class="check-btns">'+
+      '<button class="chk'+(checks[k]==='ok'?' ok':'')+'" id="'+k+'ok" onclick="setChk(\''+k+'\',\'ok\')">OK</button>'+
+      '<button class="chk'+(checks[k]==='nok'?' nok':'')+'" id="'+k+'nok" onclick="setChk(\''+k+'\',\'nok\')">Dano</button>'+
       '</div>';
     c.appendChild(r);
   });
 }
 
-function setChk(k, v) {
-  checks[k] = checks[k]===v ? 'nd' : v;
-  document.getElementById(k+'ok').className = 'chk'+(checks[k]==='ok'?' ok':'');
-  document.getElementById(k+'nok').className = 'chk'+(checks[k]==='nok'?' nok':'');
+function setChk(k,v){
+  checks[k]=checks[k]===v?'nd':v;
+  document.getElementById(k+'ok').className='chk'+(checks[k]==='ok'?' ok':'');
+  document.getElementById(k+'nok').className='chk'+(checks[k]==='nok'?' nok':'');
 }
 
-function buildParams(saved) {
-  var b = document.getElementById('params-body'); if(!b) return;
-  b.innerHTML = '';
-  PARAMS.forEach(function(p, i) {
-    var r = document.createElement('div'); r.className='param-row';
-    var sv = saved[i]||{};
-    r.innerHTML = '<div><div class="param-name">'+p[0]+'</div><div class="param-unit">'+p[1]+'</div></div>'+
-      ['d','a','s'].map(function(t){
-        return '<input type="text" id="p'+i+t+'" value="'+(sv[t]||'')+'" placeholder="—">';
-      }).join('');
+function buildParams(saved){
+  var b=document.getElementById('params-body'); if(!b)return; b.innerHTML='';
+  PARAMS.forEach(function(p,i){
+    var sv2=saved[i]||{};
+    var r=document.createElement('div'); r.className='param-row';
+    r.innerHTML='<div><div class="param-name">'+p[0]+'</div><div class="param-unit">'+p[1]+'</div></div>'+
+      ['d','a','s'].map(function(t){return '<input type="text" id="p'+i+t+'" value="'+(sv2[t]||'')+'" placeholder="-">';}).join('');
     b.appendChild(r);
   });
 }
 
-// ════════════════════════════════
-// GUIAS DE FOTOS
-// ════════════════════════════════
-var FOTO_GUIAS = {
-  panorama: [
-    { titulo:'Vista panorámica general', desc:'Fotografía el equipo completo desde un punto elevado que muestre el estanque, puente y mecanismos en conjunto.' },
-    { titulo:'Vista desde el puente', desc:'Toma una foto desde el puente hacia el interior del estanque, mostrando el nivel de pulpa y el feedwell.' }
-  ],
-  mec: [
-    { titulo:'Mecanismo drive / reductores', desc:'Fotografía el conjunto drive: carcasa, reductores, tapas y placa de soporte. Enfoca la placa identificadora si está visible.' },
-    { titulo:'Rastras y brazos', desc:'Captura los brazos de rastras desde el puente. Si hay deformaciones, desgaste o daños, enfoca directamente esas zonas.' },
-    { titulo:'Sistema de alimentación (feedwell)', desc:'Fotografía el feedwell y la canaleta de entrada. Documenta el estado de los deflectores y revestimientos internos.' },
-    { titulo:'Sistema de descarga (underflow)', desc:'Toma fotos del spigot, bombas de descarga y cañerías de underflow. Documenta válvulas y estado de sellos.' },
-    { titulo:'Motores y transmisión', desc:'Fotografía los motores eléctricos, poleas y correas o acoplamiento directo. Muestra el estado de cubiertas y ventilación.' }
-  ],
-  est: [
-    { titulo:'Muro perimetral y rebalse', desc:'Fotografía el muro perimetral y la canaleta de rebalse (launder). Documenta fisuras, filtraciones o daños visibles.' },
-    { titulo:'Base (radier) y cono', desc:'Captura la zona del radier y cono central. Documenta acumulación de sólidos, grietas o socavación.' },
-    { titulo:'Apoyo de puente y columna', desc:'Fotografía los apoyos del puente en el muro y la columna central. Documenta corrosión, fisuras o desplazamientos.' }
-  ],
-  ele: [
-    { titulo:'Tablero de control y fuerza', desc:'Fotografía el tablero eléctrico abierto y cerrado. Captura la placa de identificación y el estado general del gabinete.' },
-    { titulo:'Sensores e instrumentación', desc:'Fotografía el torquímetro, sensor zero-speed y otros instrumentos. Documenta pantallas, indicadores y estado del cableado.' },
-    { titulo:'Cableado y tuberías conduit', desc:'Documenta el estado general del cableado, bandejas y tubería conduit. Enfoca zonas con daños, corrosión o reparaciones provisorias.' }
-  ],
-  anom: [
-    { titulo:'Anomalía detectada', desc:'Fotografía de cerca el daño, desgaste o condición anormal que identificaste. Incluye una referencia de escala si es posible.' },
-    { titulo:'Contexto de la anomalía', desc:'Toma una foto más abierta que muestre dónde está ubicada la anomalía dentro del equipo.' }
-  ],
-  op: [
-    { titulo:'Oportunidad comercial identificada', desc:'Fotografía el componente o zona que sustenta la oportunidad comercial que identificaste.' }
-  ]
-};
-
-var photoCounts = {};
-
-function buildPhotoGuide(containerId, guias, zone) {
-  var c = document.getElementById(containerId); if(!c) return;
-  if(!guias||guias.length===0) return;
+// GUIA FOTOGRAFICA
+function buildPhotoGuide(containerId,guias,zone,pcStore){
+  var c=document.getElementById(containerId); if(!c||!guias||guias.length===0)return;
   c.innerHTML='';
-  var saved = photoCounts[zone]||{};
-  var totalFotos = Object.values(saved).reduce(function(a,b){return a+b;},0);
-  var header = document.createElement('div'); header.className='photo-guide-header';
-  header.innerHTML='<p>Guía fotográfica</p>'+(totalFotos>0?'<span>'+totalFotos+' foto(s)</span>':'');
+  var pc=pcStore[zone]||{};
+  var totalFotos=Object.values(pc).reduce(function(a,b){return a+(b||0);},0);
+  var header=document.createElement('div'); header.className='photo-guide-header';
+  header.innerHTML='<p>Guia fotografica</p>'+(totalFotos>0?'<span>'+totalFotos+' foto(s)</span>':'');
   c.appendChild(header);
-
-  guias.forEach(function(guia, idx) {
-    var cnt = saved[idx]||0;
-    var item = document.createElement('div'); item.className='photo-item';
+  guias.forEach(function(guia,idx){
+    var cnt=pc[idx]||0;
+    var item=document.createElement('div'); item.className='photo-item';
     item.innerHTML=
       '<div class="photo-item-header">'+
         '<div class="photo-item-num">'+(idx+1)+'</div>'+
-        '<div class="photo-item-title">'+guia.titulo+'</div>'+
+        '<div class="photo-item-title">'+guia.t+'</div>'+
       '</div>'+
-      '<div class="photo-item-desc">'+guia.desc+'</div>'+
+      '<div class="photo-item-desc">'+guia.d+'</div>'+
       '<div class="photo-item-footer">'+
-        '<button type="button" class="photo-cam-btn" onclick="abrirCamara(''+zone+'','+idx+',''+containerId+'')">'+
-          '<span style="font-size:16px">&#128247;</span> Tomar foto'+
-        '</button>'+
+        '<button type="button" class="photo-cam-btn" onclick="abrirCamara(\''+containerId+'\',\''+zone+'\','+idx+')">'+
+          '&#128247; Abrir camara</button>'+
         '<div class="photo-counter">'+
-          '<div class="photo-counter-btns">'+
-            '<button type="button" class="cnt-btn" onclick="ajustarConteo(''+zone+'','+idx+',''+containerId+'',this,-1)">&#8722;</button>'+
-            '<span class="cnt-num" id="cnt-'+zone+'-'+idx+'">'+cnt+'</span>'+
-            '<button type="button" class="cnt-btn" onclick="ajustarConteo(''+zone+'','+idx+',''+containerId+'',this,1)">+</button>'+
-          '</div>'+
-          '<span style="margin-left:4px">fotos tomadas</span>'+
+          '<button type="button" class="cnt-btn" onclick="ajustarConteo(\''+containerId+'\',\''+zone+'\','+idx+',-1)">&#8722;</button>'+
+          '<span class="cnt-num" id="cnt-'+zone+'-'+idx+'">'+cnt+'</span>'+
+          '<button type="button" class="cnt-btn" onclick="ajustarConteo(\''+containerId+'\',\''+zone+'\','+idx+',1)">+</button>'+
+          '<span style="font-size:11px;color:var(--texto-ter);margin-left:2px">fotos</span>'+
         '</div>'+
       '</div>';
     c.appendChild(item);
   });
 }
 
-function abrirCamara(zone, idx, containerId) {
-  var iid = 'cam-'+zone+'-'+idx;
-  var existing = document.getElementById(iid);
-  if(existing) existing.remove();
-  var inp = document.createElement('input');
+function getPcStore(zone){
+  var eqZones=['panorama','mec','est','ele'];
+  if(eqZones.indexOf(zone)>=0)return photoCounts;
+  return globalPhotoCounts;
+}
+
+function getGuias(zone){return FOTO_GUIAS[zone]||[];}
+
+function abrirCamara(containerId,zone,idx){
+  var iid='cam-inp-'+zone+'-'+idx;
+  var ex=document.getElementById(iid); if(ex)ex.remove();
+  var inp=document.createElement('input');
   inp.type='file'; inp.accept='image/*'; inp.id=iid;
-  inp.style.cssText='position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+  inp.style.cssText='position:fixed;left:-9999px;opacity:0;width:1px;height:1px;';
   inp.onchange=function(){
     if(this.files&&this.files.length>0){
-      ajustarConteo(zone,idx,containerId,null,this.files.length);
+      ajustarConteo(containerId,zone,idx,this.files.length);
     }
-    this.remove();
+    setTimeout(function(){var el=document.getElementById(iid);if(el)el.remove();},1000);
   };
   document.body.appendChild(inp);
-  inp.click();
+  setTimeout(function(){inp.click();},50);
 }
 
-function ajustarConteo(zone, idx, containerId, btn, delta) {
-  if(!photoCounts[zone]) photoCounts[zone]={};
-  var cur = photoCounts[zone][idx]||0;
-  var nuevo = Math.max(0, cur+delta);
-  photoCounts[zone][idx] = nuevo;
-  var el = document.getElementById('cnt-'+zone+'-'+idx);
-  if(el) el.textContent = nuevo;
-  buildPhotoGuide(containerId, FOTO_GUIAS[zone], zone);
+function ajustarConteo(containerId,zone,idx,delta){
+  var pcStore=getPcStore(zone);
+  if(!pcStore[zone])pcStore[zone]={};
+  var cur=pcStore[zone][idx]||0;
+  pcStore[zone][idx]=Math.max(0,cur+delta);
+  var el=document.getElementById('cnt-'+zone+'-'+idx);
+  if(el)el.textContent=pcStore[zone][idx];
+  buildPhotoGuide(containerId,getGuias(zone),zone,pcStore);
 }
 
-function buildPhotoGuideGlobal(containerId, zone) {
-  buildPhotoGuide(containerId, FOTO_GUIAS[zone]||[], zone);
-}
-
-function renderPhotosGlobal() {
-  buildPhotoGuideGlobal('pg-anom','anom');
-  buildPhotoGuideGlobal('pg-op','op');
-}
-
-// ════════════════════════════════
 // RESUMEN
-// ════════════════════════════════
-function renderResumen() {
-  var gen = currentVisita.general||{};
-  var notas = currentVisita.notas||{};
-  var eqs = currentVisita.equipos||[];
-  var html = '';
+function rr(l,v){return '<div class="resumen-row"><span class="rl">'+l+'</span><span class="rv">'+v+'</span></div>';}
 
-  // General
+function renderResumen(){
+  var gen=currentVisita.general||{};
+  var notas=currentVisita.notas||{};
+  var eqs=currentVisita.equipos||[];
+  var html='';
   var genRows='';
-  if(gen.minera) genRows+=rr('Cliente',gen.minera);
-  if(gen.division) genRows+=rr('División',gen.division);
-  if(gen.localidad) genRows+=rr('Localidad',gen.localidad);
-  if(gen.fecha) genRows+=rr('Fecha',gen.fecha);
-  if(gen.redactor) genRows+=rr('Redactor',gen.redactor);
-  if(genRows) html+='<div class="resumen-section"><h4>Datos generales</h4><div class="card" style="padding:12px 14px">'+genRows+'</div></div>';
-
-  // Equipos
+  if(gen.minera)genRows+=rr('Cliente',gen.minera);
+  if(gen.division)genRows+=rr('Division',gen.division);
+  if(gen.fecha)genRows+=rr('Fecha',gen.fecha);
+  if(gen.redactor)genRows+=rr('Redactor',gen.redactor);
+  if(genRows)html+='<div class="resumen-section"><h4>Datos generales</h4><div class="card" style="padding:12px 14px">'+genRows+'</div></div>';
   if(eqs.length>0){
     html+='<div class="resumen-section"><h4>Equipos ('+eqs.length+')</h4>';
     eqs.forEach(function(eq){
       var allI=MEC_I.concat(EST_I).concat(ELE_I);
       var allK=[]; MEC_I.forEach(function(_,i){allK.push('m'+i);}); EST_I.forEach(function(_,i){allK.push('e'+i);}); ELE_I.forEach(function(_,i){allK.push('l'+i);});
-      var inspRows='';
-      allI.forEach(function(item,i){
-        var s=(eq.checks||{})[allK[i]];
-        if(s&&s!=='nd') inspRows+='<div class="resumen-row"><span class="rl">'+item+'</span>'+(s==='ok'?'<span class="badge-ok">OK</span>':'<span class="badge-nok">Daño</span>')+'</div>';
-      });
-      var totalF=Object.values(eq.photos||{}).reduce(function(a,b){return a+(b?b.length:0);},0);
-      html+='<div class="card" style="padding:12px 14px;margin-bottom:8px">'+
-        '<div style="font-size:14px;font-weight:700;color:var(--azul);margin-bottom:8px">'+(eq.tag||'—')+' — '+(eq.nombre||'—')+'</div>'+
-        (inspRows||'<p style="font-size:12px;color:var(--texto-ter)">Sin ítems inspeccionados</p>')+
-        (totalF>0?'<p style="font-size:12px;color:var(--texto-sec);margin-top:8px">📷 '+totalF+' foto(s) registrada(s)</p>':'')+
-        '</div>';
+      var iRows='';
+      allI.forEach(function(item,i){var s=(eq.checks||{})[allK[i]];if(s&&s!=='nd')iRows+='<div class="resumen-row"><span class="rl">'+item+'</span>'+(s==='ok'?'<span class="badge-ok">OK</span>':'<span class="badge-nok">Dano</span>')+'</div>';});
+      var fTotal=contarFotos(eq.photoCounts||{});
+      html+='<div class="card" style="padding:12px 14px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--azul);margin-bottom:8px">'+(eq.tag||'-')+' - '+(eq.nombre||'-')+'</div>'+(iRows||'<p style="font-size:12px;color:var(--texto-ter)">Sin items inspeccionados</p>')+(fTotal>0?'<p style="font-size:12px;color:var(--texto-sec);margin-top:8px">'+fTotal+' foto(s) registrada(s)</p>':'')+'</div>';
     });
     html+='</div>';
   }
-
-  // Notas
-  var notasRows='';
-  if(notas.notas) notasRows+=rr('Notas',notas.notas);
-  if(notas.anomalias) notasRows+=rr('Anomalías',notas.anomalias);
-  if(notas.compromisos) notasRows+=rr('Compromisos',notas.compromisos);
-  if(notas.oportunidades) notasRows+=rr('Oportunidades',notas.oportunidades);
-  if(notasRows) html+='<div class="resumen-section"><h4>Observaciones</h4><div class="card" style="padding:12px 14px">'+notasRows+'</div></div>';
-
-  var totalFGlobal=(globalPhotos.anom||[]).length+(globalPhotos.op||[]).length;
-  if(totalFGlobal>0) html+='<div class="resumen-section"><h4>Fotos generales</h4><div class="card" style="padding:12px 14px"><p style="font-size:13px;color:var(--texto-sec)">📷 '+totalFGlobal+' foto(s) de anomalías y oportunidades</p></div></div>';
-
-  if(!html) html='<div class="empty-state"><div class="ico">📄</div><h3>Sin datos aún</h3><p>Completa los pasos anteriores para ver el resumen.</p></div>';
-  document.getElementById('resumen-contenido').innerHTML = html;
+  var obsRows='';
+  if(notas.notas)obsRows+=rr('Notas',notas.notas);
+  if(notas.anomalias)obsRows+=rr('Anomalias',notas.anomalias);
+  if(notas.compromisos)obsRows+=rr('Compromisos',notas.compromisos);
+  if(notas.oportunidades)obsRows+=rr('Oportunidades',notas.oportunidades);
+  if(obsRows)html+='<div class="resumen-section"><h4>Observaciones</h4><div class="card" style="padding:12px 14px">'+obsRows+'</div></div>';
+  if(!html)html='<div class="empty-state"><div class="ico">&#128196;</div><h3>Sin datos aun</h3><p>Completa los pasos anteriores para ver el resumen.</p></div>';
+  document.getElementById('resumen-contenido').innerHTML=html;
 }
 
-function rr(l,v){ return '<div class="resumen-row"><span class="rl">'+l+'</span><span class="rv">'+v+'</span></div>'; }
-
-// ════════════════════════════════
 // GENERAR INFORME
-// ════════════════════════════════
-function generarInforme() {
+function generarInforme(){
   autoGuardar();
-  autoGuardar();
-  var gen = currentVisita.general||{};
-  var notas = currentVisita.notas||{};
-  var eqs = currentVisita.equipos||[];
-  var L = [];
+  var gen=currentVisita.general||{};
+  var notas=currentVisita.notas||{};
+  var eqs=currentVisita.equipos||[];
+  var L=[];
 
-  // ── PROMPT DE ALTA CALIDAD ──
-  L.push('Eres el asistente técnico de INGENALSE S.A., empresa especializada en ingeniería de flotación, sedimentación y filtrado para minería.');
+  L.push('Eres el asistente tecnico de INGENALSE S.A., empresa especializada en ingenieria de flotacion, sedimentacion y filtrado para mineria.');
   L.push('');
-  L.push('Redacta un REPORTE DE VISITA TÉCNICA profesional y completo basándote en los datos de levantamiento que te entrego a continuación.');
+  L.push('Redacta un REPORTE DE VISITA TECNICA profesional basandote en los datos de levantamiento.');
   L.push('');
-  L.push('INSTRUCCIONES DE REDACCIÓN:');
-  L.push('1. El informe debe estar escrito en prosa técnica formal, NO como lista de datos. Cada sección debe tener párrafos redactados.');
-  L.push('2. Estructura obligatoria: Resumen Ejecutivo → Objetivo del Documento → Asistentes → Agenda → Notas y Antecedentes → Registro por Equipo → Acciones y Compromisos → Oportunidades Comerciales identificadas.');
-  L.push('3. En el Resumen Ejecutivo sintetiza el propósito de la visita, los equipos evaluados y las conclusiones más relevantes en 2-3 párrafos.');
-  L.push('4. En la sección de cada equipo: describe el estado general, los parámetros operativos si los hay, los resultados de la inspección visual con énfasis en los daños detectados, y las observaciones específicas. Usa lenguaje técnico apropiado para ingeniería minera.');
-  L.push('5. En Acciones y Compromisos presenta cada ítem como una acción clara con responsable implícito.');
-  L.push('6. En Oportunidades Comerciales redacta cada oportunidad como una propuesta de valor concreta.');
-  L.push('7. OMITE completamente cualquier sección que no tenga datos — no escribas "no se registró información" ni dejes secciones vacías.');
-  L.push('8. Si los datos son escasos, genera un informe breve pero totalmente profesional y bien redactado.');
-  L.push('9. El usuario adjuntará las fotos en el orden indicado al final de estos datos. Cuando el informe mencione cada sección, referencia las fotos correspondientes con su número y descripción, por ejemplo: "(ver Foto 3: Mecánica — Rastras y brazos)". Describe brevemente lo que observas en cada foto adjunta dentro del texto del informe.');
-  L.push('10. Encabezado del documento: incluye el nombre de la empresa cliente, fecha y nombre del responsable del informe.');
+  L.push('INSTRUCCIONES:');
+  L.push('1. Redacta en prosa tecnica formal, NO como lista de datos crudos.');
+  L.push('2. Estructura: Resumen Ejecutivo, Objetivo, Asistentes, Agenda, Notas y Antecedentes, Registro por Equipo, Acciones y Compromisos, Oportunidades Comerciales.');
+  L.push('3. El Resumen Ejecutivo sintetiza el proposito, equipos evaluados y conclusiones en 2-3 parrafos.');
+  L.push('4. Por cada equipo: describe el estado general, parametros operativos, resultados de inspeccion visual con enfasis en danos, y observaciones especificas.');
+  L.push('5. Omite completamente secciones sin datos. No escribas "no se registro informacion".');
+  L.push('6. Las fotos adjuntas: cuando el informe mencione cada seccion, referencia la foto correspondiente por su numero y descripcion. Describe brevemente lo que observas en cada foto.');
+  L.push('7. Tono tecnico y formal apropiado para ingenieria minera.');
   L.push('');
-  L.push('════════════════════════════════');
-  L.push('DATOS DEL LEVANTAMIENTO EN TERRENO:');
-  L.push('════════════════════════════════');
+  L.push('============================');
+  L.push('DATOS DEL LEVANTAMIENTO:');
+  L.push('============================');
 
   if(gen.minera||gen.fecha){
     L.push('');
-    L.push('── DATOS GENERALES ──');
-    if(gen.minera) L.push('Cliente / Minera: '+gen.minera);
-    if(gen.division) L.push('División / Planta: '+gen.division);
-    if(gen.localidad) L.push('Localidad: '+gen.localidad);
-    if(gen.fecha) L.push('Fecha de visita: '+gen.fecha);
-    if(gen.redactor) L.push('Responsable del informe: '+gen.redactor);
-    if(gen.asistentes){ L.push('Asistentes:'); gen.asistentes.split('\n').forEach(function(a){if(a.trim()) L.push('  • '+a.trim());});}
-    if(gen.agenda){ L.push('Agenda:'); gen.agenda.split('\n').forEach(function(a){if(a.trim()) L.push('  '+a.trim());});}
-    if(gen.objetivo) L.push('Objetivo de la visita: '+gen.objetivo);
+    L.push('-- DATOS GENERALES --');
+    if(gen.minera)L.push('Cliente/Minera: '+gen.minera);
+    if(gen.division)L.push('Division/Planta: '+gen.division);
+    if(gen.localidad)L.push('Localidad: '+gen.localidad);
+    if(gen.fecha)L.push('Fecha de visita: '+gen.fecha);
+    if(gen.redactor)L.push('Responsable del informe: '+gen.redactor);
+    if(gen.asistentes){L.push('Asistentes:');gen.asistentes.split('\n').forEach(function(a){if(a.trim())L.push('  - '+a.trim());});}
+    if(gen.agenda){L.push('Agenda:');gen.agenda.split('\n').forEach(function(a){if(a.trim())L.push('  '+a.trim());});}
+    if(gen.objetivo)L.push('Objetivo: '+gen.objetivo);
   }
 
   if(eqs.length>0){
     L.push('');
-    L.push('── EQUIPOS INSPECCIONADOS ('+eqs.length+' equipo(s)) ──');
-    eqs.forEach(function(eq, idx){
+    L.push('-- EQUIPOS INSPECCIONADOS ('+eqs.length+') --');
+    eqs.forEach(function(eq,idx){
       L.push('');
-      L.push('EQUIPO '+(idx+1)+': '+(eq.tag||'Sin TAG')+(eq.nombre?' — '+eq.nombre:'')+(eq.diam?' | Diámetro: '+eq.diam:''));
-      var selFields=[['g-aplic','Aplicación'],['g-tipo','Tipo de espesador'],['g-sop','Soporte accionamiento'],['g-lev','Sistema de levante'],['g-const','Construcción estanque'],['g-torq','Problemas alto torque']];
-      var hayCaract=selFields.some(function(f){return (eq.sels||{})[f[0]];});
-      if(hayCaract){
-        L.push('Características:');
-        selFields.forEach(function(f){if((eq.sels||{})[f[0]]) L.push('  '+f[1]+': '+eq.sels[f[0]]);});
-      }
-      if(eq.detalle) L.push('Detalle torque/embancamiento: '+eq.detalle);
-
+      L.push('EQUIPO '+(idx+1)+': '+(eq.tag||'Sin TAG')+(eq.nombre?' - '+eq.nombre:'')+(eq.diam?' | Diametro: '+eq.diam:''));
+      var selFields=[['g-aplic','Aplicacion'],['g-tipo','Tipo'],['g-sop','Accionamiento'],['g-lev','Levante'],['g-const','Estanque'],['g-torq','Alto torque']];
+      selFields.forEach(function(f){if((eq.sels||{})[f[0]])L.push('  '+f[1]+': '+eq.sels[f[0]]);});
+      if(eq.detalle)L.push('  Detalle: '+eq.detalle);
       var pLines=[];
-      PARAMS.forEach(function(p,i){
-        var sv=(eq.params||{})[i];
-        if(sv&&(sv.d||sv.a||sv.s)) pLines.push('  '+p[0]+' ['+p[1]+']: Diseño='+(sv.d||'—')+' / Actual='+(sv.a||'—')+' / Solicitado='+(sv.s||'—'));
-      });
-      if(pLines.length){ L.push('Parámetros operativos:'); pLines.forEach(function(l){L.push(l);}); }
-
+      PARAMS.forEach(function(p,i){var sv2=(eq.params||{})[i];if(sv2&&(sv2.d||sv2.a||sv2.s))pLines.push('  '+p[0]+' ['+p[1]+']: Diseno='+(sv2.d||'-')+' / Actual='+(sv2.a||'-')+' / Solicitado='+(sv2.s||'-'));});
+      if(pLines.length){L.push('  Parametros operativos:');pLines.forEach(function(l){L.push(l);});}
       var allI=MEC_I.concat(EST_I).concat(ELE_I);
       var allK=[]; MEC_I.forEach(function(_,i){allK.push('m'+i);}); EST_I.forEach(function(_,i){allK.push('e'+i);}); ELE_I.forEach(function(_,i){allK.push('l'+i);});
-      var sinDanos=[], conDanos=[];
-      allI.forEach(function(item,i){
-        var st=(eq.checks||{})[allK[i]];
-        if(st==='ok') sinDanos.push(item);
-        else if(st==='nok') conDanos.push(item);
-      });
-      if(sinDanos.length) L.push('Sin daños visibles: '+sinDanos.join(', ')+'.');
-      if(conDanos.length) L.push('DAÑOS DETECTADOS (requieren atención): '+conDanos.join(', ')+'.');
-
-      if(eq.obs) L.push('Observaciones específicas: '+eq.obs);
-
-      var pc = eq.photoCounts||{};
-      var fZones=[['panorama','Panorámica'],['mec','Mecánica'],['est','Estructural'],['ele','Eléctrica']];
-      var fotoLines=[];
-      var fotoOrden=[];
+      var sinD=[],conD=[];
+      allI.forEach(function(item,i){var s=(eq.checks||{})[allK[i]];if(s==='ok')sinD.push(item);else if(s==='nok')conD.push(item);});
+      if(sinD.length)L.push('  Sin danos visibles: '+sinD.join(', ')+'.');
+      if(conD.length)L.push('  DANOS DETECTADOS: '+conD.join(', ')+'.');
+      if(eq.obs)L.push('  Observaciones: '+eq.obs);
+      var pc=eq.photoCounts||{};
       var nFoto=1;
-      fZones.forEach(function(zp){
+      var zonas=[['panorama','Panoramica'],['mec','Mecanica'],['est','Estructural'],['ele','Electrica']];
+      var fotLines=[];
+      zonas.forEach(function(zp){
         var z=zp[0],zlbl=zp[1];
         var guias=FOTO_GUIAS[z]||[];
-        guias.forEach(function(guia,idx){
-          var cnt=(pc[z]&&pc[z][idx])||0;
-          if(cnt>0){
-            for(var f=0;f<cnt;f++){
-              fotoOrden.push('  Foto '+nFoto+': ['+zlbl+'] '+guia.titulo);
-              nFoto++;
-            }
-          }
+        guias.forEach(function(guia,gi){
+          var cnt=(pc[z]&&pc[z][gi])||0;
+          for(var f=0;f<cnt;f++){fotLines.push('  Foto '+nFoto+': ['+zlbl+'] '+guia.t);nFoto++;}
         });
       });
-      if(fotoOrden.length>0){
-        L.push('Registro fotográfico ('+fotoOrden.length+' foto(s) — adjuntar en este orden):');
-        fotoOrden.forEach(function(l){L.push(l);});
-      }
+      if(fotLines.length){L.push('  Registro fotografico ('+fotLines.length+' fotos - adjuntar en este orden):');fotLines.forEach(function(l){L.push(l);});}
     });
   }
 
   if(notas.notas||notas.anomalias||notas.compromisos||notas.oportunidades){
     L.push('');
-    L.push('── OBSERVACIONES GENERALES Y COMPROMISOS ──');
-    if(notas.notas) L.push('Notas y antecedentes:\n'+notas.notas);
-    if(notas.anomalias) L.push('Anomalías y riesgos detectados:\n'+notas.anomalias);
-    if(notas.compromisos) L.push('Acciones y compromisos acordados:\n'+notas.compromisos);
-    if(notas.oportunidades) L.push('Oportunidades comerciales identificadas:\n'+notas.oportunidades);
+    L.push('-- OBSERVACIONES GENERALES --');
+    if(notas.notas)L.push('Notas: '+notas.notas);
+    if(notas.anomalias)L.push('Anomalias: '+notas.anomalias);
+    if(notas.compromisos)L.push('Compromisos:\n'+notas.compromisos);
+    if(notas.oportunidades)L.push('Oportunidades comerciales: '+notas.oportunidades);
   }
 
-  var fotosGlobal=[];
-  var nG=1;
-  var gZones=[['anom','Anomalía'],['op','Oportunidad comercial']];
-  gZones.forEach(function(zp){
+  var gcFotLines=[];
+  var gcN=1;
+  [['anom','Anomalia'],['op','Oportunidad']].forEach(function(zp){
     var z=zp[0],zlbl=zp[1];
     var guias=FOTO_GUIAS[z]||[];
-    var pc=photoCounts[z]||{};
-    guias.forEach(function(guia,idx){
-      var cnt=(pc[idx])||0;
-      if(cnt>0){
-        for(var f=0;f<cnt;f++){
-          fotosGlobal.push('  Foto '+nG+': ['+zlbl+'] '+guia.titulo);
-          nG++;
-        }
-      }
+    var pc=globalPhotoCounts[z]||{};
+    guias.forEach(function(guia,gi){
+      var cnt=pc[gi]||0;
+      for(var f=0;f<cnt;f++){gcFotLines.push('  Foto '+gcN+': ['+zlbl+'] '+guia.t);gcN++;}
     });
   });
-  if(fotosGlobal.length>0){
-    L.push('\nFotos generales ('+fotosGlobal.length+' foto(s) — adjuntar en este orden):');
-    fotosGlobal.forEach(function(l){L.push(l);});
-  }
+  if(gcFotLines.length){L.push('');L.push('-- FOTOS GENERALES ('+gcFotLines.length+') --');gcFotLines.forEach(function(l){L.push(l);});}
 
   L.push('');
-  L.push('════════════════════════════════');
-  L.push('FIN DE DATOS — Redacta el informe completo ahora.');
+  L.push('============================');
+  L.push('FIN DE DATOS - Redacta el informe completo ahora.');
+  L.push('IMPORTANTE: El usuario adjuntara las fotos en el orden indicado arriba. Referencialas en el texto del informe.');
 
-  var texto = L.join('\n');
-
-  // Copiar al portapapeles y mostrar instrucciones
-  if(navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(texto).then(function(){
-      mostrarModalInforme(texto);
-    }).catch(function(){
-      mostrarModalInforme(texto);
-    });
+  var texto=L.join('\n');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(texto).then(function(){mostrarModalInforme(texto);}).catch(function(){mostrarModalInforme(texto);});
   } else {
     mostrarModalInforme(texto);
   }
 }
 
 function mostrarModalInforme(texto){
-  // Crear modal de instrucciones si no existe
-  var existing = document.getElementById('modal-informe');
-  if(existing) existing.remove();
-
-  var overlay = document.createElement('div');
-  overlay.id = 'modal-informe';
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;display:flex;align-items:flex-end;';
-
-  var modal = document.createElement('div');
-  modal.style.cssText = 'background:#fff;border-radius:16px 16px 0 0;width:100%;padding:24px 18px;padding-bottom:max(24px,env(safe-area-inset-bottom));max-height:80vh;overflow-y:auto;';
-
-  modal.innerHTML =
+  var ex=document.getElementById('modal-informe'); if(ex)ex.remove();
+  var overlay=document.createElement('div');
+  overlay.id='modal-informe';
+  overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;display:flex;align-items:flex-end;';
+  overlay.innerHTML=
+    '<div style="background:#fff;border-radius:16px 16px 0 0;width:100%;padding:24px 16px;padding-bottom:max(24px,env(safe-area-inset-bottom));max-height:85vh;overflow-y:auto;">'+
     '<div style="width:36px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 18px"></div>'+
-    '<h3 style="font-size:17px;font-weight:700;color:#004F9D;margin-bottom:8px">✅ Texto copiado al portapapeles</h3>'+
-    '<p style="font-size:14px;color:#444;line-height:1.6;margin-bottom:18px">'+
-    'El prompt para generar el informe ya está copiado. Sigue estos pasos:</p>'+
-    '<div style="background:#F0F6FF;border-radius:10px;padding:14px;margin-bottom:18px">'+
-    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Pasos para generar el informe completo con fotos:</p>'+
+    '<h3 style="font-size:17px;font-weight:700;color:#004F9D;margin-bottom:8px">Texto copiado al portapapeles</h3>'+
+    '<p style="font-size:14px;color:#444;line-height:1.6;margin-bottom:16px">El prompt para generar el informe esta listo. Sigue estos pasos:</p>'+
+    '<div style="background:#F0F6FF;border-radius:10px;padding:14px;margin-bottom:16px">'+
+    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Como generar el informe con fotos:</p>'+
     '<p style="font-size:13px;color:#333;line-height:1.9">'+
-    '1️⃣ Abre <strong>Claude.ai</strong> en tu celular o computador<br>'+
-    '2️⃣ Crea una conversación nueva<br>'+
-    '3️⃣ Pega el texto copiado (mantén presionado → Pegar)<br>'+
-    '4️⃣ Adjunta las fotos desde tu galería <strong>en el orden indicado</strong> al final del texto<br>'+
-    '5️⃣ Envía — Claude redactará el informe y describirá cada foto en la sección correcta<br>'+
-    '6️⃣ Copia el informe y pégalo en Word</p>'+
+    '1. Abre <strong>Claude.ai</strong> en tu celular<br>'+
+    '2. Crea una conversacion nueva<br>'+
+    '3. Pega el texto copiado<br>'+
+    '4. Adjunta las fotos desde tu galeria EN EL ORDEN indicado al final del texto<br>'+
+    '5. Envia - Claude redactara el informe completo describiendo cada foto<br>'+
+    '6. Copia el informe resultante a Word</p>'+
     '</div>'+
-    '<p style="font-size:12px;color:#999;margin-bottom:16px">Si el texto no se copió automáticamente, selecciónalo y cópialo manualmente:</p>'+
-    '<textarea id="texto-informe" style="width:100%;height:100px;font-size:11px;padding:8px;border:1px solid #ddd;border-radius:8px;resize:none;color:#666;font-family:monospace" readonly>'+texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'+
+    '<textarea id="txt-informe" style="width:100%;height:90px;font-size:11px;padding:8px;border:1px solid #ddd;border-radius:8px;resize:none;font-family:monospace;color:#666" readonly>'+texto.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'+
     '<div style="display:flex;gap:10px;margin-top:16px">'+
-    '<button onclick="document.getElementById(\'modal-informe\').remove()" style="flex:1;padding:13px;border:1.5px solid #ddd;border-radius:10px;background:#fff;color:#333;font-size:14px;cursor:pointer;font-weight:500">Cerrar</button>'+
-    '<button onclick="copiarTextoInforme()" style="flex:2;padding:13px;border:none;border-radius:10px;background:#004F9D;color:#fff;font-size:14px;cursor:pointer;font-weight:700">📋 Copiar de nuevo</button>'+
+    '<button onclick="document.getElementById(\'modal-informe\').remove()" style="flex:1;padding:13px;border:1.5px solid #ddd;border-radius:10px;background:#fff;font-size:14px;cursor:pointer;font-family:inherit">Cerrar</button>'+
+    '<button onclick="copiarTexto()" style="flex:2;padding:13px;border:none;border-radius:10px;background:#004F9D;color:#fff;font-size:14px;cursor:pointer;font-weight:700;font-family:inherit">Copiar de nuevo</button>'+
+    '</div>'+
     '</div>';
-
-  overlay.appendChild(modal);
+  overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.remove();});
   document.body.appendChild(overlay);
-  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
 }
 
-function copiarTextoInforme(){
-  var ta = document.getElementById('texto-informe');
-  if(ta){
-    ta.select();
-    if(navigator.clipboard){
-      navigator.clipboard.writeText(ta.value).then(function(){ showToast('✓ Copiado'); });
-    } else {
-      document.execCommand('copy');
-      showToast('✓ Copiado');
-    }
-  }
+function copiarTexto(){
+  var ta=document.getElementById('txt-informe');
+  if(!ta)return;
+  if(navigator.clipboard){navigator.clipboard.writeText(ta.value).then(function(){showToast('Copiado');});}
+  else{ta.select();document.execCommand('copy');showToast('Copiado');}
 }
 
-// ════════════════════════════════
 // INIT
-// ════════════════════════════════
-window.addEventListener('load', function() {
-  setHeaderH();
-  setNavH();
-  document.getElementById('nav-next').onclick = nuevaVisita;
-  document.getElementById('f-fecha').valueAsDate = new Date();
-  // Cerrar modal al tocar overlay
-  document.getElementById('modal-equipo').addEventListener('click', function(e){
-    if(e.target===this) cerrarModal();
-  });
+window.addEventListener('load',function(){
+  setLayout();
+  document.getElementById('nav-next').onclick=nuevaVisita;
+  var fd=document.getElementById('f-fecha');
+  if(fd)fd.valueAsDate=new Date();
+  document.getElementById('modal-equipo').addEventListener('click',function(e){if(e.target===this)cerrarModal();});
 });
-
-window.addEventListener('resize', function(){ setHeaderH(); setNavH(); });
+window.addEventListener('resize',setLayout);
 </script>
 </body>
 </html>
