@@ -835,7 +835,6 @@ function buildPhotoSection(containerId, zone, label) {
   addLbl.innerHTML = '<span class="cam-ico">📷</span><span>Agregar fotos — puedes seleccionar varias</span>';
   var inp = document.createElement('input');
   inp.type='file'; inp.accept='image/*'; inp.multiple=true; inp.style.display='none';
-  inp.setAttribute('capture','environment');
   inp.onchange = (function(z, cont){ return function(){ addEqPhotos(this, z, cont); }; })(zone, containerId);
   addLbl.appendChild(inp);
   addLbl.onclick = function(e){ if(e.target!==inp) inp.click(); e.preventDefault(); };
@@ -884,7 +883,6 @@ function renderPhotosGlobal() {
     var addLbl=document.createElement('label'); addLbl.className='add-photo';
     addLbl.innerHTML='<span class="cam-ico">📷</span><span>Agregar fotos</span>';
     var inp=document.createElement('input'); inp.type='file'; inp.accept='image/*'; inp.multiple=true; inp.style.display='none';
-    inp.setAttribute('capture','environment');
     inp.onchange=(function(z){return function(){
       Array.from(this.files).forEach(function(file){
         var r=new FileReader(); r.onload=function(e){globalPhotos[z].push(e.target.result);renderPhotosGlobal();};
@@ -958,61 +956,171 @@ function rr(l,v){ return '<div class="resumen-row"><span class="rl">'+l+'</span>
 // ════════════════════════════════
 function generarInforme() {
   autoGuardar();
+  autoGuardar();
   var gen = currentVisita.general||{};
   var notas = currentVisita.notas||{};
   var eqs = currentVisita.equipos||[];
   var L = [];
 
-  L.push('Redacta un informe de visita técnica profesional para INGENALSE S.A. siguiendo su formato corporativo. Reglas: (1) Omite completamente secciones sin datos, sin usar frases como "no se registró". (2) Si los datos son escasos, genera un informe breve pero profesional. (3) Tono técnico y formal, apropiado para ingeniería minera. (4) Referencia las fotos como "registro fotográfico adjunto". Datos:\n');
+  // ── PROMPT DE ALTA CALIDAD ──
+  L.push('Eres el asistente técnico de INGENALSE S.A., empresa especializada en ingeniería de flotación, sedimentación y filtrado para minería.');
+  L.push('');
+  L.push('Redacta un REPORTE DE VISITA TÉCNICA profesional y completo basándote en los datos de levantamiento que te entrego a continuación.');
+  L.push('');
+  L.push('INSTRUCCIONES DE REDACCIÓN:');
+  L.push('1. El informe debe estar escrito en prosa técnica formal, NO como lista de datos. Cada sección debe tener párrafos redactados.');
+  L.push('2. Estructura obligatoria: Resumen Ejecutivo → Objetivo del Documento → Asistentes → Agenda → Notas y Antecedentes → Registro por Equipo → Acciones y Compromisos → Oportunidades Comerciales identificadas.');
+  L.push('3. En el Resumen Ejecutivo sintetiza el propósito de la visita, los equipos evaluados y las conclusiones más relevantes en 2-3 párrafos.');
+  L.push('4. En la sección de cada equipo: describe el estado general, los parámetros operativos si los hay, los resultados de la inspección visual con énfasis en los daños detectados, y las observaciones específicas. Usa lenguaje técnico apropiado para ingeniería minera.');
+  L.push('5. En Acciones y Compromisos presenta cada ítem como una acción clara con responsable implícito.');
+  L.push('6. En Oportunidades Comerciales redacta cada oportunidad como una propuesta de valor concreta.');
+  L.push('7. OMITE completamente cualquier sección que no tenga datos — no escribas "no se registró información" ni dejes secciones vacías.');
+  L.push('8. Si los datos son escasos, genera un informe breve pero totalmente profesional y bien redactado.');
+  L.push('9. Las fotos se referencian en el texto como "(ver registro fotográfico adjunto)" donde corresponda.');
+  L.push('10. Encabezado del documento: incluye el nombre de la empresa cliente, fecha y nombre del responsable del informe.');
+  L.push('');
+  L.push('════════════════════════════════');
+  L.push('DATOS DEL LEVANTAMIENTO EN TERRENO:');
+  L.push('════════════════════════════════');
 
   if(gen.minera||gen.fecha){
-    L.push('=== DATOS GENERALES ===');
-    if(gen.minera) L.push('Minera/División: '+gen.minera);
-    if(gen.division) L.push('Planta: '+gen.division);
+    L.push('');
+    L.push('── DATOS GENERALES ──');
+    if(gen.minera) L.push('Cliente / Minera: '+gen.minera);
+    if(gen.division) L.push('División / Planta: '+gen.division);
     if(gen.localidad) L.push('Localidad: '+gen.localidad);
-    if(gen.fecha) L.push('Fecha: '+gen.fecha);
-    if(gen.redactor) L.push('Responsable: '+gen.redactor);
-    if(gen.asistentes) L.push('Asistentes:\n'+gen.asistentes);
-    if(gen.agenda) L.push('Agenda:\n'+gen.agenda);
-    if(gen.objetivo) L.push('Objetivo: '+gen.objetivo);
+    if(gen.fecha) L.push('Fecha de visita: '+gen.fecha);
+    if(gen.redactor) L.push('Responsable del informe: '+gen.redactor);
+    if(gen.asistentes){ L.push('Asistentes:'); gen.asistentes.split('\n').forEach(function(a){if(a.trim()) L.push('  • '+a.trim());});}
+    if(gen.agenda){ L.push('Agenda:'); gen.agenda.split('\n').forEach(function(a){if(a.trim()) L.push('  '+a.trim());});}
+    if(gen.objetivo) L.push('Objetivo de la visita: '+gen.objetivo);
   }
 
   if(eqs.length>0){
-    L.push('\n=== EQUIPOS INSPECCIONADOS ===');
-    eqs.forEach(function(eq){
-      L.push('\n--- Equipo: '+(eq.tag||'')+(eq.nombre?' — '+eq.nombre:'')+(eq.diam?' (Ø '+eq.diam+')':''));
-      var selFields=[['g-aplic','Aplicación'],['g-tipo','Tipo'],['g-sop','Accionamiento'],['g-lev','Levante'],['g-const','Estanque'],['g-torq','Alto torque']];
-      selFields.forEach(function(f){if((eq.sels||{})[f[0]]) L.push(f[1]+': '+eq.sels[f[0]]);});
-      if(eq.detalle) L.push('Detalle: '+eq.detalle);
+    L.push('');
+    L.push('── EQUIPOS INSPECCIONADOS ('+eqs.length+' equipo(s)) ──');
+    eqs.forEach(function(eq, idx){
+      L.push('');
+      L.push('EQUIPO '+(idx+1)+': '+(eq.tag||'Sin TAG')+(eq.nombre?' — '+eq.nombre:'')+(eq.diam?' | Diámetro: '+eq.diam:''));
+      var selFields=[['g-aplic','Aplicación'],['g-tipo','Tipo de espesador'],['g-sop','Soporte accionamiento'],['g-lev','Sistema de levante'],['g-const','Construcción estanque'],['g-torq','Problemas alto torque']];
+      var hayCaract=selFields.some(function(f){return (eq.sels||{})[f[0]];});
+      if(hayCaract){
+        L.push('Características:');
+        selFields.forEach(function(f){if((eq.sels||{})[f[0]]) L.push('  '+f[1]+': '+eq.sels[f[0]]);});
+      }
+      if(eq.detalle) L.push('Detalle torque/embancamiento: '+eq.detalle);
+
       var pLines=[];
-      PARAMS.forEach(function(p,i){var sv=(eq.params||{})[i];if(sv&&(sv.d||sv.a||sv.s)) pLines.push(p[0]+': Diseño='+(sv.d||'—')+' / Actual='+(sv.a||'—')+' / Solicitado='+(sv.s||'—'));});
-      if(pLines.length){L.push('Parámetros:');pLines.forEach(function(l){L.push('  '+l);});}
+      PARAMS.forEach(function(p,i){
+        var sv=(eq.params||{})[i];
+        if(sv&&(sv.d||sv.a||sv.s)) pLines.push('  '+p[0]+' ['+p[1]+']: Diseño='+(sv.d||'—')+' / Actual='+(sv.a||'—')+' / Solicitado='+(sv.s||'—'));
+      });
+      if(pLines.length){ L.push('Parámetros operativos:'); pLines.forEach(function(l){L.push(l);}); }
+
       var allI=MEC_I.concat(EST_I).concat(ELE_I);
       var allK=[]; MEC_I.forEach(function(_,i){allK.push('m'+i);}); EST_I.forEach(function(_,i){allK.push('e'+i);}); ELE_I.forEach(function(_,i){allK.push('l'+i);});
-      var iLines=[];
-      allI.forEach(function(item,i){var s=(eq.checks||{})[allK[i]];if(s&&s!=='nd') iLines.push(item+': '+(s==='ok'?'Sin daños':'DAÑO DETECTADO'));});
-      if(iLines.length){L.push('Inspección:');iLines.forEach(function(l){L.push('  '+l);});}
-      if(eq.obs) L.push('Observaciones: '+eq.obs);
-      var totalF=Object.values(eq.photos||{}).reduce(function(a,b){return a+(b?b.length:0);},0);
-      if(totalF>0) L.push('Registro fotográfico: '+totalF+' foto(s) adjunta(s)');
+      var sinDanos=[], conDanos=[];
+      allI.forEach(function(item,i){
+        var st=(eq.checks||{})[allK[i]];
+        if(st==='ok') sinDanos.push(item);
+        else if(st==='nok') conDanos.push(item);
+      });
+      if(sinDanos.length) L.push('Sin daños visibles: '+sinDanos.join(', ')+'.');
+      if(conDanos.length) L.push('DAÑOS DETECTADOS (requieren atención): '+conDanos.join(', ')+'.');
+
+      if(eq.obs) L.push('Observaciones específicas: '+eq.obs);
+
+      var fZones=['mec','est','ele','panorama'];
+      var totalF=fZones.reduce(function(a,z){return a+((eq.photos||{})[z]||[]).length;},0);
+      if(totalF>0){
+        var det=[];
+        if(((eq.photos||{}).mec||[]).length) det.push(eq.photos.mec.length+' foto(s) mecánica');
+        if(((eq.photos||{}).est||[]).length) det.push(eq.photos.est.length+' foto(s) estructural');
+        if(((eq.photos||{}).ele||[]).length) det.push(eq.photos.ele.length+' foto(s) eléctrica');
+        if(((eq.photos||{}).panorama||[]).length) det.push(eq.photos.panorama.length+' foto(s) panorámica');
+        L.push('Registro fotográfico adjunto: '+det.join(', ')+'.');
+      }
     });
   }
 
   if(notas.notas||notas.anomalias||notas.compromisos||notas.oportunidades){
-    L.push('\n=== OBSERVACIONES GENERALES ===');
-    if(notas.notas) L.push('Notas: '+notas.notas);
-    if(notas.anomalias) L.push('Anomalías: '+notas.anomalias);
-    if(notas.compromisos) L.push('Compromisos:\n'+notas.compromisos);
-    if(notas.oportunidades) L.push('Oportunidades comerciales: '+notas.oportunidades);
+    L.push('');
+    L.push('── OBSERVACIONES GENERALES Y COMPROMISOS ──');
+    if(notas.notas) L.push('Notas y antecedentes:\n'+notas.notas);
+    if(notas.anomalias) L.push('Anomalías y riesgos detectados:\n'+notas.anomalias);
+    if(notas.compromisos) L.push('Acciones y compromisos acordados:\n'+notas.compromisos);
+    if(notas.oportunidades) L.push('Oportunidades comerciales identificadas:\n'+notas.oportunidades);
   }
 
   var totalFG=(globalPhotos.anom||[]).length+(globalPhotos.op||[]).length;
-  if(totalFG>0) L.push('\n=== FOTOS GENERALES ===\nAnomalías/Oportunidades: '+totalFG+' foto(s) adjunta(s)');
+  if(totalFG>0) L.push('\nFotos adicionales (anomalías/oportunidades): '+totalFG+' foto(s) adjunta(s).');
 
-  if(typeof sendPrompt==='function'){
-    sendPrompt(L.join('\n'));
+  L.push('');
+  L.push('════════════════════════════════');
+  L.push('FIN DE DATOS — Redacta el informe completo ahora.');
+
+  var texto = L.join('\n');
+
+  // Copiar al portapapeles y mostrar instrucciones
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(texto).then(function(){
+      mostrarModalInforme(texto);
+    }).catch(function(){
+      mostrarModalInforme(texto);
+    });
   } else {
-    showToast('Función de envío no disponible en este entorno');
+    mostrarModalInforme(texto);
+  }
+}
+
+function mostrarModalInforme(texto){
+  // Crear modal de instrucciones si no existe
+  var existing = document.getElementById('modal-informe');
+  if(existing) existing.remove();
+
+  var overlay = document.createElement('div');
+  overlay.id = 'modal-informe';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;display:flex;align-items:flex-end;';
+
+  var modal = document.createElement('div');
+  modal.style.cssText = 'background:#fff;border-radius:16px 16px 0 0;width:100%;padding:24px 18px;padding-bottom:max(24px,env(safe-area-inset-bottom));max-height:80vh;overflow-y:auto;';
+
+  modal.innerHTML =
+    '<div style="width:36px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 18px"></div>'+
+    '<h3 style="font-size:17px;font-weight:700;color:#004F9D;margin-bottom:8px">✅ Texto copiado al portapapeles</h3>'+
+    '<p style="font-size:14px;color:#444;line-height:1.6;margin-bottom:18px">'+
+    'El prompt para generar el informe ya está copiado. Sigue estos pasos:</p>'+
+    '<div style="background:#F0F6FF;border-radius:10px;padding:14px;margin-bottom:18px">'+
+    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Pasos para generar el informe:</p>'+
+    '<p style="font-size:13px;color:#333;line-height:1.8">'+
+    '1️⃣ Abre <strong>Claude.ai</strong> en tu celular o computador<br>'+
+    '2️⃣ Crea una conversación nueva<br>'+
+    '3️⃣ Pega el texto copiado (mantén presionado → Pegar)<br>'+
+    '4️⃣ Claude redactará el informe completo<br>'+
+    '5️⃣ Copia el informe y pégalo en Word o envíalo directo</p>'+
+    '</div>'+
+    '<p style="font-size:12px;color:#999;margin-bottom:16px">Si el texto no se copió automáticamente, selecciónalo y cópialo manualmente:</p>'+
+    '<textarea id="texto-informe" style="width:100%;height:100px;font-size:11px;padding:8px;border:1px solid #ddd;border-radius:8px;resize:none;color:#666;font-family:monospace" readonly>'+texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'+
+    '<div style="display:flex;gap:10px;margin-top:16px">'+
+    '<button onclick="document.getElementById(\'modal-informe\').remove()" style="flex:1;padding:13px;border:1.5px solid #ddd;border-radius:10px;background:#fff;color:#333;font-size:14px;cursor:pointer;font-weight:500">Cerrar</button>'+
+    '<button onclick="copiarTextoInforme()" style="flex:2;padding:13px;border:none;border-radius:10px;background:#004F9D;color:#fff;font-size:14px;cursor:pointer;font-weight:700">📋 Copiar de nuevo</button>'+
+    '</div>';
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', function(e){ if(e.target===overlay) overlay.remove(); });
+}
+
+function copiarTextoInforme(){
+  var ta = document.getElementById('texto-informe');
+  if(ta){
+    ta.select();
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(ta.value).then(function(){ showToast('✓ Copiado'); });
+    } else {
+      document.execCommand('copy');
+      showToast('✓ Copiado');
+    }
   }
 }
 
