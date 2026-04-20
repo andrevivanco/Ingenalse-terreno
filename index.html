@@ -178,9 +178,9 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
   <div id="screen-form" style="display:none">
     <div id="tab-0">
       <p class="tip">Completa lo que tengas disponible. El informe se adapta automaticamente.</p>
-      <div class="sec-label">Identificacion de la visita</div>
+      <div class="sec-label">Identificación de la visita</div>
       <div class="field-group"><label class="field-lbl">Cliente / Minera</label><input type="text" id="f-minera" placeholder="Ej: Codelco División El Salvador"></div>
-      <div class="field-group"><label class="field-lbl">Division / Planta <span class="opt-tag">opcional</span></label><input type="text" id="f-division" placeholder="Ej: Planta concentradora"></div>
+      <div class="field-group"><label class="field-lbl">División / Planta <span class="opt-tag">opcional</span></label><input type="text" id="f-division" placeholder="Ej: Planta concentradora"></div>
       <div class="field-group"><label class="field-lbl">Localidad <span class="opt-tag">opcional</span></label><input type="text" id="f-localidad" placeholder="Ej: Diego de Almagro"></div>
       <div class="field-group"><label class="field-lbl">Fecha de visita</label><input type="date" id="f-fecha"></div>
       <div class="field-group"><label class="field-lbl">Redactado por</label><input type="text" id="f-redactor" placeholder="Nombre y cargo"></div>
@@ -192,19 +192,19 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
       <div class="field-group"><textarea id="f-objetivo" placeholder="Describir el propósito de la visita..."></textarea></div>
     </div>
     <div id="tab-1" style="display:none">
-      <p class="tip">Agrega uno o mas equipos. Cada equipo tiene su propia inspeccion y guia fotografica.</p>
+      <p class="tip">Agrega uno o mas equipos. Cada equipo tiene su propia inspección y guía fotográfica.</p>
       <div id="lista-equipos"></div>
       <div class="eq-add-btn" onclick="abrirModalEquipo()">+ Agregar equipo</div>
     </div>
     <div id="tab-2" style="display:none">
-      <p class="tip">Esta seccion alimenta directamente el informe.</p>
+      <p class="tip">Esta sección alimenta directamente el informe.</p>
       <div class="sec-label">Notas y observaciones <span class="opt-tag">opcional</span></div>
       <div class="field-group"><textarea id="f-notas" placeholder="Observaciones relevantes de la visita..."></textarea></div>
-      <div class="sec-label">Anomalias detectadas <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-anomalias" placeholder="Problemas, danos o riesgos identificados..."></textarea></div>
+      <div class="sec-label">Anomalías detectadas <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-anomalias" placeholder="Problemas, daños o riesgos identificados..."></textarea></div>
       <div id="pg-anom"></div>
       <div class="sec-label">Acciones / Compromisos <span class="opt-tag">opcional</span></div>
-      <div class="field-group"><textarea id="f-compromisos" placeholder="Accion 1: ..."></textarea></div>
+      <div class="field-group"><textarea id="f-compromisos" placeholder="Acción 1: ..."></textarea></div>
       <div class="sec-label">Oportunidades comerciales <span class="opt-tag">opcional</span></div>
       <div class="field-group"><textarea id="f-oportunidades" placeholder="Posibles ofertas o proyectos detectados..."></textarea></div>
       <div id="pg-op"></div>
@@ -222,12 +222,12 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
     <div class="sec-label">Identificación</div>
     <div class="field-group"><label class="field-lbl">ID / TAG</label><input type="text" id="eq-tag" placeholder="Ej: ESP-C2"></div>
     <div class="field-group"><label class="field-lbl">Nombre del equipo</label><input type="text" id="eq-nombre" placeholder="Ej: Espesador de concentrado 2"></div>
-    <div class="field-group"><label class="field-lbl">Diametro <span class="opt-tag">opcional</span></label><input type="text" id="eq-diam" placeholder="Ej: 30 m"></div>
+    <div class="field-group"><label class="field-lbl">Diámetro <span class="opt-tag">opcional</span></label><input type="text" id="eq-diam" placeholder="Ej: 30 m"></div>
     <div class="sec-label">Tipo de equipo</div>
     <div class="card" style="padding:14px">
-      <div class="field-group"><label class="field-lbl">Aplicacion</label><div class="rg" id="g-aplic"><div class="rb" onclick="sel(this,'g-aplic')">Concentración</div><div class="rb" onclick="sel(this,'g-aplic')">Relaves</div><div class="rb" onclick="sel(this,'g-aplic')">Clarificador</div><div class="rb" onclick="sel(this,'g-aplic')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Aplicación</label><div class="rg" id="g-aplic"><div class="rb" onclick="sel(this,'g-aplic')">Concentración</div><div class="rb" onclick="sel(this,'g-aplic')">Relaves</div><div class="rb" onclick="sel(this,'g-aplic')">Clarificador</div><div class="rb" onclick="sel(this,'g-aplic')">Otro</div></div></div>
       <div class="field-group"><label class="field-lbl">Tipo</label><div class="rg" id="g-tipo"><div class="rb" onclick="sel(this,'g-tipo')">Convencional</div><div class="rb" onclick="sel(this,'g-tipo')">High-Rate</div><div class="rb" onclick="sel(this,'g-tipo')">High-Density</div><div class="rb" onclick="sel(this,'g-tipo')">Deep-Cone</div></div></div>
-      <div class="field-group"><label class="field-lbl">Soporte accionamiento</label><div class="rg" id="g-sop"><div class="rb" onclick="sel(this,'g-sop')">Columna central</div><div class="rb" onclick="sel(this,'g-sop')">Sobre puente</div><div class="rb" onclick="sel(this,'g-sop')">Tracción periférica</div><div class="rb" onclick="sel(this,'g-sop')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Soporte de accionamiento</label><div class="rg" id="g-sop"><div class="rb" onclick="sel(this,'g-sop')">Columna central</div><div class="rb" onclick="sel(this,'g-sop')">Sobre puente</div><div class="rb" onclick="sel(this,'g-sop')">Tracción periférica</div><div class="rb" onclick="sel(this,'g-sop')">Otro</div></div></div>
       <div class="field-group"><label class="field-lbl">Sistema de levante</label><div class="rg" id="g-lev"><div class="rb" onclick="sel(this,'g-lev')">Hidraulico</div><div class="rb" onclick="sel(this,'g-lev')">Eléctrico</div><div class="rb" onclick="sel(this,'g-lev')">No aplica</div><div class="rb" onclick="sel(this,'g-lev')">Otro</div></div></div>
       <div class="field-group"><label class="field-lbl">Estanque</label><div class="rg" id="g-const"><div class="rb" onclick="sel(this,'g-const')">Hormigón</div><div class="rb" onclick="sel(this,'g-const')">Metálico</div><div class="rb" onclick="sel(this,'g-const')">Otro</div></div></div>
       <div class="field-group"><label class="field-lbl">Alto torque</label><div class="rg" id="g-torq"><div class="rb" onclick="sel(this,'g-torq')">Si</div><div class="rb" onclick="sel(this,'g-torq')">No</div></div></div>
@@ -235,7 +235,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
     </div>
     <div class="sec-label">Parámetros operativos <span class="opt-tag">opcional</span></div>
     <div class="card" style="padding:14px">
-      <div class="params-header"><span>Parametro</span><span>Diseño</span><span>Actual</span><span>Solic.</span></div>
+      <div class="params-header"><span>Parámetro</span><span>Diseño</span><span>Actual</span><span>Solic.</span></div>
       <div id="params-body"></div>
     </div>
     <div class="sec-label">Inspección visual</div>
@@ -258,7 +258,7 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 </div>
 
 <div class="nav-bar" id="nav-bar">
-  <button class="btn-nav" id="nav-back" onclick="navBack()" style="display:none">Atras</button>
+  <button class="btn-nav" id="nav-back" onclick="navBack()" style="display:none">Atrás</button>
   <button class="btn-nav prim" id="nav-next" onclick="navNext()">Comenzar</button>
 </div>
 
@@ -299,13 +299,13 @@ var ELE_I = ['Tableros eléctricos','Cables y tuberías','Sensores e instrumento
 
 var FOTO_GUIAS = {
   panorama:[
-    {t:'Vista panoramica general',d:'Fotografía el equipo completo desde un punto elevado mostrando estanque, puente y mecanismos.'},
+    {t:'Vista panorámica general',d:'Fotografía el equipo completo desde un punto elevado mostrando estanque, puente y mecanismos.'},
     {t:'Vista desde el puente',d:'Desde el puente hacia el interior del estanque, mostrando nivel de pulpa y feedwell.'}
   ],
   mec:[
     {t:'Mecanismo drive y reductores',d:'Fotografía el conjunto drive: carcasa, reductores y placa identificadora.'},
     {t:'Rastras y brazos',d:'Captura los brazos de rastras. Si hay deformaciones o danos, enfoca esas zonas.'},
-    {t:'Sistema de alimentacion feedwell',d:'Fotografía el feedwell y canaleta de entrada. Documenta estado de deflectores.'},
+    {t:'Sistema de alimentación (feedwell)',d:'Fotografía el feedwell y canaleta de entrada. Documenta estado de deflectores.'},
     {t:'Sistema de descarga underflow',d:'Fotos del spigot, bombas de descarga y cañerías. Documenta válvulas y sellos.'},
     {t:'Motores y transmision',d:'Fotografía los motores eléctricos, poleas y correas. Muestra cubiertas y ventilación.'}
   ],
@@ -320,7 +320,7 @@ var FOTO_GUIAS = {
     {t:'Cableado y conduit',d:'Documenta el estado del cableado, bandejas y tuberías conduit.'}
   ],
   anom:[
-    {t:'Anomalía detectada de cerca',d:'Fotografía de cerca el dano o condicion anormal. Incluye referencia de escala si es posible.'},
+    {t:'Anomalía detectada de cerca',d:'Fotografía de cerca el dano o condición anormal. Incluye referencia de escala si es posible.'},
     {t:'Contexto de la anomalia',d:'Toma una foto más abierta que muestre dónde está ubicada la anomalía en el equipo.'}
   ],
   op:[
@@ -705,38 +705,43 @@ function generarInforme(){
   var L=[];
 
   L.push('=== CONTEXTO DE LA EMPRESA ===');
-  L.push('INGENALSE S.A. es una empresa chilena especializada en ingeniería, flotación, sedimentación y filtrado para la industria minera. Sus principales áreas de servicio son:');
-  L.push('- Ingeniería: conceptual, básica, de detalle y en terreno para proyectos mineros.');
-  L.push('- Equipos de sedimentación: espesadores convencionales, High-Rate, High-Density y Deep-Cone. Suministro de mecanismos de accionamiento (drives), rastras, feedwells, muros metálicos y componentes críticos.');
-  L.push('- Equipos de flotación: diseño, fabricación y suministro de celdas de flotación y bancos completos.');
-  L.push('- Servicios EPCM: ingeniería, procura, construcción y montaje de proyectos de plantas concentradoras.');
-  L.push('- Repuestos y suministros: componentes para espesadores y celdas, incluyendo drives D80-EL2, rotores, difusores, ejes, poleas y otros.');
-  L.push('Sus clientes son principalmente grandes mineras chilenas como Codelco (Chuquicamata, El Salvador, Ministro Hales, El Teniente), Anglo American, y mineras medianas en Chile y Bolivia.');
-  L.push('El equipo comercial realiza visitas técnicas a plantas concentradoras para levantar el estado de los equipos de sedimentación y flotación, identificar necesidades de mantención, reposición o mejora, y generar propuestas técnico-comerciales.');
+  L.push('INGENALSE S.A. es una empresa chilena de ingeniería especializada en equipos de sedimentación y flotación para la industria minera, particularmente en plantas concentradoras de cobre y molibdeno.');
+  L.push('');
+  L.push('Su núcleo de negocio son los espesadores — equipos críticos en cualquier planta concentradora que separan sólidos de líquidos en procesos de concentrado y relaves. En ese ámbito dominan todo el ciclo: desde diseñar e instalar equipos nuevos hasta mantener, reparar y reponer componentes en equipos existentes de cualquier fabricante.');
+  L.push('');
+  L.push('La especialidad técnica profunda de INGENALSE está en los espesadores de gran diámetro para minería de alta criticidad. No son solo proveedores — son especialistas que entienden el comportamiento interno del equipo: cómo se distribuye la pulpa, por qué sube el torque, qué pasa cuando falla el feedwell, cómo interactúan el muro, las rastras y el mecanismo de accionamiento como sistema. Su diferenciador real es que integran ingeniería + fabricación + suministro en una sola empresa: pueden rediseñar un muro metálico de espesador de 83 metros con ingeniería de detalle propia, fabricarlo en Chile y entregarlo certificado — algo que la mayoría de los competidores no puede hacer de punta a punta.');
+  L.push('');
+  L.push('Sus servicios concretos son:');
+  L.push('- Ingeniería: estudios, diseño conceptual, básico y de detalle para proyectos de plantas concentradoras. Incluyen obras civiles, estructurales, mecánicas, eléctricas y de procesos.');
+  L.push('- Suministro de equipos y componentes: fabrican y venden mecanismos de accionamiento (drives como el D80-EL2), rastras, feedwells, muros metálicos, ejes, rotores, difusores, canaletas, y todos los repuestos críticos para espesadores y celdas de flotación.');
+  L.push('- Proyectos EPC/EPCM: toman proyectos completos de ingeniería, procura, construcción y montaje, como la instalación de un banco completo de celdas de flotación de 500 ft³.');
+  L.push('- Visitas técnicas y asesoría: visitan plantas de sus clientes para levantar el estado de los equipos, identificar problemas operativos, y generar propuestas de mejora o reposición.');
+  L.push('');
+  L.push('Sus clientes son las grandes mineras chilenas: Codelco (Chuquicamata, El Salvador, Ministro Hales, El Teniente), Anglo American (Las Tórtolas, Anglo American Sur), y mineras medianas en Chile y Bolivia.');
   L.push('');
   L.push('=== TU ROL ===');
-  L.push('Eres el asistente técnico de INGENALSE S.A. Tu tarea es generar un Reporte de Visita Técnica profesional y un archivo Word (.docx) descargable con ese informe.');
+  L.push('Eres el asistente técnico de INGENALSE S.A. Tu tarea es redactar un Reporte de Visita Técnica profesional y generar un archivo Word (.docx) descargable con ese informe, listo para entregar al cliente.');
   L.push('');
   L.push('=== INSTRUCCIONES PARA EL INFORME ===');
   L.push('1. Redacta en prosa técnica formal. NUNCA presentes los datos como lista cruda — cada sección debe tener párrafos bien construidos.');
   L.push('2. Estructura obligatoria: Resumen Ejecutivo → Objetivo del Documento → Asistentes → Agenda → Notas y Antecedentes → Registro por Equipo → Acciones y Compromisos → Oportunidades Comerciales.');
   L.push('3. Resumen Ejecutivo: 2-3 párrafos que sinteticen el propósito de la visita, los equipos evaluados, los hallazgos más relevantes y el valor que INGENALSE puede aportar.');
-  L.push('4. Por cada equipo inspeccionado: describe sus características, estado operativo, parámetros medidos vs diseño, resultados de la inspección visual (con énfasis técnico en los daños o anomalías detectadas y su posible causa e impacto), y observaciones específicas.');
+  L.push('4. Por cada equipo inspeccionado: describe sus características, estado operativo, parámetros medidos vs diseño, resultados de la inspección visual con énfasis técnico en los daños o anomalías detectadas, su posible causa e impacto operacional.');
   L.push('5. En Acciones y Compromisos: presenta cada ítem como acción concreta con responsable.');
   L.push('6. En Oportunidades Comerciales: redacta cada oportunidad como propuesta de valor concreta, vinculándola con los hallazgos técnicos de la visita y la experiencia de INGENALSE en ese tipo de solución.');
   L.push('7. Omite completamente las secciones sin datos — no uses frases como "no se registró información".');
   L.push('8. Las fotos adjuntas: analiza cada imagen, identifica su contenido técnico y referencíalas en la sección correspondiente del informe con una descripción de lo observado.');
-  L.push('9. Usa terminología técnica propia de plantas concentradoras: espesador, feedwell, rastra, drive, underflow, overflow, launder, torque, spigot, pulpa, relave, concentrado, etc.');
+  L.push('9. Usa terminología técnica propia de plantas concentradoras: espesador, feedwell, rastra, drive, underflow, overflow, launder, torque, spigot, pulpa, relave, concentrado, entre otros.');
   L.push('');
   L.push('=== INSTRUCCIONES PARA EL ARCHIVO WORD ===');
   L.push('Una vez redactado el informe, genera un archivo Word (.docx) descargable con el siguiente formato:');
-  L.push('- Portada: Logo INGENALSE (texto "INGENALSE S.A." en azul #004F9D), nombre del cliente, título "REPORTE DE VISITA TÉCNICA", fecha, responsable.');
+  L.push('- Portada: texto "INGENALSE S.A." en azul #004F9D, nombre del cliente, título "REPORTE DE VISITA TÉCNICA", fecha y responsable.');
   L.push('- Encabezado en cada página: "INGENALSE S.A." a la izquierda, título del reporte a la derecha, línea separadora en amarillo #FCE84D.');
   L.push('- Pie de página: número de página centrado, línea separadora en gris #C0C0C0.');
-  L.push('- Títulos de sección: fuente Arial, negrita, color azul #004F9D, tamaño 13pt.');
-  L.push('- Texto de cuerpo: Arial 11pt, color negro, interlineado 1.15.');
-  L.push('- Tablas con encabezado en azul #004F9D con texto blanco, filas alternas en gris claro.');
-  L.push('- Las fotos adjuntas: inclúyelas en la sección correspondiente con pie de foto descriptivo.');
+  L.push('- Títulos de sección: fuente Arial, negrita, color azul #004F9D, 13pt.');
+  L.push('- Texto de cuerpo: Arial 11pt, negro, interlineado 1.15.');
+  L.push('- Tablas: encabezado en azul #004F9D con texto blanco, filas alternas en gris claro.');
+  L.push('- Fotos adjuntas: inclúyelas en la sección correspondiente con pie de foto descriptivo.');
   L.push('');
   L.push('============================');
   L.push('DATOS DEL LEVANTAMIENTO:');
@@ -746,7 +751,7 @@ function generarInforme(){
     L.push('');
     L.push('-- DATOS GENERALES --');
     if(gen.minera)L.push('Cliente/Minera: '+gen.minera);
-    if(gen.division)L.push('Division/Planta: '+gen.division);
+    if(gen.division)L.push('División/Planta: '+gen.division);
     if(gen.localidad)L.push('Localidad: '+gen.localidad);
     if(gen.fecha)L.push('Fecha de visita: '+gen.fecha);
     if(gen.redactor)L.push('Responsable del informe: '+gen.redactor);
@@ -765,8 +770,8 @@ function generarInforme(){
       selFields.forEach(function(f){if((eq.sels||{})[f[0]])L.push('  '+f[1]+': '+eq.sels[f[0]]);});
       if(eq.detalle)L.push('  Detalle: '+eq.detalle);
       var pLines=[];
-      PARAMS.forEach(function(p,i){var sv2=(eq.params||{})[i];if(sv2&&(sv2.d||sv2.a||sv2.s))pLines.push('  '+p[0]+' ['+p[1]+']: Diseno='+(sv2.d||'-')+' / Actual='+(sv2.a||'-')+' / Solicitado='+(sv2.s||'-'));});
-      if(pLines.length){L.push('  Parametros operativos:');pLines.forEach(function(l){L.push(l);});}
+      PARAMS.forEach(function(p,i){var sv2=(eq.params||{})[i];if(sv2&&(sv2.d||sv2.a||sv2.s))pLines.push('  '+p[0]+' ['+p[1]+']: Diseño='+(sv2.d||'-')+' / Actual='+(sv2.a||'-')+' / Solicitado='+(sv2.s||'-'));});
+      if(pLines.length){L.push('  Parámetros operativos:');pLines.forEach(function(l){L.push(l);});}
       var allI=MEC_I.concat(EST_I).concat(ELE_I);
       var allK=[]; MEC_I.forEach(function(_,i){allK.push('m'+i);}); EST_I.forEach(function(_,i){allK.push('e'+i);}); ELE_I.forEach(function(_,i){allK.push('l'+i);});
       var sinD=[],conD=[];
@@ -817,16 +822,16 @@ function mostrarModalInforme(texto){
     '<div style="background:#fff;border-radius:16px 16px 0 0;width:100%;padding:24px 16px;padding-bottom:max(24px,env(safe-area-inset-bottom));max-height:85vh;overflow-y:auto;">'+
     '<div style="width:36px;height:4px;background:#ddd;border-radius:2px;margin:0 auto 18px"></div>'+
     '<h3 style="font-size:17px;font-weight:700;color:#004F9D;margin-bottom:8px">Texto copiado al portapapeles</h3>'+
-    '<p style="font-size:14px;color:#444;line-height:1.6;margin-bottom:16px">El prompt para generar el informe esta listo. Sigue estos pasos:</p>'+
+    '<p style="font-size:14px;color:#444;line-height:1.6;margin-bottom:16px">El prompt para generar el informe está listo. Sigue estos pasos:</p>'+
     '<div style="background:#F0F6FF;border-radius:10px;padding:14px;margin-bottom:16px">'+
-    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Cómo obtener el informe Word listo:</p>'+
+    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Cómo obtener tu informe Word listo:</p>'+
     '<p style="font-size:13px;color:#333;line-height:1.9">'+
     '1️⃣ Abre <strong>Claude.ai</strong> en tu computador o celular<br>'+
     '2️⃣ Crea una conversación nueva<br>'+
     '3️⃣ Pega el texto copiado<br>'+
     '4️⃣ Adjunta <strong>todas las fotos</strong> tomadas en la visita<br>'+
     '5️⃣ Envía — Claude redactará el informe y generará el archivo Word<br>'+
-    '6️⃣ Descarga el <strong>.docx</strong> listo para entregar</p>'+
+    '6️⃣ Descarga tu informe en Word</p>'+
     '</div>'+
     '<textarea id="txt-informe" style="width:100%;height:90px;font-size:11px;padding:8px;border:1px solid #ddd;border-radius:8px;resize:none;font-family:monospace;color:#666" readonly>'+texto.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'+
     '<div style="display:flex;gap:10px;margin-top:16px">'+
