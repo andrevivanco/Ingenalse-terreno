@@ -282,8 +282,7 @@ var currentVisita = null;
 var currentEqIdx = null;
 var sels = {};
 var checks = {};
-var photoCounts = {};
-var globalPhotoCounts = {};
+
 var deferredInstall = null;
 
 var PARAMS = [
@@ -411,7 +410,7 @@ function saveBorradores(arr){try{localStorage.setItem('visitas',JSON.stringify(a
 
 function nuevaVisita(){
   currentVisita={id:Date.now().toString(),creado:new Date().toLocaleDateString(),general:{},equipos:[],notas:{},globalPhotoCounts:{}};
-  currentEqIdx=null; sels={}; checks={}; photoCounts={}; globalPhotoCounts={};
+  currentEqIdx=null; sels={}; checks={};
   abrirFormulario();
 }
 
@@ -423,7 +422,6 @@ function abrirFormulario(){
   var not=currentVisita.notas||{};
   sv('f-notas',not.notas); sv('f-anomalias',not.anomalias);
   sv('f-compromisos',not.compromisos); sv('f-oportunidades',not.oportunidades);
-  globalPhotoCounts=JSON.parse(JSON.stringify(currentVisita.globalPhotoCounts||{}));
   updateHeaderInfo();
   irTab(0);
   mostrarPantalla('form');
@@ -443,7 +441,6 @@ function autoGuardar(){
   if(!currentVisita)return;
   currentVisita.general={minera:g('f-minera'),division:g('f-division'),localidad:g('f-localidad'),fecha:g('f-fecha'),redactor:g('f-redactor'),asistentes:g('f-asistentes'),agenda:g('f-agenda'),objetivo:g('f-objetivo')};
   currentVisita.notas={notas:g('f-notas'),anomalias:g('f-anomalias'),compromisos:g('f-compromisos'),oportunidades:g('f-oportunidades')};
-  currentVisita.globalPhotoCounts=JSON.parse(JSON.stringify(globalPhotoCounts));
   var arr=getBorradores();
   var idx=arr.findIndex(function(v){return v.id===currentVisita.id;});
   if(idx>=0)arr[idx]=currentVisita; else arr.unshift(currentVisita);
@@ -473,8 +470,7 @@ function renderBorradores(){
 function continuarBorrador(id){
   var arr=getBorradores(); currentVisita=arr.find(function(v){return v.id===id;});
   if(!currentVisita)return;
-  sels={}; checks={}; photoCounts={};
-  globalPhotoCounts=JSON.parse(JSON.stringify(currentVisita.globalPhotoCounts||{}));
+  sels={}; checks={};
   abrirFormulario();
 }
 
@@ -493,7 +489,7 @@ function irTab(n){
   currentTab=n;
   document.getElementById('prog-fill').style.width=Math.round((n+1)/4*100)+'%';
   if(n===1)renderListaEquipos();
-  if(n===2){buildPhotoGuide('pg-anom',FOTO_GUIAS.anom,'anom',globalPhotoCounts);buildPhotoGuide('pg-op',FOTO_GUIAS.op,'op',globalPhotoCounts);}
+  if(n===2){buildPhotoGuide('pg-anom',FOTO_GUIAS.anom,'anom');buildPhotoGuide('pg-op',FOTO_GUIAS.op,'op');}
   if(n===3)renderResumen();
   document.getElementById('scroll-area').scrollTop=0;
   actualizarNavForm();
@@ -556,7 +552,6 @@ function abrirEquipo(idx){
   var eq=currentVisita.equipos[idx];
   sels=JSON.parse(JSON.stringify(eq.sels||{}));
   checks=JSON.parse(JSON.stringify(eq.checks||{}));
-  photoCounts=JSON.parse(JSON.stringify(eq.photoCounts||{}));
   sv('eq-tag',eq.tag); sv('eq-nombre',eq.nombre); sv('eq-diam',eq.diam);
   sv('eq-detalle',eq.detalle); sv('eq-obs',eq.obs);
   ['g-aplic','g-tipo','g-sop','g-lev','g-const','g-torq'].forEach(function(gid){
@@ -566,10 +561,10 @@ function abrirEquipo(idx){
   buildChecks('checks-mec',MEC_I,'m');
   buildChecks('checks-est',EST_I,'e');
   buildChecks('checks-ele',ELE_I,'l');
-  buildPhotoGuide('pg-mec',FOTO_GUIAS.mec,'mec',photoCounts);
-  buildPhotoGuide('pg-est',FOTO_GUIAS.est,'est',photoCounts);
-  buildPhotoGuide('pg-ele',FOTO_GUIAS.ele,'ele',photoCounts);
-  buildPhotoGuide('pg-panorama',FOTO_GUIAS.panorama,'panorama',photoCounts);
+  buildPhotoGuide('pg-mec',FOTO_GUIAS.mec,'mec');
+  buildPhotoGuide('pg-est',FOTO_GUIAS.est,'est');
+  buildPhotoGuide('pg-ele',FOTO_GUIAS.ele,'ele');
+  buildPhotoGuide('pg-panorama',FOTO_GUIAS.panorama,'panorama');
   document.getElementById('header-title').textContent=(eq.tag||'Equipo')+(eq.nombre?' - '+eq.nombre:'');
   document.getElementById('header-sub').textContent='Editando equipo';
   document.getElementById('nav-back').style.display='block';
@@ -588,7 +583,6 @@ function guardarEquipoActual(){
   eq.detalle=g('eq-detalle'); eq.obs=g('eq-obs');
   eq.sels=JSON.parse(JSON.stringify(sels));
   eq.checks=JSON.parse(JSON.stringify(checks));
-  eq.photoCounts=JSON.parse(JSON.stringify(photoCounts));
   eq.params={};
   PARAMS.forEach(function(p,i){
     var d=g('p'+i+'d'),a=g('p'+i+'a'),s=g('p'+i+'s');
@@ -620,7 +614,7 @@ function buildChecks(cid,items,pfx){
     var r=document.createElement('div'); r.className='check-row';
     r.innerHTML='<span class="check-row-label">'+item+'</span><div class="check-btns">'+
       '<button class="chk'+(checks[k]==='ok'?' ok':'')+'" id="'+k+'ok" onclick="setChk(\''+k+'\',\'ok\')">OK</button>'+
-      '<button class="chk'+(checks[k]==='nok'?' nok':'')+'" id="'+k+'nok" onclick="setChk(\''+k+'\',\'nok\')">Dano</button>'+
+      '<button class="chk'+(checks[k]==='nok'?' nok':'')+'" id="'+k+'nok" onclick="setChk(\''+k+'\',\'nok\')">Da\u00f1o</button>'+
       '</div>';
     c.appendChild(r);
   });
@@ -644,70 +638,27 @@ function buildParams(saved){
 }
 
 // GUIA FOTOGRAFICA
-function buildPhotoGuide(containerId,guias,zone,pcStore){
+function buildPhotoGuide(containerId,guias,zone){
   var c=document.getElementById(containerId); if(!c||!guias||guias.length===0)return;
   c.innerHTML='';
-  var pc=pcStore[zone]||{};
-  var totalFotos=Object.values(pc).reduce(function(a,b){return a+(b||0);},0);
   var header=document.createElement('div'); header.className='photo-guide-header';
-  header.innerHTML='<p>Guia fotografica</p>'+(totalFotos>0?'<span>'+totalFotos+' foto(s)</span>':'');
+  header.innerHTML='<p>Guia fotografica</p>';
   c.appendChild(header);
   guias.forEach(function(guia,idx){
-    var cnt=pc[idx]||0;
     var item=document.createElement('div'); item.className='photo-item';
     item.innerHTML=
       '<div class="photo-item-header">'+
         '<div class="photo-item-num">'+(idx+1)+'</div>'+
         '<div class="photo-item-title">'+guia.t+'</div>'+
       '</div>'+
-      '<div class="photo-item-desc">'+guia.d+'</div>'+
-      '<div class="photo-item-footer">'+
-        '<button type="button" class="photo-cam-btn" onclick="abrirCamara(\''+containerId+'\',\''+zone+'\','+idx+')">'+
-          '&#128247; Abrir camara</button>'+
-        '<div class="photo-counter">'+
-          '<button type="button" class="cnt-btn" onclick="ajustarConteo(\''+containerId+'\',\''+zone+'\','+idx+',-1)">&#8722;</button>'+
-          '<span class="cnt-num" id="cnt-'+zone+'-'+idx+'">'+cnt+'</span>'+
-          '<button type="button" class="cnt-btn" onclick="ajustarConteo(\''+containerId+'\',\''+zone+'\','+idx+',1)">+</button>'+
-          '<span style="font-size:11px;color:var(--texto-ter);margin-left:2px">fotos</span>'+
-        '</div>'+
-      '</div>';
+      '<div class="photo-item-desc">'+guia.d+'</div>';
     c.appendChild(item);
   });
 }
 
-function getPcStore(zone){
-  var eqZones=['panorama','mec','est','ele'];
-  if(eqZones.indexOf(zone)>=0)return photoCounts;
-  return globalPhotoCounts;
-}
 
-function getGuias(zone){return FOTO_GUIAS[zone]||[];}
 
-function abrirCamara(containerId,zone,idx){
-  var iid='cam-inp-'+zone+'-'+idx;
-  var ex=document.getElementById(iid); if(ex)ex.remove();
-  var inp=document.createElement('input');
-  inp.type='file'; inp.accept='image/*'; inp.id=iid;
-  inp.style.cssText='position:fixed;left:-9999px;opacity:0;width:1px;height:1px;';
-  inp.onchange=function(){
-    if(this.files&&this.files.length>0){
-      ajustarConteo(containerId,zone,idx,this.files.length);
-    }
-    setTimeout(function(){var el=document.getElementById(iid);if(el)el.remove();},1000);
-  };
-  document.body.appendChild(inp);
-  setTimeout(function(){inp.click();},50);
-}
 
-function ajustarConteo(containerId,zone,idx,delta){
-  var pcStore=getPcStore(zone);
-  if(!pcStore[zone])pcStore[zone]={};
-  var cur=pcStore[zone][idx]||0;
-  pcStore[zone][idx]=Math.max(0,cur+delta);
-  var el=document.getElementById('cnt-'+zone+'-'+idx);
-  if(el)el.textContent=pcStore[zone][idx];
-  buildPhotoGuide(containerId,getGuias(zone),zone,pcStore);
-}
 
 // RESUMEN
 function rr(l,v){return '<div class="resumen-row"><span class="rl">'+l+'</span><span class="rv">'+v+'</span></div>';}
@@ -729,7 +680,7 @@ function renderResumen(){
       var allI=MEC_I.concat(EST_I).concat(ELE_I);
       var allK=[]; MEC_I.forEach(function(_,i){allK.push('m'+i);}); EST_I.forEach(function(_,i){allK.push('e'+i);}); ELE_I.forEach(function(_,i){allK.push('l'+i);});
       var iRows='';
-      allI.forEach(function(item,i){var s=(eq.checks||{})[allK[i]];if(s&&s!=='nd')iRows+='<div class="resumen-row"><span class="rl">'+item+'</span>'+(s==='ok'?'<span class="badge-ok">OK</span>':'<span class="badge-nok">Dano</span>')+'</div>';});
+      allI.forEach(function(item,i){var s=(eq.checks||{})[allK[i]];if(s&&s!=='nd')iRows+='<div class="resumen-row"><span class="rl">'+item+'</span>'+(s==='ok'?'<span class="badge-ok">OK</span>':'<span class="badge-nok">Daño</span>')+'</div>';});
       var fTotal=contarFotos(eq.photoCounts||{});
       html+='<div class="card" style="padding:12px 14px;margin-bottom:8px"><div style="font-size:14px;font-weight:700;color:var(--azul);margin-bottom:8px">'+(eq.tag||'-')+' - '+(eq.nombre||'-')+'</div>'+(iRows||'<p style="font-size:12px;color:var(--texto-ter)">Sin items inspeccionados</p>')+(fTotal>0?'<p style="font-size:12px;color:var(--texto-sec);margin-top:8px">'+fTotal+' foto(s) registrada(s)</p>':'')+'</div>';
     });
@@ -763,7 +714,7 @@ function generarInforme(){
   L.push('3. El Resumen Ejecutivo sintetiza el proposito, equipos evaluados y conclusiones en 2-3 parrafos.');
   L.push('4. Por cada equipo: describe el estado general, parametros operativos, resultados de inspeccion visual con enfasis en danos, y observaciones especificas.');
   L.push('5. Omite completamente secciones sin datos. No escribas "no se registro informacion".');
-  L.push('6. Las fotos adjuntas: cuando el informe mencione cada seccion, referencia la foto correspondiente por su numero y descripcion. Describe brevemente lo que observas en cada foto.');
+  L.push('6. El usuario adjuntara todas las fotos de la visita junto con este mensaje. Analiza cada foto e incorporala naturalmente en la seccion del informe que corresponda segun su contenido. Describe brevemente lo que observas en cada imagen y referencialas como (Foto adjunta: descripcion breve).');
   L.push('7. Tono tecnico y formal apropiado para ingenieria minera.');
   L.push('');
   L.push('============================');
@@ -802,19 +753,7 @@ function generarInforme(){
       if(sinD.length)L.push('  Sin danos visibles: '+sinD.join(', ')+'.');
       if(conD.length)L.push('  DANOS DETECTADOS: '+conD.join(', ')+'.');
       if(eq.obs)L.push('  Observaciones: '+eq.obs);
-      var pc=eq.photoCounts||{};
-      var nFoto=1;
-      var zonas=[['panorama','Panoramica'],['mec','Mecanica'],['est','Estructural'],['ele','Electrica']];
-      var fotLines=[];
-      zonas.forEach(function(zp){
-        var z=zp[0],zlbl=zp[1];
-        var guias=FOTO_GUIAS[z]||[];
-        guias.forEach(function(guia,gi){
-          var cnt=(pc[z]&&pc[z][gi])||0;
-          for(var f=0;f<cnt;f++){fotLines.push('  Foto '+nFoto+': ['+zlbl+'] '+guia.t);nFoto++;}
-        });
-      });
-      if(fotLines.length){L.push('  Registro fotografico ('+fotLines.length+' fotos - adjuntar en este orden):');fotLines.forEach(function(l){L.push(l);});}
+
     });
   }
 
@@ -827,23 +766,15 @@ function generarInforme(){
     if(notas.oportunidades)L.push('Oportunidades comerciales: '+notas.oportunidades);
   }
 
-  var gcFotLines=[];
-  var gcN=1;
-  [['anom','Anomalia'],['op','Oportunidad']].forEach(function(zp){
-    var z=zp[0],zlbl=zp[1];
-    var guias=FOTO_GUIAS[z]||[];
-    var pc=globalPhotoCounts[z]||{};
-    guias.forEach(function(guia,gi){
-      var cnt=pc[gi]||0;
-      for(var f=0;f<cnt;f++){gcFotLines.push('  Foto '+gcN+': ['+zlbl+'] '+guia.t);gcN++;}
-    });
-  });
-  if(gcFotLines.length){L.push('');L.push('-- FOTOS GENERALES ('+gcFotLines.length+') --');gcFotLines.forEach(function(l){L.push(l);});}
+
 
   L.push('');
   L.push('============================');
-  L.push('FIN DE DATOS - Redacta el informe completo ahora.');
-  L.push('IMPORTANTE: El usuario adjuntara las fotos en el orden indicado arriba. Referencialas en el texto del informe.');
+  L.push('FIN DE DATOS.');
+  L.push('');
+  L.push('IMPORTANTE: El usuario adjuntara junto a este mensaje todas las fotos tomadas durante la visita.');
+  L.push('Analiza el contenido de cada foto, identificalas por su contenido tecnico, e incorporalas al informe en la seccion que corresponda.');
+  L.push('Redacta el informe completo ahora.');
 
   var texto=L.join('\n');
   if(navigator.clipboard&&navigator.clipboard.writeText){
@@ -866,12 +797,12 @@ function mostrarModalInforme(texto){
     '<div style="background:#F0F6FF;border-radius:10px;padding:14px;margin-bottom:16px">'+
     '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Como generar el informe con fotos:</p>'+
     '<p style="font-size:13px;color:#333;line-height:1.9">'+
-    '1. Abre <strong>Claude.ai</strong> en tu celular<br>'+
+    '1. Abre <strong>Claude.ai</strong> en tu celular o computador<br>'+
     '2. Crea una conversacion nueva<br>'+
     '3. Pega el texto copiado<br>'+
-    '4. Adjunta las fotos desde tu galeria EN EL ORDEN indicado al final del texto<br>'+
-    '5. Envia - Claude redactara el informe completo describiendo cada foto<br>'+
-    '6. Copia el informe resultante a Word</p>'+
+    '4. Adjunta todas las fotos que tomaste durante la visita<br>'+
+    '5. Envia — Claude analizara cada foto y la incorporara en la seccion correcta del informe<br>'+
+    '6. Copia el informe a Word</p>'+
     '</div>'+
     '<textarea id="txt-informe" style="width:100%;height:90px;font-size:11px;padding:8px;border:1px solid #ddd;border-radius:8px;resize:none;font-family:monospace;color:#666" readonly>'+texto.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'+
     '<div style="display:flex;gap:10px;margin-top:16px">'+
