@@ -86,16 +86,21 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 .chk.nok{background:#FEE;border-color:var(--rojo);color:#A0201A}
 
 /* ── FOTOS ── */
-.photo-wrap{margin-top:10px}
-.photo-lbl-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-.photo-lbl-row p{font-size:12px;color:var(--texto-sec)}
-.photo-count{font-size:11px;background:#EBF3FF;color:var(--azul);border-radius:10px;padding:2px 8px;font-weight:600}
-.thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
-.thumb-w{position:relative;width:72px;height:72px}
-.thumb-w img{width:72px;height:72px;object-fit:cover;border-radius:var(--radio-sm);border:1px solid var(--borde)}
-.thumb-del{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:var(--rojo);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid #fff;line-height:1}
-.add-photo{display:flex;align-items:center;gap:9px;padding:11px 14px;border:1.5px dashed var(--borde);border-radius:var(--radio-sm);cursor:pointer;background:var(--gris-claro);font-size:13px;color:var(--texto-sec)}
-.add-photo .cam-ico{font-size:20px}
+.photo-guide{margin-top:10px}
+.photo-item{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;margin-bottom:8px}
+.photo-item-header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.photo-item-num{width:24px;height:24px;border-radius:50%;background:var(--azul);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.photo-item-title{font-size:13px;font-weight:600;color:var(--texto)}
+.photo-item-desc{font-size:12px;color:var(--texto-sec);line-height:1.5;margin-bottom:10px;padding-left:34px}
+.photo-item-footer{display:flex;align-items:center;gap:8px;padding-left:34px}
+.photo-cam-btn{display:flex;align-items:center;gap:7px;padding:8px 14px;background:var(--azul);color:#fff;border:none;border-radius:var(--radio-sm);font-size:13px;font-weight:500;cursor:pointer;font-family:inherit}
+.photo-counter{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--texto-sec)}
+.photo-counter-btns{display:flex;align-items:center;gap:4px}
+.cnt-btn{width:26px;height:26px;border-radius:50%;border:1px solid var(--borde);background:var(--blanco);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;font-family:inherit;color:var(--texto)}
+.cnt-num{font-size:14px;font-weight:700;color:var(--azul);min-width:18px;text-align:center}
+.photo-guide-header{display:flex;align-items:center;justify-content:space-between;margin:14px 0 8px;padding-left:8px;border-left:3px solid var(--amarillo)}
+.photo-guide-header p{font-size:11px;font-weight:600;color:var(--azul);text-transform:uppercase;letter-spacing:0.5px}
+.photo-guide-header span{font-size:11px;color:var(--texto-ter);background:var(--gris-medio);border-radius:8px;padding:1px 7px}
 
 /* ── EQUIPOS LIST ── */
 .eq-item{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:border-color 0.12s}
@@ -274,14 +279,14 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
 
       <div class="sec-label">Anomalías detectadas <span class="opt-tag">opcional</span></div>
       <div class="field-group"><textarea id="f-anomalias" placeholder="Problemas, daños o riesgos identificados..."></textarea></div>
-      <div class="photo-wrap" id="pw-anom"></div>
+      <div id="pg-anom"></div>
 
       <div class="sec-label">Acciones / Compromisos <span class="opt-tag">opcional</span></div>
       <div class="field-group"><textarea id="f-compromisos" placeholder="Acción 1: ...&#10;Acción 2: ..."></textarea></div>
 
       <div class="sec-label">Oportunidades comerciales <span class="opt-tag">opcional</span></div>
       <div class="field-group"><textarea id="f-oportunidades" placeholder="Posibles ofertas, servicios o proyectos detectados..."></textarea></div>
-      <div class="photo-wrap" id="pw-op"></div>
+      <div id="pg-op"></div>
     </div>
 
     <!-- TAB 3: Resumen -->
@@ -321,14 +326,14 @@ textarea{min-height:72px;resize:vertical;line-height:1.5}
     <div class="sec-label">Inspección visual</div>
     <div class="tip">Marca solo lo inspeccionado. Lo no marcado se omite del informe.</div>
     <div class="card" style="padding:0 14px"><div id="checks-mec"></div></div>
-    <div class="photo-wrap" id="pw-mec" style="margin:10px 0"></div>
+    <div id="pg-mec"></div>
     <div class="card" style="padding:0 14px"><div id="checks-est"></div></div>
-    <div class="photo-wrap" id="pw-est" style="margin:10px 0"></div>
+    <div id="pg-est"></div>
     <div class="card" style="padding:0 14px"><div id="checks-ele"></div></div>
-    <div class="photo-wrap" id="pw-ele" style="margin:10px 0"></div>
+    <div id="pg-ele"></div>
 
     <div class="sec-label">Fotos panorámicas del equipo <span class="opt-tag">opcional</span></div>
-    <div class="photo-wrap" id="pw-panorama"></div>
+    <div id="pg-panorama"></div>
 
     <div class="sec-label">Observaciones del equipo <span class="opt-tag">opcional</span></div>
     <div class="field-group"><textarea id="eq-obs" placeholder="Notas específicas de este equipo..."></textarea></div>
@@ -635,7 +640,7 @@ function irTab(n) {
   currentTab = n;
   document.getElementById('prog-fill').style.width = Math.round((n+1)/4*100)+'%';
   if (n===1) renderListaEquipos();
-  if (n===2) renderPhotosGlobal();
+  if (n===2){ renderPhotosGlobal(); }
   if (n===3) renderResumen();
   document.getElementById('scroll-area').scrollTop = 0;
   actualizarNavForm();
@@ -702,7 +707,7 @@ function abrirEquipo(idx) {
   var eq = currentVisita.equipos[idx];
   sels = JSON.parse(JSON.stringify(eq.sels||{}));
   checks = JSON.parse(JSON.stringify(eq.checks||{}));
-  eqPhotos = JSON.parse(JSON.stringify(eq.photos||{mec:[],est:[],ele:[],panorama:[]}));
+  photoCounts = JSON.parse(JSON.stringify(eq.photoCounts||{}));
 
   s('eq-tag', eq.tag);
   s('eq-nombre', eq.nombre);
@@ -721,10 +726,10 @@ function abrirEquipo(idx) {
   buildChecks('checks-mec', MEC_I, 'm');
   buildChecks('checks-est', EST_I, 'e');
   buildChecks('checks-ele', ELE_I, 'l');
-  buildPhotoSection('pw-mec', 'mec', 'Fotos mecánica');
-  buildPhotoSection('pw-est', 'est', 'Fotos estructural');
-  buildPhotoSection('pw-ele', 'ele', 'Fotos eléctrica');
-  buildPhotoSection('pw-panorama', 'panorama', 'Fotos panorámicas');
+  buildPhotoGuide('pg-mec', FOTO_GUIAS.mec, 'mec');
+  buildPhotoGuide('pg-est', FOTO_GUIAS.est, 'est');
+  buildPhotoGuide('pg-ele', FOTO_GUIAS.ele, 'ele');
+  buildPhotoGuide('pg-panorama', FOTO_GUIAS.panorama, 'panorama');
 
   document.getElementById('header-title').textContent = (eq.tag||'Equipo')+(eq.nombre?' — '+eq.nombre:'');
   document.getElementById('header-sub').textContent = 'Editando equipo';
@@ -746,7 +751,7 @@ function guardarEquipoActual() {
   eq.obs = g('eq-obs');
   eq.sels = JSON.parse(JSON.stringify(sels));
   eq.checks = JSON.parse(JSON.stringify(checks));
-  eq.photos = JSON.parse(JSON.stringify(eqPhotos));
+  eq.photoCounts = JSON.parse(JSON.stringify(photoCounts));
   // Guardar params
   eq.params = {};
   PARAMS.forEach(function(p,i){
@@ -819,89 +824,111 @@ function buildParams(saved) {
 }
 
 // ════════════════════════════════
-// FOTOS
+// GUIAS DE FOTOS
 // ════════════════════════════════
-function buildPhotoSection(containerId, zone, label) {
+var FOTO_GUIAS = {
+  panorama: [
+    { titulo:'Vista panorámica general', desc:'Fotografía el equipo completo desde un punto elevado que muestre el estanque, puente y mecanismos en conjunto.' },
+    { titulo:'Vista desde el puente', desc:'Toma una foto desde el puente hacia el interior del estanque, mostrando el nivel de pulpa y el feedwell.' }
+  ],
+  mec: [
+    { titulo:'Mecanismo drive / reductores', desc:'Fotografía el conjunto drive: carcasa, reductores, tapas y placa de soporte. Enfoca la placa identificadora si está visible.' },
+    { titulo:'Rastras y brazos', desc:'Captura los brazos de rastras desde el puente. Si hay deformaciones, desgaste o daños, enfoca directamente esas zonas.' },
+    { titulo:'Sistema de alimentación (feedwell)', desc:'Fotografía el feedwell y la canaleta de entrada. Documenta el estado de los deflectores y revestimientos internos.' },
+    { titulo:'Sistema de descarga (underflow)', desc:'Toma fotos del spigot, bombas de descarga y cañerías de underflow. Documenta válvulas y estado de sellos.' },
+    { titulo:'Motores y transmisión', desc:'Fotografía los motores eléctricos, poleas y correas o acoplamiento directo. Muestra el estado de cubiertas y ventilación.' }
+  ],
+  est: [
+    { titulo:'Muro perimetral y rebalse', desc:'Fotografía el muro perimetral y la canaleta de rebalse (launder). Documenta fisuras, filtraciones o daños visibles.' },
+    { titulo:'Base (radier) y cono', desc:'Captura la zona del radier y cono central. Documenta acumulación de sólidos, grietas o socavación.' },
+    { titulo:'Apoyo de puente y columna', desc:'Fotografía los apoyos del puente en el muro y la columna central. Documenta corrosión, fisuras o desplazamientos.' }
+  ],
+  ele: [
+    { titulo:'Tablero de control y fuerza', desc:'Fotografía el tablero eléctrico abierto y cerrado. Captura la placa de identificación y el estado general del gabinete.' },
+    { titulo:'Sensores e instrumentación', desc:'Fotografía el torquímetro, sensor zero-speed y otros instrumentos. Documenta pantallas, indicadores y estado del cableado.' },
+    { titulo:'Cableado y tuberías conduit', desc:'Documenta el estado general del cableado, bandejas y tubería conduit. Enfoca zonas con daños, corrosión o reparaciones provisorias.' }
+  ],
+  anom: [
+    { titulo:'Anomalía detectada', desc:'Fotografía de cerca el daño, desgaste o condición anormal que identificaste. Incluye una referencia de escala si es posible.' },
+    { titulo:'Contexto de la anomalía', desc:'Toma una foto más abierta que muestre dónde está ubicada la anomalía dentro del equipo.' }
+  ],
+  op: [
+    { titulo:'Oportunidad comercial identificada', desc:'Fotografía el componente o zona que sustenta la oportunidad comercial que identificaste.' }
+  ]
+};
+
+var photoCounts = {};
+
+function buildPhotoGuide(containerId, guias, zone) {
   var c = document.getElementById(containerId); if(!c) return;
-  c.innerHTML = '';
-  var lrow = document.createElement('div'); lrow.className='photo-lbl-row';
-  var cnt = (eqPhotos[zone]||[]).length;
-  lrow.innerHTML = '<p>'+label+'</p>'+(cnt>0?'<span class="photo-count">'+cnt+'</span>':'');
-  c.appendChild(lrow);
-  var thumbs = document.createElement('div'); thumbs.className='thumbs'; thumbs.id='th-'+zone;
-  renderThumbsIn(zone, thumbs);
-  c.appendChild(thumbs);
-  // Input con ID unico en el DOM - funciona correctamente en Chrome Android
-  var inputId = 'fi-eq-' + zone + '-' + Date.now();
+  if(!guias||guias.length===0) return;
+  c.innerHTML='';
+  var saved = photoCounts[zone]||{};
+  var totalFotos = Object.values(saved).reduce(function(a,b){return a+b;},0);
+  var header = document.createElement('div'); header.className='photo-guide-header';
+  header.innerHTML='<p>Guía fotográfica</p>'+(totalFotos>0?'<span>'+totalFotos+' foto(s)</span>':'');
+  c.appendChild(header);
+
+  guias.forEach(function(guia, idx) {
+    var cnt = saved[idx]||0;
+    var item = document.createElement('div'); item.className='photo-item';
+    item.innerHTML=
+      '<div class="photo-item-header">'+
+        '<div class="photo-item-num">'+(idx+1)+'</div>'+
+        '<div class="photo-item-title">'+guia.titulo+'</div>'+
+      '</div>'+
+      '<div class="photo-item-desc">'+guia.desc+'</div>'+
+      '<div class="photo-item-footer">'+
+        '<button type="button" class="photo-cam-btn" onclick="abrirCamara(''+zone+'','+idx+',''+containerId+'')">'+
+          '<span style="font-size:16px">&#128247;</span> Tomar foto'+
+        '</button>'+
+        '<div class="photo-counter">'+
+          '<div class="photo-counter-btns">'+
+            '<button type="button" class="cnt-btn" onclick="ajustarConteo(''+zone+'','+idx+',''+containerId+'',this,-1)">&#8722;</button>'+
+            '<span class="cnt-num" id="cnt-'+zone+'-'+idx+'">'+cnt+'</span>'+
+            '<button type="button" class="cnt-btn" onclick="ajustarConteo(''+zone+'','+idx+',''+containerId+'',this,1)">+</button>'+
+          '</div>'+
+          '<span style="margin-left:4px">fotos tomadas</span>'+
+        '</div>'+
+      '</div>';
+    c.appendChild(item);
+  });
+}
+
+function abrirCamara(zone, idx, containerId) {
+  var iid = 'cam-'+zone+'-'+idx;
+  var existing = document.getElementById(iid);
+  if(existing) existing.remove();
   var inp = document.createElement('input');
-  inp.type='file'; inp.accept='image/*'; inp.multiple=true;
-  inp.id = inputId;
-  inp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
-  inp.onchange = (function(z, cont){ return function(){ addEqPhotos(this, z, cont); }; })(zone, containerId);
+  inp.type='file'; inp.accept='image/*'; inp.id=iid;
+  inp.style.cssText='position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+  inp.onchange=function(){
+    if(this.files&&this.files.length>0){
+      ajustarConteo(zone,idx,containerId,null,this.files.length);
+    }
+    this.remove();
+  };
   document.body.appendChild(inp);
-  var btn = document.createElement('button');
-  btn.type = 'button';
-  btn.className = 'add-photo';
-  btn.innerHTML = '<span class="cam-ico">📷</span><span>Agregar fotos — puedes seleccionar varias</span>';
-  btn.onclick = (function(iid){ return function(){ document.getElementById(iid).click(); }; })(inputId);
-  c.appendChild(btn);
+  inp.click();
 }
 
-function renderThumbsIn(zone, container) {
-  var arr = eqPhotos[zone]||[];
-  container.innerHTML = '';
-  arr.forEach(function(src, i) {
-    var w=document.createElement('div'); w.className='thumb-w';
-    var img=document.createElement('img'); img.src=src;
-    var del=document.createElement('button'); del.className='thumb-del'; del.textContent='×';
-    del.onclick=(function(z,idx){return function(e){e.stopPropagation();eqPhotos[z].splice(idx,1);buildPhotoSection('pw-'+z,z,'');};}) (zone,i);
-    w.appendChild(img); w.appendChild(del); container.appendChild(w);
-  });
+function ajustarConteo(zone, idx, containerId, btn, delta) {
+  if(!photoCounts[zone]) photoCounts[zone]={};
+  var cur = photoCounts[zone][idx]||0;
+  var nuevo = Math.max(0, cur+delta);
+  photoCounts[zone][idx] = nuevo;
+  var el = document.getElementById('cnt-'+zone+'-'+idx);
+  if(el) el.textContent = nuevo;
+  buildPhotoGuide(containerId, FOTO_GUIAS[zone], zone);
 }
 
-function addEqPhotos(input, zone, containerId) {
-  if (!eqPhotos[zone]) eqPhotos[zone]=[];
-  Array.from(input.files).forEach(function(file) {
-    var r=new FileReader();
-    r.onload=function(e){ eqPhotos[zone].push(e.target.result); buildPhotoSection(containerId, zone, ''); };
-    r.readAsDataURL(file);
-  });
-  input.value='';
+function buildPhotoGuideGlobal(containerId, zone) {
+  buildPhotoGuide(containerId, FOTO_GUIAS[zone]||[], zone);
 }
 
 function renderPhotosGlobal() {
-  ['anom','op'].forEach(function(zone) {
-    var containerId = 'pw-'+zone;
-    var c=document.getElementById(containerId); if(!c) return;
-    c.innerHTML='';
-    var arr=globalPhotos[zone]||[];
-    if(arr.length>0){
-      var thumbs=document.createElement('div'); thumbs.className='thumbs';
-      arr.forEach(function(src,i){
-        var w=document.createElement('div'); w.className='thumb-w';
-        var img=document.createElement('img'); img.src=src;
-        var del=document.createElement('button'); del.className='thumb-del'; del.textContent='×';
-        del.onclick=(function(z,idx){return function(e){e.stopPropagation();globalPhotos[z].splice(idx,1);renderPhotosGlobal();};})(zone,i);
-        w.appendChild(img); w.appendChild(del); thumbs.appendChild(w);
-      });
-      c.appendChild(thumbs);
-    }
-    var gInputId = 'fi-gl-' + zone + '-' + Date.now();
-    var inp=document.createElement('input'); inp.type='file'; inp.accept='image/*'; inp.multiple=true;
-    inp.id = gInputId;
-    inp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
-    inp.onchange=(function(z){return function(){
-      Array.from(this.files).forEach(function(file){
-        var r=new FileReader(); r.onload=function(e){globalPhotos[z].push(e.target.result);renderPhotosGlobal();};
-        r.readAsDataURL(file);
-      });this.value='';
-    };})(zone);
-    document.body.appendChild(inp);
-    var gBtn=document.createElement('button'); gBtn.type='button'; gBtn.className='add-photo';
-    gBtn.innerHTML='<span class="cam-ico">📷</span><span>Agregar fotos</span>';
-    gBtn.onclick=(function(iid){return function(){document.getElementById(iid).click();};})(gInputId);
-    c.appendChild(gBtn);
-  });
+  buildPhotoGuideGlobal('pg-anom','anom');
+  buildPhotoGuideGlobal('pg-op','op');
 }
 
 // ════════════════════════════════
@@ -985,7 +1012,7 @@ function generarInforme() {
   L.push('6. En Oportunidades Comerciales redacta cada oportunidad como una propuesta de valor concreta.');
   L.push('7. OMITE completamente cualquier sección que no tenga datos — no escribas "no se registró información" ni dejes secciones vacías.');
   L.push('8. Si los datos son escasos, genera un informe breve pero totalmente profesional y bien redactado.');
-  L.push('9. Las fotos se referencian en el texto como "(ver registro fotográfico adjunto)" donde corresponda.');
+  L.push('9. El usuario adjuntará las fotos en el orden indicado al final de estos datos. Cuando el informe mencione cada sección, referencia las fotos correspondientes con su número y descripción, por ejemplo: "(ver Foto 3: Mecánica — Rastras y brazos)". Describe brevemente lo que observas en cada foto adjunta dentro del texto del informe.');
   L.push('10. Encabezado del documento: incluye el nombre de la empresa cliente, fecha y nombre del responsable del informe.');
   L.push('');
   L.push('════════════════════════════════');
@@ -1039,15 +1066,27 @@ function generarInforme() {
 
       if(eq.obs) L.push('Observaciones específicas: '+eq.obs);
 
-      var fZones=['mec','est','ele','panorama'];
-      var totalF=fZones.reduce(function(a,z){return a+((eq.photos||{})[z]||[]).length;},0);
-      if(totalF>0){
-        var det=[];
-        if(((eq.photos||{}).mec||[]).length) det.push(eq.photos.mec.length+' foto(s) mecánica');
-        if(((eq.photos||{}).est||[]).length) det.push(eq.photos.est.length+' foto(s) estructural');
-        if(((eq.photos||{}).ele||[]).length) det.push(eq.photos.ele.length+' foto(s) eléctrica');
-        if(((eq.photos||{}).panorama||[]).length) det.push(eq.photos.panorama.length+' foto(s) panorámica');
-        L.push('Registro fotográfico adjunto: '+det.join(', ')+'.');
+      var pc = eq.photoCounts||{};
+      var fZones=[['panorama','Panorámica'],['mec','Mecánica'],['est','Estructural'],['ele','Eléctrica']];
+      var fotoLines=[];
+      var fotoOrden=[];
+      var nFoto=1;
+      fZones.forEach(function(zp){
+        var z=zp[0],zlbl=zp[1];
+        var guias=FOTO_GUIAS[z]||[];
+        guias.forEach(function(guia,idx){
+          var cnt=(pc[z]&&pc[z][idx])||0;
+          if(cnt>0){
+            for(var f=0;f<cnt;f++){
+              fotoOrden.push('  Foto '+nFoto+': ['+zlbl+'] '+guia.titulo);
+              nFoto++;
+            }
+          }
+        });
+      });
+      if(fotoOrden.length>0){
+        L.push('Registro fotográfico ('+fotoOrden.length+' foto(s) — adjuntar en este orden):');
+        fotoOrden.forEach(function(l){L.push(l);});
       }
     });
   }
@@ -1061,8 +1100,27 @@ function generarInforme() {
     if(notas.oportunidades) L.push('Oportunidades comerciales identificadas:\n'+notas.oportunidades);
   }
 
-  var totalFG=(globalPhotos.anom||[]).length+(globalPhotos.op||[]).length;
-  if(totalFG>0) L.push('\nFotos adicionales (anomalías/oportunidades): '+totalFG+' foto(s) adjunta(s).');
+  var fotosGlobal=[];
+  var nG=1;
+  var gZones=[['anom','Anomalía'],['op','Oportunidad comercial']];
+  gZones.forEach(function(zp){
+    var z=zp[0],zlbl=zp[1];
+    var guias=FOTO_GUIAS[z]||[];
+    var pc=photoCounts[z]||{};
+    guias.forEach(function(guia,idx){
+      var cnt=(pc[idx])||0;
+      if(cnt>0){
+        for(var f=0;f<cnt;f++){
+          fotosGlobal.push('  Foto '+nG+': ['+zlbl+'] '+guia.titulo);
+          nG++;
+        }
+      }
+    });
+  });
+  if(fotosGlobal.length>0){
+    L.push('\nFotos generales ('+fotosGlobal.length+' foto(s) — adjuntar en este orden):');
+    fotosGlobal.forEach(function(l){L.push(l);});
+  }
 
   L.push('');
   L.push('════════════════════════════════');
@@ -1100,13 +1158,14 @@ function mostrarModalInforme(texto){
     '<p style="font-size:14px;color:#444;line-height:1.6;margin-bottom:18px">'+
     'El prompt para generar el informe ya está copiado. Sigue estos pasos:</p>'+
     '<div style="background:#F0F6FF;border-radius:10px;padding:14px;margin-bottom:18px">'+
-    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Pasos para generar el informe:</p>'+
-    '<p style="font-size:13px;color:#333;line-height:1.8">'+
+    '<p style="font-size:13px;color:#004F9D;font-weight:600;margin-bottom:10px">Pasos para generar el informe completo con fotos:</p>'+
+    '<p style="font-size:13px;color:#333;line-height:1.9">'+
     '1️⃣ Abre <strong>Claude.ai</strong> en tu celular o computador<br>'+
     '2️⃣ Crea una conversación nueva<br>'+
     '3️⃣ Pega el texto copiado (mantén presionado → Pegar)<br>'+
-    '4️⃣ Claude redactará el informe completo<br>'+
-    '5️⃣ Copia el informe y pégalo en Word o envíalo directo</p>'+
+    '4️⃣ Adjunta las fotos desde tu galería <strong>en el orden indicado</strong> al final del texto<br>'+
+    '5️⃣ Envía — Claude redactará el informe y describirá cada foto en la sección correcta<br>'+
+    '6️⃣ Copia el informe y pégalo en Word</p>'+
     '</div>'+
     '<p style="font-size:12px;color:#999;margin-bottom:16px">Si el texto no se copió automáticamente, selecciónalo y cópialo manualmente:</p>'+
     '<textarea id="texto-informe" style="width:100%;height:100px;font-size:11px;padding:8px;border:1px solid #ddd;border-radius:8px;resize:none;color:#666;font-family:monospace" readonly>'+texto.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</textarea>'+
