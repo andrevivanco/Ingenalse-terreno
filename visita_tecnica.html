@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ingenalse Terreno">
+<meta name="theme-color" content="#004F9D">
+<title>INGENALSE — Visita Técnica</title>
+<link rel="manifest" href="#" id="manifest-link">
+<style>
+:root{
+  --azul:#004F9D;
+  --azul-dark:#003A7A;
+  --amarillo:#FCE84D;
+  --gris:#C0C0C0;
+  --gris-claro:#F5F5F5;
+  --gris-medio:#E8E8E8;
+  --texto:#1A1A1A;
+  --texto-sec:#666;
+  --texto-ter:#999;
+  --borde:#DEDEDE;
+  --verde:#27AE60;
+  --rojo:#E74C3C;
+  --blanco:#FFFFFF;
+  --radio:10px;
+  --radio-sm:6px;
+  --sombra:0 2px 8px rgba(0,0,0,0.08);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--gris-claro);color:var(--texto)}
+
+/* ── HEADER ── */
+.header{background:var(--azul);color:#fff;position:fixed;top:0;left:0;right:0;z-index:100;-webkit-user-select:none}
+.header-main{display:flex;align-items:center;gap:10px;padding:10px 14px;padding-top:max(10px,env(safe-area-inset-top))}
+.logo-wrap{background:#fff;border-radius:var(--radio-sm);padding:5px 9px;display:flex;align-items:center;gap:5px;flex-shrink:0}
+.logo-mark{display:flex;align-items:center;position:relative;width:32px;height:22px}
+.logo-c{border-radius:50%;position:absolute}
+.logo-c1{width:20px;height:20px;border:4px solid var(--amarillo);left:0;top:1px}
+.logo-c2{width:20px;height:20px;border:4px solid #ccc;left:10px;top:1px}
+.logo-diamond{width:6px;height:10px;background:var(--azul);border-radius:2px;position:absolute;left:13px;top:6px;z-index:1}
+.logo-txt{font-size:13px;font-weight:700;color:var(--azul);letter-spacing:-0.3px}
+.header-info{flex:1;min-width:0}
+.header-info h1{font-size:13px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-info p{font-size:11px;color:rgba(255,255,255,0.7);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-actions{display:flex;gap:6px;flex-shrink:0}
+.icon-btn{background:rgba(255,255,255,0.15);border:none;border-radius:var(--radio-sm);padding:7px 10px;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:5px}
+.icon-btn span{font-size:12px;display:none}
+.header-prog{height:3px;background:rgba(255,255,255,0.2)}
+.header-prog-fill{height:100%;background:var(--amarillo);transition:width 0.3s}
+.header-tabs{display:flex;overflow-x:auto;padding:0 14px;gap:0;scrollbar-width:none;border-top:1px solid rgba(255,255,255,0.1)}
+.header-tabs::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:8px 14px;font-size:12px;color:rgba(255,255,255,0.6);border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;background:none;border-top:none;border-left:none;border-right:none}
+.tab-btn.active{color:#fff;border-bottom-color:var(--amarillo)}
+
+/* ── SCROLL CONTAINER ── */
+.scroll-area{position:fixed;top:var(--header-h,110px);bottom:var(--nav-h,80px);left:0;right:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px;padding-bottom:20px}
+
+/* ── CARDS ── */
+.card{background:var(--blanco);border-radius:var(--radio);border:1px solid var(--borde);margin-bottom:12px;overflow:hidden}
+.card-header{background:var(--azul);color:#fff;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.card-header h3{font-size:13px;font-weight:600}
+.card-body{padding:14px}
+.sec-label{font-size:11px;font-weight:600;color:var(--azul);text-transform:uppercase;letter-spacing:0.5px;margin:14px 0 8px;padding-left:8px;border-left:3px solid var(--amarillo)}
+.sec-label:first-child{margin-top:0}
+label.field-lbl{display:block;font-size:12px;color:var(--texto-sec);margin-bottom:5px;font-weight:500}
+.opt-tag{font-size:10px;color:var(--texto-ter);background:var(--gris-medio);border-radius:8px;padding:1px 6px;margin-left:4px;font-weight:400}
+input[type=text],input[type=date],textarea,select{width:100%;font-size:15px;padding:10px 12px;border:1px solid var(--borde);border-radius:var(--radio-sm);background:#fff;color:var(--texto);font-family:inherit;-webkit-appearance:none;appearance:none}
+input[type=text]:focus,input[type=date]:focus,textarea:focus{outline:none;border-color:var(--azul)}
+textarea{min-height:72px;resize:vertical;line-height:1.5}
+.field-group{margin-bottom:12px}
+
+/* ── RADIO GRID ── */
+.rg{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.rb{border:1.5px solid var(--borde);border-radius:var(--radio-sm);padding:9px 10px;font-size:13px;cursor:pointer;text-align:center;background:#fff;color:var(--texto);user-select:none;transition:all 0.12s}
+.rb.on{background:#EBF3FF;border-color:var(--azul);color:var(--azul);font-weight:600}
+
+/* ── CHECK ROWS ── */
+.check-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--gris-claro)}
+.check-row:last-child{border-bottom:none}
+.check-row-label{font-size:13px;color:var(--texto);flex:1;padding-right:10px;line-height:1.3}
+.check-btns{display:flex;gap:6px}
+.chk{padding:5px 11px;font-size:12px;border:1px solid var(--borde);border-radius:20px;cursor:pointer;background:#fff;color:var(--texto-sec);font-weight:500;transition:all 0.12s}
+.chk.ok{background:#E8F8EE;border-color:var(--verde);color:#1A7A40}
+.chk.nok{background:#FEE;border-color:var(--rojo);color:#A0201A}
+
+/* ── FOTOS ── */
+.photo-wrap{margin-top:10px}
+.photo-lbl-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.photo-lbl-row p{font-size:12px;color:var(--texto-sec)}
+.photo-count{font-size:11px;background:#EBF3FF;color:var(--azul);border-radius:10px;padding:2px 8px;font-weight:600}
+.thumbs{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+.thumb-w{position:relative;width:72px;height:72px}
+.thumb-w img{width:72px;height:72px;object-fit:cover;border-radius:var(--radio-sm);border:1px solid var(--borde)}
+.thumb-del{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:var(--rojo);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px solid #fff;line-height:1}
+.add-photo{display:flex;align-items:center;gap:9px;padding:11px 14px;border:1.5px dashed var(--borde);border-radius:var(--radio-sm);cursor:pointer;background:var(--gris-claro);font-size:13px;color:var(--texto-sec)}
+.add-photo .cam-ico{font-size:20px}
+
+/* ── EQUIPOS LIST ── */
+.eq-item{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:border-color 0.12s}
+.eq-item:active{border-color:var(--azul)}
+.eq-item-info h4{font-size:14px;font-weight:600;color:var(--texto)}
+.eq-item-info p{font-size:12px;color:var(--texto-sec);margin-top:2px}
+.eq-item-arrow{font-size:18px;color:var(--gris);flex-shrink:0}
+.eq-add-btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border:2px dashed var(--azul);border-radius:var(--radio);font-size:14px;color:var(--azul);font-weight:600;cursor:pointer;background:rgba(0,79,157,0.04)}
+.eq-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 8px;border-radius:10px;margin-top:4px}
+.eq-badge.ok{background:#E8F8EE;color:#1A7A40}
+.eq-badge.parcial{background:#FFF8E0;color:#B8860B}
+.eq-badge.vacio{background:var(--gris-medio);color:var(--texto-ter)}
+
+/* ── PARAMS TABLE ── */
+.params-header{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:5px;margin-bottom:6px}
+.params-header span{font-size:11px;color:var(--texto-sec);text-align:center;font-weight:500}
+.params-header span:first-child{text-align:left}
+.param-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:5px;margin-bottom:6px;align-items:center}
+.param-row .param-name{font-size:12px;color:var(--texto);line-height:1.3}
+.param-row .param-unit{font-size:10px;color:var(--texto-ter)}
+.param-row input{font-size:13px;padding:7px 6px;text-align:center;border:1px solid var(--borde);border-radius:var(--radio-sm);background:#fff;color:var(--texto);font-family:inherit}
+
+/* ── BORRADORES ── */
+.borrador-item{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:12px 14px;margin-bottom:10px}
+.borrador-meta{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.borrador-info h4{font-size:14px;font-weight:600;color:var(--texto)}
+.borrador-info p{font-size:12px;color:var(--texto-sec);margin-top:3px}
+.borrador-actions{display:flex;gap:7px;margin-top:10px}
+.btn-sm{padding:7px 13px;font-size:12px;border-radius:var(--radio-sm);border:1px solid var(--borde);background:#fff;color:var(--texto);cursor:pointer;font-weight:500}
+.btn-sm.prim{background:var(--azul);color:#fff;border-color:var(--azul)}
+.btn-sm.danger{background:#FEE;color:var(--rojo);border-color:#F5C6C6}
+
+/* ── RESUMEN ── */
+.resumen-section{margin-bottom:14px}
+.resumen-section h4{font-size:12px;font-weight:600;color:var(--azul);text-transform:uppercase;letter-spacing:0.4px;margin-bottom:8px;padding-left:7px;border-left:3px solid var(--amarillo)}
+.resumen-row{display:flex;justify-content:space-between;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--gris-claro);font-size:13px;gap:8px}
+.resumen-row:last-child{border-bottom:none}
+.rl{color:var(--texto-sec);min-width:100px;flex-shrink:0;font-size:12px}
+.rv{color:var(--texto);font-weight:500;text-align:right;word-break:break-word}
+.badge-ok{background:#E8F8EE;color:#1A7A40;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.badge-nok{background:#FEE;color:#A0201A;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.photo-mini-grid{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.photo-mini-grid img{width:52px;height:52px;object-fit:cover;border-radius:var(--radio-sm);border:1px solid var(--borde)}
+
+/* ── NAV BAR ── */
+.nav-bar{position:fixed;bottom:0;left:0;right:0;background:var(--blanco);border-top:1px solid var(--borde);padding:10px 14px;padding-bottom:max(10px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:100}
+.btn-nav{flex:1;padding:12px;font-size:14px;border-radius:var(--radio);border:1.5px solid var(--borde);background:#fff;color:var(--texto);cursor:pointer;font-weight:500;font-family:inherit}
+.btn-nav.prim{flex:2;background:var(--azul);color:#fff;border-color:var(--azul)}
+.btn-nav.prim:active{background:var(--azul-dark)}
+.btn-nav.amarillo{background:var(--amarillo);color:var(--azul);border-color:var(--amarillo);font-weight:700}
+
+/* ── TIP ── */
+.tip{font-size:12px;color:var(--texto-sec);font-style:italic;padding:10px 12px;background:rgba(0,79,157,0.05);border-radius:var(--radio-sm);border-left:3px solid var(--amarillo);margin-bottom:14px;line-height:1.5}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:rgba(30,30,30,0.92);color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:999;opacity:0;transition:opacity 0.25s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+
+/* ── INSTALL BANNER ── */
+.install-banner{background:var(--azul);color:#fff;padding:12px 14px;display:flex;align-items:center;gap:10px;position:fixed;top:0;left:0;right:0;z-index:200;transform:translateY(-100%);transition:transform 0.3s}
+.install-banner.show{transform:translateY(0)}
+.install-banner p{flex:1;font-size:13px;line-height:1.4}
+.install-banner button{background:var(--amarillo);color:var(--azul);border:none;border-radius:var(--radio-sm);padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0}
+
+/* ── EMPTY STATE ── */
+.empty-state{text-align:center;padding:40px 20px;color:var(--texto-ter)}
+.empty-state .ico{font-size:44px;margin-bottom:14px}
+.empty-state h3{font-size:16px;font-weight:600;color:var(--texto-sec);margin-bottom:8px}
+.empty-state p{font-size:13px;line-height:1.5}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:300;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity 0.2s}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:var(--radio) var(--radio) 0 0;width:100%;max-height:85vh;overflow-y:auto;padding:20px 16px;padding-bottom:max(20px,env(safe-area-inset-bottom));transform:translateY(100%);transition:transform 0.25s}
+.modal-overlay.show .modal{transform:translateY(0)}
+.modal-handle{width:36px;height:4px;background:var(--gris);border-radius:2px;margin:0 auto 16px}
+.modal h3{font-size:16px;font-weight:700;margin-bottom:14px;color:var(--azul)}
+</style>
+</head>
+<body>
+
+<!-- Install banner -->
+<div class="install-banner" id="install-banner">
+  <p>📲 Instala la app para usarla sin internet en faena</p>
+  <button onclick="installApp()">Instalar</button>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Header -->
+<div class="header" id="main-header">
+  <div class="header-main">
+    <div class="logo-wrap">
+      <div class="logo-mark">
+        <div class="logo-c logo-c1"></div>
+        <div class="logo-c logo-c2"></div>
+        <div class="logo-diamond"></div>
+      </div>
+      <span class="logo-txt">ngenalse</span>
+    </div>
+    <div class="header-info">
+      <h1 id="header-title">Visita Técnica</h1>
+      <p id="header-sub">Selecciona o crea una visita</p>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" onclick="irABorradores()" title="Borradores">💾</button>
+    </div>
+  </div>
+  <div class="header-prog"><div class="header-prog-fill" id="prog-fill" style="width:0%"></div></div>
+  <div class="header-tabs" id="header-tabs" style="display:none">
+    <button class="tab-btn active" data-tab="0" onclick="irTab(0)">General</button>
+    <button class="tab-btn" data-tab="1" onclick="irTab(1)">Equipos</button>
+    <button class="tab-btn" data-tab="2" onclick="irTab(2)">Notas</button>
+    <button class="tab-btn" data-tab="3" onclick="irTab(3)">Resumen</button>
+  </div>
+</div>
+
+<!-- Scroll area -->
+<div class="scroll-area" id="scroll-area">
+
+  <!-- ════ PANTALLA: INICIO ════ -->
+  <div id="screen-inicio">
+    <div class="empty-state" style="margin-bottom:20px">
+      <div class="ico">🏭</div>
+      <h3>Visita Técnica INGENALSE</h3>
+      <p>Registra levantamientos en terreno sin necesidad de internet. Los datos se guardan automáticamente.</p>
+    </div>
+    <button class="btn-nav prim" style="width:100%;margin-bottom:10px" onclick="nuevaVisita()">+ Nueva visita</button>
+    <button class="btn-nav" style="width:100%" onclick="irABorradores()">Ver borradores guardados</button>
+  </div>
+
+  <!-- ════ PANTALLA: BORRADORES ════ -->
+  <div id="screen-borradores" style="display:none">
+    <div id="lista-borradores"></div>
+    <button class="eq-add-btn" style="margin-top:4px" onclick="nuevaVisita()">+ Nueva visita</button>
+  </div>
+
+  <!-- ════ PANTALLA: FORMULARIO ════ -->
+  <div id="screen-form" style="display:none">
+
+    <!-- TAB 0: General -->
+    <div id="tab-0">
+      <p class="tip">Completa lo que tengas disponible. El informe se adapta automáticamente a los datos ingresados.</p>
+
+      <div class="sec-label">Identificación de la visita</div>
+      <div class="field-group"><label class="field-lbl">Cliente / Minera</label><input type="text" id="f-minera" placeholder="Ej: Codelco División El Salvador"></div>
+      <div class="field-group"><label class="field-lbl">División / Planta <span class="opt-tag">opcional</span></label><input type="text" id="f-division" placeholder="Ej: Planta concentradora"></div>
+      <div class="field-group"><label class="field-lbl">Localidad <span class="opt-tag">opcional</span></label><input type="text" id="f-localidad" placeholder="Ej: Diego de Almagro"></div>
+      <div class="field-group"><label class="field-lbl">Fecha de visita</label><input type="date" id="f-fecha"></div>
+      <div class="field-group"><label class="field-lbl">Redactado por</label><input type="text" id="f-redactor" placeholder="Nombre y cargo"></div>
+
+      <div class="sec-label">Asistentes <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-asistentes" placeholder="Nombre (Cargo - Empresa)&#10;Nombre (Cargo - Empresa)"></textarea></div>
+
+      <div class="sec-label">Agenda <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-agenda" placeholder="Tema 1: ...&#10;Tema 2: ..."></textarea></div>
+
+      <div class="sec-label">Objetivo de la visita <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-objetivo" placeholder="Describir brevemente el propósito de la visita..."></textarea></div>
+    </div>
+
+    <!-- TAB 1: Equipos -->
+    <div id="tab-1" style="display:none">
+      <p class="tip">Agrega uno o más equipos. Cada equipo tiene su propia inspección y registro fotográfico.</p>
+      <div id="lista-equipos"></div>
+      <div class="eq-add-btn" onclick="abrirModalEquipo()">+ Agregar equipo</div>
+    </div>
+
+    <!-- TAB 2: Notas -->
+    <div id="tab-2" style="display:none">
+      <p class="tip">Esta sección alimenta directamente el informe. Completa lo que tengas disponible.</p>
+
+      <div class="sec-label">Notas y observaciones generales <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-notas" placeholder="Observaciones relevantes de la visita..."></textarea></div>
+
+      <div class="sec-label">Anomalías detectadas <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-anomalias" placeholder="Problemas, daños o riesgos identificados..."></textarea></div>
+      <div class="photo-wrap" id="pw-anom"></div>
+
+      <div class="sec-label">Acciones / Compromisos <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-compromisos" placeholder="Acción 1: ...&#10;Acción 2: ..."></textarea></div>
+
+      <div class="sec-label">Oportunidades comerciales <span class="opt-tag">opcional</span></div>
+      <div class="field-group"><textarea id="f-oportunidades" placeholder="Posibles ofertas, servicios o proyectos detectados..."></textarea></div>
+      <div class="photo-wrap" id="pw-op"></div>
+    </div>
+
+    <!-- TAB 3: Resumen -->
+    <div id="tab-3" style="display:none">
+      <div id="resumen-contenido"></div>
+      <div style="margin-top:16px">
+        <button class="btn-nav amarillo" style="width:100%;margin-bottom:10px" onclick="generarInforme()">Generar informe con Claude ↗</button>
+        <button class="btn-nav" style="width:100%" onclick="guardarBorrador()">💾 Guardar borrador</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ PANTALLA: EQUIPO DETALLE ════ -->
+  <div id="screen-equipo" style="display:none">
+    <div class="sec-label">Identificación</div>
+    <div class="field-group"><label class="field-lbl">ID / TAG</label><input type="text" id="eq-tag" placeholder="Ej: ESP-C2"></div>
+    <div class="field-group"><label class="field-lbl">Nombre del equipo</label><input type="text" id="eq-nombre" placeholder="Ej: Espesador de concentrado 2"></div>
+    <div class="field-group"><label class="field-lbl">Diámetro <span class="opt-tag">opcional</span></label><input type="text" id="eq-diam" placeholder="Ej: 30 m"></div>
+
+    <div class="sec-label">Tipo de equipo</div>
+    <div class="card" style="padding:14px">
+      <div class="field-group"><label class="field-lbl">Aplicación</label><div class="rg" id="g-aplic"><div class="rb" onclick="sel(this,'g-aplic')">Concentración</div><div class="rb" onclick="sel(this,'g-aplic')">Relaves</div><div class="rb" onclick="sel(this,'g-aplic')">Clarificador</div><div class="rb" onclick="sel(this,'g-aplic')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Tipo</label><div class="rg" id="g-tipo"><div class="rb" onclick="sel(this,'g-tipo')">Convencional</div><div class="rb" onclick="sel(this,'g-tipo')">High-Rate</div><div class="rb" onclick="sel(this,'g-tipo')">High-Density</div><div class="rb" onclick="sel(this,'g-tipo')">Deep-Cone</div></div></div>
+      <div class="field-group"><label class="field-lbl">Soporte accionamiento</label><div class="rg" id="g-sop"><div class="rb" onclick="sel(this,'g-sop')">Columna central</div><div class="rb" onclick="sel(this,'g-sop')">Sobre puente</div><div class="rb" onclick="sel(this,'g-sop')">Tracción periférica</div><div class="rb" onclick="sel(this,'g-sop')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Sistema de levante</label><div class="rg" id="g-lev"><div class="rb" onclick="sel(this,'g-lev')">Hidráulico</div><div class="rb" onclick="sel(this,'g-lev')">Eléctrico</div><div class="rb" onclick="sel(this,'g-lev')">No aplica</div><div class="rb" onclick="sel(this,'g-lev')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Estanque</label><div class="rg" id="g-const"><div class="rb" onclick="sel(this,'g-const')">Hormigón</div><div class="rb" onclick="sel(this,'g-const')">Metálico</div><div class="rb" onclick="sel(this,'g-const')">Otro</div></div></div>
+      <div class="field-group"><label class="field-lbl">Alto torque</label><div class="rg" id="g-torq"><div class="rb" onclick="sel(this,'g-torq')">Sí</div><div class="rb" onclick="sel(this,'g-torq')">No</div></div></div>
+      <div class="field-group"><label class="field-lbl">Detalle <span class="opt-tag">opcional</span></label><textarea id="eq-detalle" placeholder="Solo si aplica..."></textarea></div>
+    </div>
+
+    <div class="sec-label">Parámetros operativos <span class="opt-tag">opcional</span></div>
+    <div class="card" style="padding:14px">
+      <div class="params-header"><span>Parámetro</span><span>Diseño</span><span>Actual</span><span>Solic.</span></div>
+      <div id="params-body"></div>
+    </div>
+
+    <div class="sec-label">Inspección visual</div>
+    <div class="tip">Marca solo lo inspeccionado. Lo no marcado se omite del informe.</div>
+    <div class="card" style="padding:0 14px"><div id="checks-mec"></div></div>
+    <div class="photo-wrap" id="pw-mec" style="margin:10px 0"></div>
+    <div class="card" style="padding:0 14px"><div id="checks-est"></div></div>
+    <div class="photo-wrap" id="pw-est" style="margin:10px 0"></div>
+    <div class="card" style="padding:0 14px"><div id="checks-ele"></div></div>
+    <div class="photo-wrap" id="pw-ele" style="margin:10px 0"></div>
+
+    <div class="sec-label">Fotos panorámicas del equipo <span class="opt-tag">opcional</span></div>
+    <div class="photo-wrap" id="pw-panorama"></div>
+
+    <div class="sec-label">Observaciones del equipo <span class="opt-tag">opcional</span></div>
+    <div class="field-group"><textarea id="eq-obs" placeholder="Notas específicas de este equipo..."></textarea></div>
+
+    <div style="height:20px"></div>
+  </div>
+
+</div>
+
+<!-- Nav bar -->
+<div class="nav-bar" id="nav-bar">
+  <button class="btn-nav" id="nav-back" onclick="navBack()" style="display:none">← Atrás</button>
+  <button class="btn-nav prim" id="nav-next" onclick="navNext()">Comenzar →</button>
+</div>
+
+<!-- Modal nuevo equipo -->
+<div class="modal-overlay" id="modal-equipo">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h3>Agregar equipo</h3>
+    <div class="field-group"><label class="field-lbl">ID / TAG</label><input type="text" id="m-tag" placeholder="Ej: ESP-C2"></div>
+    <div class="field-group"><label class="field-lbl">Nombre</label><input type="text" id="m-nombre" placeholder="Ej: Espesador de concentrado 2"></div>
+    <div style="display:flex;gap:10px;margin-top:4px">
+      <button class="btn-nav" style="flex:1" onclick="cerrarModal()">Cancelar</button>
+      <button class="btn-nav prim" style="flex:2" onclick="confirmarEquipo()">Agregar →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════
+// ESTADO GLOBAL
+// ════════════════════════════════
+var screen = 'inicio';
+var currentTab = 0;
+var currentVisita = null;
+var currentEqIdx = null;
+var sels = {};
+var checks = {};
+var eqPhotos = {};
+var globalPhotos = { anom: [], op: [] };
+var deferredInstall = null;
+
+var PARAMS = [
+  ['Caudal entrada','m³/h'],['Caudal salida','m³/h'],
+  ['% sólidos alim.','%'],['% sólidos desc.','%'],
+  ['Densidad pulpa','t/m³'],['Floculante','g/t']
+];
+var MEC_I = ['Sistema alimentación','Rastras','Puente','Motores / reductores','Barandas y accesos','Sistema descarga'];
+var EST_I = ['Paredes y muro','Base y cono','Canaletas rebalse','Cimentación','Apoyo puente','Columna / eje'];
+var ELE_I = ['Tableros eléctricos','Cables y tuberías','Sensores e instrumentos'];
+
+// ════════════════════════════════
+// PWA + INSTALL
+// ════════════════════════════════
+var manifestData = {
+  name: 'INGENALSE Visita Técnica',
+  short_name: 'INGENALSE',
+  start_url: '.',
+  display: 'standalone',
+  background_color: '#004F9D',
+  theme_color: '#004F9D',
+  description: 'App de levantamiento técnico en terreno',
+  icons: [{ src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="%23004F9D"/><circle cx="72" cy="96" r="36" fill="none" stroke="%23FCE84D" stroke-width="12"/><circle cx="116" cy="96" r="36" fill="none" stroke="%23fff" stroke-width="10" opacity="0.6"/></svg>', sizes: '192x192', type: 'image/svg+xml' }]
+};
+var blob = new Blob([JSON.stringify(manifestData)], {type:'application/json'});
+var manifestURL = URL.createObjectURL(blob);
+document.getElementById('manifest-link').setAttribute('href', manifestURL);
+document.getElementById('manifest-link').setAttribute('rel', 'manifest');
+
+window.addEventListener('beforeinstallprompt', function(e) {
+  e.preventDefault();
+  deferredInstall = e;
+  document.getElementById('install-banner').classList.add('show');
+});
+
+function installApp() {
+  if (deferredInstall) {
+    deferredInstall.prompt();
+    deferredInstall.userChoice.then(function() {
+      document.getElementById('install-banner').classList.remove('show');
+      deferredInstall = null;
+    });
+  }
+}
+
+// Service Worker inline para cache offline
+if ('serviceWorker' in navigator) {
+  var swCode = `
+    const CACHE = 'ingenalse-v1';
+    self.addEventListener('install', e => e.waitUntil(
+      caches.open(CACHE).then(c => c.addAll([self.location.pathname]))
+    ));
+    self.addEventListener('fetch', e => e.respondWith(
+      caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match(self.location.pathname)))
+    ));
+  `;
+  var swBlob = new Blob([swCode], {type:'text/javascript'});
+  var swURL = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swURL).catch(function(){});
+}
+
+// ════════════════════════════════
+// UTILS
+// ════════════════════════════════
+function g(id) { var el=document.getElementById(id); return el ? el.value.trim() : ''; }
+function s(id, v) { var el=document.getElementById(id); if(el) el.value = v||''; }
+function showToast(msg) {
+  var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},2000);
+}
+function setHeaderH() {
+  var h=document.getElementById('main-header').offsetHeight;
+  document.getElementById('scroll-area').style.top = h+'px';
+}
+function setNavH() {
+  var h=document.getElementById('nav-bar').offsetHeight;
+  document.getElementById('scroll-area').style.bottom = h+'px';
+}
+
+// ════════════════════════════════
+// NAVEGACIÓN ENTRE PANTALLAS
+// ════════════════════════════════
+function mostrarPantalla(id) {
+  ['inicio','borradores','form','equipo'].forEach(function(s){
+    var el=document.getElementById('screen-'+s);
+    if(el) el.style.display = id===s?'block':'none';
+  });
+  screen = id;
+  document.getElementById('header-tabs').style.display = id==='form'?'flex':'none';
+  document.getElementById('nav-back').style.display = (id==='inicio')?'none':'block';
+  document.getElementById('nav-next').style.display = 'block';
+  setHeaderH();
+}
+
+function irABorradores() {
+  renderBorradores();
+  document.getElementById('header-title').textContent = 'Borradores';
+  document.getElementById('header-sub').textContent = 'Visitas guardadas';
+  document.getElementById('nav-next').textContent = '+ Nueva visita';
+  document.getElementById('nav-next').onclick = nuevaVisita;
+  document.getElementById('nav-back').onclick = function(){ irAInicio(); };
+  mostrarPantalla('borradores');
+  setHeaderH();
+}
+
+function irAInicio() {
+  document.getElementById('header-title').textContent = 'Visita Técnica';
+  document.getElementById('header-sub').textContent = 'Selecciona o crea una visita';
+  document.getElementById('nav-next').textContent = 'Comenzar →';
+  document.getElementById('nav-next').onclick = nuevaVisita;
+  document.getElementById('nav-back').style.display = 'none';
+  mostrarPantalla('inicio');
+}
+
+function navBack() {
+  if (screen === 'equipo') {
+    guardarEquipoActual();
+    volverAForm();
+  } else if (screen === 'form') {
+    if (currentTab > 0) { irTab(currentTab-1); }
+    else { irABorradores(); }
+  } else if (screen === 'borradores') {
+    irAInicio();
+  }
+}
+
+function navNext() {
+  if (screen === 'inicio') { nuevaVisita(); }
+  else if (screen === 'borradores') { nuevaVisita(); }
+  else if (screen === 'form') {
+    autoGuardar();
+    if (currentTab < 3) { irTab(currentTab+1); }
+  } else if (screen === 'equipo') {
+    guardarEquipoActual();
+    volverAForm();
+  }
+}
+
+// ════════════════════════════════
+// VISITAS Y BORRADORES
+// ════════════════════════════════
+function getBorradores() {
+  try { return JSON.parse(localStorage.getItem('visitas') || '[]'); } catch(e){ return []; }
+}
+function saveBorradores(arr) {
+  try { localStorage.setItem('visitas', JSON.stringify(arr)); } catch(e){ showToast('Error al guardar'); }
+}
+
+function nuevaVisita() {
+  currentVisita = {
+    id: Date.now().toString(),
+    creado: new Date().toLocaleDateString('es-CL'),
+    general: {}, equipos: [], notas: {}, globalPhotos: {anom:[],op:[]}
+  };
+  currentEqIdx = null;
+  sels = {}; checks = {}; eqPhotos = {}; globalPhotos = {anom:[],op:[]};
+  abrirFormulario();
+}
+
+function abrirFormulario() {
+  if (currentVisita && currentVisita.general) {
+    s('f-minera', currentVisita.general.minera);
+    s('f-division', currentVisita.general.division);
+    s('f-localidad', currentVisita.general.localidad);
+    s('f-fecha', currentVisita.general.fecha);
+    s('f-redactor', currentVisita.general.redactor);
+    s('f-asistentes', currentVisita.general.asistentes);
+    s('f-agenda', currentVisita.general.agenda);
+    s('f-objetivo', currentVisita.general.objetivo);
+  }
+  if (currentVisita && currentVisita.notas) {
+    s('f-notas', currentVisita.notas.notas);
+    s('f-anomalias', currentVisita.notas.anomalias);
+    s('f-compromisos', currentVisita.notas.compromisos);
+    s('f-oportunidades', currentVisita.notas.oportunidades);
+  }
+  if (currentVisita && currentVisita.globalPhotos) {
+    globalPhotos = JSON.parse(JSON.stringify(currentVisita.globalPhotos));
+  }
+  updateHeaderInfo();
+  irTab(0);
+  mostrarPantalla('form');
+  actualizarNavForm();
+}
+
+function updateHeaderInfo() {
+  var minera = g('f-minera') || (currentVisita&&currentVisita.general&&currentVisita.general.minera) || 'Nueva visita';
+  var fecha = g('f-fecha') || (currentVisita&&currentVisita.general&&currentVisita.general.fecha) || '';
+  document.getElementById('header-title').textContent = minera;
+  document.getElementById('header-sub').textContent = fecha || 'Sin fecha';
+}
+
+function autoGuardar() {
+  if (!currentVisita) return;
+  currentVisita.general = {
+    minera:g('f-minera'), division:g('f-division'), localidad:g('f-localidad'),
+    fecha:g('f-fecha'), redactor:g('f-redactor'), asistentes:g('f-asistentes'),
+    agenda:g('f-agenda'), objetivo:g('f-objetivo')
+  };
+  currentVisita.notas = {
+    notas:g('f-notas'), anomalias:g('f-anomalias'),
+    compromisos:g('f-compromisos'), oportunidades:g('f-oportunidades')
+  };
+  currentVisita.globalPhotos = JSON.parse(JSON.stringify(globalPhotos));
+  var arr = getBorradores();
+  var idx = arr.findIndex(function(v){return v.id===currentVisita.id;});
+  if (idx>=0) arr[idx]=currentVisita; else arr.unshift(currentVisita);
+  saveBorradores(arr);
+  updateHeaderInfo();
+}
+
+function guardarBorrador() {
+  autoGuardar();
+  showToast('✓ Borrador guardado');
+}
+
+function renderBorradores() {
+  var arr = getBorradores();
+  var c = document.getElementById('lista-borradores');
+  if (arr.length === 0) {
+    c.innerHTML = '<div class="empty-state"><div class="ico">📋</div><h3>Sin borradores</h3><p>Crea una nueva visita para comenzar.</p></div>';
+    return;
+  }
+  c.innerHTML = '';
+  arr.forEach(function(v) {
+    var d = document.createElement('div');
+    d.className = 'borrador-item';
+    var eqs = (v.equipos||[]).length;
+    d.innerHTML = '<div class="borrador-meta"><div class="borrador-info"><h4>'+(v.general&&v.general.minera||'Sin nombre')+'</h4><p>'+(v.general&&v.general.fecha||v.creado||'')+(eqs?' · '+eqs+' equipo(s)':'')+'</p></div></div>'+
+      '<div class="borrador-actions">'+
+      '<button class="btn-sm danger" onclick="eliminarBorrador(\''+v.id+'\')">Eliminar</button>'+
+      '<button class="btn-sm" onclick="continuarBorrador(\''+v.id+'\')">Continuar →</button>'+
+      '</div>';
+    c.appendChild(d);
+  });
+}
+
+function continuarBorrador(id) {
+  var arr = getBorradores();
+  currentVisita = arr.find(function(v){return v.id===id;});
+  if (!currentVisita) return;
+  sels={}; checks={}; eqPhotos={};
+  globalPhotos = JSON.parse(JSON.stringify(currentVisita.globalPhotos||{anom:[],op:[]}));
+  abrirFormulario();
+}
+
+function eliminarBorrador(id) {
+  var arr = getBorradores().filter(function(v){return v.id!==id;});
+  saveBorradores(arr);
+  renderBorradores();
+  showToast('Borrador eliminado');
+}
+
+// ════════════════════════════════
+// TABS DEL FORMULARIO
+// ════════════════════════════════
+function irTab(n) {
+  [0,1,2,3].forEach(function(i){
+    document.getElementById('tab-'+i).style.display = i===n?'block':'none';
+    var btn=document.querySelector('.tab-btn[data-tab="'+i+'"]');
+    if(btn) btn.classList.toggle('active', i===n);
+  });
+  currentTab = n;
+  document.getElementById('prog-fill').style.width = Math.round((n+1)/4*100)+'%';
+  if (n===1) renderListaEquipos();
+  if (n===2) renderPhotosGlobal();
+  if (n===3) renderResumen();
+  document.getElementById('scroll-area').scrollTop = 0;
+  actualizarNavForm();
+}
+
+function actualizarNavForm() {
+  var back=document.getElementById('nav-back');
+  var next=document.getElementById('nav-next');
+  back.style.display = 'block';
+  back.onclick = navBack;
+  if (currentTab < 3) {
+    next.textContent = currentTab===2?'Ver resumen →':'Siguiente →';
+    next.onclick = navNext;
+  } else {
+    next.style.display = 'none';
+  }
+}
+
+// ════════════════════════════════
+// EQUIPOS
+// ════════════════════════════════
+function renderListaEquipos() {
+  var c = document.getElementById('lista-equipos');
+  c.innerHTML = '';
+  if (!currentVisita || !currentVisita.equipos) return;
+  currentVisita.equipos.forEach(function(eq, i) {
+    var d = document.createElement('div');
+    d.className = 'eq-item';
+    var inspCount = Object.values(eq.checks||{}).filter(function(v){return v!=='nd';}).length;
+    var totalFotos = Object.values(eq.photos||{}).reduce(function(a,b){return a+(b?b.length:0);},0);
+    var badge = inspCount>0 ? '<span class="eq-badge ok">✓ '+inspCount+' inspeccionados</span>' :
+                '<span class="eq-badge vacio">Sin inspección</span>';
+    if(totalFotos>0) badge += ' <span class="eq-badge parcial">📷 '+totalFotos+'</span>';
+    d.innerHTML = '<div class="eq-item-info"><h4>'+(eq.tag||'Sin TAG')+' — '+(eq.nombre||'Sin nombre')+'</h4>'+badge+'</div><span class="eq-item-arrow">›</span>';
+    d.onclick = (function(idx){return function(){abrirEquipo(idx);};})(i);
+    c.appendChild(d);
+  });
+}
+
+function abrirModalEquipo() {
+  document.getElementById('m-tag').value = '';
+  document.getElementById('m-nombre').value = '';
+  document.getElementById('modal-equipo').classList.add('show');
+  setTimeout(function(){document.getElementById('m-tag').focus();},300);
+}
+
+function cerrarModal() {
+  document.getElementById('modal-equipo').classList.remove('show');
+}
+
+function confirmarEquipo() {
+  var tag = document.getElementById('m-tag').value.trim();
+  var nombre = document.getElementById('m-nombre').value.trim();
+  if (!tag && !nombre) { showToast('Ingresa al menos un TAG o nombre'); return; }
+  var eq = { tag:tag, nombre:nombre, sels:{}, checks:{}, params:{}, photos:{mec:[],est:[],ele:[],panorama:[]}, obs:'' };
+  currentVisita.equipos.push(eq);
+  autoGuardar();
+  cerrarModal();
+  abrirEquipo(currentVisita.equipos.length-1);
+}
+
+function abrirEquipo(idx) {
+  currentEqIdx = idx;
+  var eq = currentVisita.equipos[idx];
+  sels = JSON.parse(JSON.stringify(eq.sels||{}));
+  checks = JSON.parse(JSON.stringify(eq.checks||{}));
+  eqPhotos = JSON.parse(JSON.stringify(eq.photos||{mec:[],est:[],ele:[],panorama:[]}));
+
+  s('eq-tag', eq.tag);
+  s('eq-nombre', eq.nombre);
+  s('eq-diam', eq.diam);
+  s('eq-detalle', eq.detalle);
+  s('eq-obs', eq.obs);
+
+  // Restaurar selecciones
+  ['g-aplic','g-tipo','g-sop','g-lev','g-const','g-torq'].forEach(function(gid){
+    document.querySelectorAll('#'+gid+' .rb').forEach(function(b){
+      b.classList.toggle('on', b.textContent===sels[gid]);
+    });
+  });
+
+  buildParams(eq.params||{});
+  buildChecks('checks-mec', MEC_I, 'm');
+  buildChecks('checks-est', EST_I, 'e');
+  buildChecks('checks-ele', ELE_I, 'l');
+  buildPhotoSection('pw-mec', 'mec', 'Fotos mecánica');
+  buildPhotoSection('pw-est', 'est', 'Fotos estructural');
+  buildPhotoSection('pw-ele', 'ele', 'Fotos eléctrica');
+  buildPhotoSection('pw-panorama', 'panorama', 'Fotos panorámicas');
+
+  document.getElementById('header-title').textContent = (eq.tag||'Equipo')+(eq.nombre?' — '+eq.nombre:'');
+  document.getElementById('header-sub').textContent = 'Editando equipo';
+  document.getElementById('nav-back').textContent = '← Equipos';
+  document.getElementById('nav-back').style.display = 'block';
+  document.getElementById('nav-back').onclick = function(){ guardarEquipoActual(); volverAForm(); };
+  document.getElementById('nav-next').textContent = 'Guardar ✓';
+  document.getElementById('nav-next').onclick = function(){ guardarEquipoActual(); volverAForm(); };
+  mostrarPantalla('equipo');
+}
+
+function guardarEquipoActual() {
+  if (currentEqIdx===null || !currentVisita) return;
+  var eq = currentVisita.equipos[currentEqIdx];
+  eq.tag = g('eq-tag');
+  eq.nombre = g('eq-nombre');
+  eq.diam = g('eq-diam');
+  eq.detalle = g('eq-detalle');
+  eq.obs = g('eq-obs');
+  eq.sels = JSON.parse(JSON.stringify(sels));
+  eq.checks = JSON.parse(JSON.stringify(checks));
+  eq.photos = JSON.parse(JSON.stringify(eqPhotos));
+  // Guardar params
+  eq.params = {};
+  PARAMS.forEach(function(p,i){
+    var d=g('p'+i+'d'),a=g('p'+i+'a'),sv=g('p'+i+'s');
+    if(d||a||sv) eq.params[i]={d:d,a:a,s:sv};
+  });
+  autoGuardar();
+}
+
+function volverAForm() {
+  currentEqIdx = null;
+  updateHeaderInfo();
+  document.getElementById('header-tabs').style.display = 'flex';
+  document.getElementById('nav-back').textContent = '← Atrás';
+  abrirFormulario();
+  irTab(1);
+  setHeaderH();
+}
+
+// ════════════════════════════════
+// SELECCIONES Y CHECKS
+// ════════════════════════════════
+function sel(el, gid) {
+  document.querySelectorAll('#'+gid+' .rb').forEach(function(b){b.classList.remove('on');});
+  if (sels[gid]===el.textContent) { sels[gid]=''; return; }
+  el.classList.add('on');
+  sels[gid] = el.textContent;
+}
+
+function buildChecks(cid, items, pfx) {
+  var c = document.getElementById(cid); if(!c) return;
+  c.innerHTML = '';
+  var secciones = {
+    'm': 'Mecánica', 'e': 'Estructural', 'l': 'Eléctrica / Instrumentación'
+  };
+  if (cid==='checks-mec') { var h=document.createElement('div'); h.className='sec-label'; h.textContent='Mecánica'; c.parentNode.insertBefore(h,c); }
+  if (cid==='checks-est') { var h=document.createElement('div'); h.className='sec-label'; h.textContent='Estructural'; c.parentNode.insertBefore(h,c); }
+  if (cid==='checks-ele') { var h=document.createElement('div'); h.className='sec-label'; h.textContent='Eléctrica / Instrumentación'; c.parentNode.insertBefore(h,c); }
+  items.forEach(function(item, i) {
+    var k = pfx+i;
+    if (!checks[k]) checks[k]='nd';
+    var r = document.createElement('div'); r.className='check-row';
+    r.innerHTML = '<span class="check-row-label">'+item+'</span>'+
+      '<div class="check-btns">'+
+      '<button class="chk'+(checks[k]==='ok'?' ok':'')+ '" id="'+k+'ok" onclick="setChk(\''+k+'\',\'ok\')">OK</button>'+
+      '<button class="chk'+(checks[k]==='nok'?' nok':'')+ '" id="'+k+'nok" onclick="setChk(\''+k+'\',\'nok\')">Daño</button>'+
+      '</div>';
+    c.appendChild(r);
+  });
+}
+
+function setChk(k, v) {
+  checks[k] = checks[k]===v ? 'nd' : v;
+  document.getElementById(k+'ok').className = 'chk'+(checks[k]==='ok'?' ok':'');
+  document.getElementById(k+'nok').className = 'chk'+(checks[k]==='nok'?' nok':'');
+}
+
+function buildParams(saved) {
+  var b = document.getElementById('params-body'); if(!b) return;
+  b.innerHTML = '';
+  PARAMS.forEach(function(p, i) {
+    var r = document.createElement('div'); r.className='param-row';
+    var sv = saved[i]||{};
+    r.innerHTML = '<div><div class="param-name">'+p[0]+'</div><div class="param-unit">'+p[1]+'</div></div>'+
+      ['d','a','s'].map(function(t){
+        return '<input type="text" id="p'+i+t+'" value="'+(sv[t]||'')+'" placeholder="—">';
+      }).join('');
+    b.appendChild(r);
+  });
+}
+
+// ════════════════════════════════
+// FOTOS
+// ════════════════════════════════
+function buildPhotoSection(containerId, zone, label) {
+  var c = document.getElementById(containerId); if(!c) return;
+  c.innerHTML = '';
+  var lrow = document.createElement('div'); lrow.className='photo-lbl-row';
+  var cnt = (eqPhotos[zone]||[]).length;
+  lrow.innerHTML = '<p>'+label+'</p>'+(cnt>0?'<span class="photo-count">'+cnt+'</span>':'');
+  c.appendChild(lrow);
+  var thumbs = document.createElement('div'); thumbs.className='thumbs'; thumbs.id='th-'+zone;
+  renderThumbsIn(zone, thumbs);
+  c.appendChild(thumbs);
+  var addLbl = document.createElement('label'); addLbl.className='add-photo';
+  addLbl.innerHTML = '<span class="cam-ico">📷</span><span>Agregar fotos — puedes seleccionar varias</span>';
+  var inp = document.createElement('input');
+  inp.type='file'; inp.accept='image/*'; inp.multiple=true; inp.style.display='none';
+  inp.setAttribute('capture','environment');
+  inp.onchange = (function(z, cont){ return function(){ addEqPhotos(this, z, cont); }; })(zone, containerId);
+  addLbl.appendChild(inp);
+  addLbl.onclick = function(e){ if(e.target!==inp) inp.click(); e.preventDefault(); };
+  c.appendChild(addLbl);
+}
+
+function renderThumbsIn(zone, container) {
+  var arr = eqPhotos[zone]||[];
+  container.innerHTML = '';
+  arr.forEach(function(src, i) {
+    var w=document.createElement('div'); w.className='thumb-w';
+    var img=document.createElement('img'); img.src=src;
+    var del=document.createElement('button'); del.className='thumb-del'; del.textContent='×';
+    del.onclick=(function(z,idx){return function(e){e.stopPropagation();eqPhotos[z].splice(idx,1);buildPhotoSection('pw-'+z,z,'');};}) (zone,i);
+    w.appendChild(img); w.appendChild(del); container.appendChild(w);
+  });
+}
+
+function addEqPhotos(input, zone, containerId) {
+  if (!eqPhotos[zone]) eqPhotos[zone]=[];
+  Array.from(input.files).forEach(function(file) {
+    var r=new FileReader();
+    r.onload=function(e){ eqPhotos[zone].push(e.target.result); buildPhotoSection(containerId, zone, ''); };
+    r.readAsDataURL(file);
+  });
+  input.value='';
+}
+
+function renderPhotosGlobal() {
+  ['anom','op'].forEach(function(zone) {
+    var containerId = 'pw-'+zone;
+    var c=document.getElementById(containerId); if(!c) return;
+    c.innerHTML='';
+    var arr=globalPhotos[zone]||[];
+    if(arr.length>0){
+      var thumbs=document.createElement('div'); thumbs.className='thumbs';
+      arr.forEach(function(src,i){
+        var w=document.createElement('div'); w.className='thumb-w';
+        var img=document.createElement('img'); img.src=src;
+        var del=document.createElement('button'); del.className='thumb-del'; del.textContent='×';
+        del.onclick=(function(z,idx){return function(e){e.stopPropagation();globalPhotos[z].splice(idx,1);renderPhotosGlobal();};})(zone,i);
+        w.appendChild(img); w.appendChild(del); thumbs.appendChild(w);
+      });
+      c.appendChild(thumbs);
+    }
+    var addLbl=document.createElement('label'); addLbl.className='add-photo';
+    addLbl.innerHTML='<span class="cam-ico">📷</span><span>Agregar fotos</span>';
+    var inp=document.createElement('input'); inp.type='file'; inp.accept='image/*'; inp.multiple=true; inp.style.display='none';
+    inp.setAttribute('capture','environment');
+    inp.onchange=(function(z){return function(){
+      Array.from(this.files).forEach(function(file){
+        var r=new FileReader(); r.onload=function(e){globalPhotos[z].push(e.target.result);renderPhotosGlobal();};
+        r.readAsDataURL(file);
+      });this.value='';
+    };})(zone);
+    addLbl.appendChild(inp);
+    addLbl.onclick=function(e){if(e.target!==inp)inp.click();e.preventDefault();};
+    c.appendChild(addLbl);
+  });
+}
+
+// ════════════════════════════════
+// RESUMEN
+// ════════════════════════════════
+function renderResumen() {
+  var gen = currentVisita.general||{};
+  var notas = currentVisita.notas||{};
+  var eqs = currentVisita.equipos||[];
+  var html = '';
+
+  // General
+  var genRows='';
+  if(gen.minera) genRows+=rr('Cliente',gen.minera);
+  if(gen.division) genRows+=rr('División',gen.division);
+  if(gen.localidad) genRows+=rr('Localidad',gen.localidad);
+  if(gen.fecha) genRows+=rr('Fecha',gen.fecha);
+  if(gen.redactor) genRows+=rr('Redactor',gen.redactor);
+  if(genRows) html+='<div class="resumen-section"><h4>Datos generales</h4><div class="card" style="padding:12px 14px">'+genRows+'</div></div>';
+
+  // Equipos
+  if(eqs.length>0){
+    html+='<div class="resumen-section"><h4>Equipos ('+eqs.length+')</h4>';
+    eqs.forEach(function(eq){
+      var allI=MEC_I.concat(EST_I).concat(ELE_I);
+      var allK=[]; MEC_I.forEach(function(_,i){allK.push('m'+i);}); EST_I.forEach(function(_,i){allK.push('e'+i);}); ELE_I.forEach(function(_,i){allK.push('l'+i);});
+      var inspRows='';
+      allI.forEach(function(item,i){
+        var s=(eq.checks||{})[allK[i]];
+        if(s&&s!=='nd') inspRows+='<div class="resumen-row"><span class="rl">'+item+'</span>'+(s==='ok'?'<span class="badge-ok">OK</span>':'<span class="badge-nok">Daño</span>')+'</div>';
+      });
+      var totalF=Object.values(eq.photos||{}).reduce(function(a,b){return a+(b?b.length:0);},0);
+      html+='<div class="card" style="padding:12px 14px;margin-bottom:8px">'+
+        '<div style="font-size:14px;font-weight:700;color:var(--azul);margin-bottom:8px">'+(eq.tag||'—')+' — '+(eq.nombre||'—')+'</div>'+
+        (inspRows||'<p style="font-size:12px;color:var(--texto-ter)">Sin ítems inspeccionados</p>')+
+        (totalF>0?'<p style="font-size:12px;color:var(--texto-sec);margin-top:8px">📷 '+totalF+' foto(s) registrada(s)</p>':'')+
+        '</div>';
+    });
+    html+='</div>';
+  }
+
+  // Notas
+  var notasRows='';
+  if(notas.notas) notasRows+=rr('Notas',notas.notas);
+  if(notas.anomalias) notasRows+=rr('Anomalías',notas.anomalias);
+  if(notas.compromisos) notasRows+=rr('Compromisos',notas.compromisos);
+  if(notas.oportunidades) notasRows+=rr('Oportunidades',notas.oportunidades);
+  if(notasRows) html+='<div class="resumen-section"><h4>Observaciones</h4><div class="card" style="padding:12px 14px">'+notasRows+'</div></div>';
+
+  var totalFGlobal=(globalPhotos.anom||[]).length+(globalPhotos.op||[]).length;
+  if(totalFGlobal>0) html+='<div class="resumen-section"><h4>Fotos generales</h4><div class="card" style="padding:12px 14px"><p style="font-size:13px;color:var(--texto-sec)">📷 '+totalFGlobal+' foto(s) de anomalías y oportunidades</p></div></div>';
+
+  if(!html) html='<div class="empty-state"><div class="ico">📄</div><h3>Sin datos aún</h3><p>Completa los pasos anteriores para ver el resumen.</p></div>';
+  document.getElementById('resumen-contenido').innerHTML = html;
+}
+
+function rr(l,v){ return '<div class="resumen-row"><span class="rl">'+l+'</span><span class="rv">'+v+'</span></div>'; }
+
+// ════════════════════════════════
+// GENERAR INFORME
+// ════════════════════════════════
+function generarInforme() {
+  autoGuardar();
+  var gen = currentVisita.general||{};
+  var notas = currentVisita.notas||{};
+  var eqs = currentVisita.equipos||[];
+  var L = [];
+
+  L.push('Redacta un informe de visita técnica profesional para INGENALSE S.A. siguiendo su formato corporativo. Reglas: (1) Omite completamente secciones sin datos, sin usar frases como "no se registró". (2) Si los datos son escasos, genera un informe breve pero profesional. (3) Tono técnico y formal, apropiado para ingeniería minera. (4) Referencia las fotos como "registro fotográfico adjunto". Datos:\n');
+
+  if(gen.minera||gen.fecha){
+    L.push('=== DATOS GENERALES ===');
+    if(gen.minera) L.push('Minera/División: '+gen.minera);
+    if(gen.division) L.push('Planta: '+gen.division);
+    if(gen.localidad) L.push('Localidad: '+gen.localidad);
+    if(gen.fecha) L.push('Fecha: '+gen.fecha);
+    if(gen.redactor) L.push('Responsable: '+gen.redactor);
+    if(gen.asistentes) L.push('Asistentes:\n'+gen.asistentes);
+    if(gen.agenda) L.push('Agenda:\n'+gen.agenda);
+    if(gen.objetivo) L.push('Objetivo: '+gen.objetivo);
+  }
+
+  if(eqs.length>0){
+    L.push('\n=== EQUIPOS INSPECCIONADOS ===');
+    eqs.forEach(function(eq){
+      L.push('\n--- Equipo: '+(eq.tag||'')+(eq.nombre?' — '+eq.nombre:'')+(eq.diam?' (Ø '+eq.diam+')':''));
+      var selFields=[['g-aplic','Aplicación'],['g-tipo','Tipo'],['g-sop','Accionamiento'],['g-lev','Levante'],['g-const','Estanque'],['g-torq','Alto torque']];
+      selFields.forEach(function(f){if((eq.sels||{})[f[0]]) L.push(f[1]+': '+eq.sels[f[0]]);});
+      if(eq.detalle) L.push('Detalle: '+eq.detalle);
+      var pLines=[];
+      PARAMS.forEach(function(p,i){var sv=(eq.params||{})[i];if(sv&&(sv.d||sv.a||sv.s)) pLines.push(p[0]+': Diseño='+(sv.d||'—')+' / Actual='+(sv.a||'—')+' / Solicitado='+(sv.s||'—'));});
+      if(pLines.length){L.push('Parámetros:');pLines.forEach(function(l){L.push('  '+l);});}
+      var allI=MEC_I.concat(EST_I).concat(ELE_I);
+      var allK=[]; MEC_I.forEach(function(_,i){allK.push('m'+i);}); EST_I.forEach(function(_,i){allK.push('e'+i);}); ELE_I.forEach(function(_,i){allK.push('l'+i);});
+      var iLines=[];
+      allI.forEach(function(item,i){var s=(eq.checks||{})[allK[i]];if(s&&s!=='nd') iLines.push(item+': '+(s==='ok'?'Sin daños':'DAÑO DETECTADO'));});
+      if(iLines.length){L.push('Inspección:');iLines.forEach(function(l){L.push('  '+l);});}
+      if(eq.obs) L.push('Observaciones: '+eq.obs);
+      var totalF=Object.values(eq.photos||{}).reduce(function(a,b){return a+(b?b.length:0);},0);
+      if(totalF>0) L.push('Registro fotográfico: '+totalF+' foto(s) adjunta(s)');
+    });
+  }
+
+  if(notas.notas||notas.anomalias||notas.compromisos||notas.oportunidades){
+    L.push('\n=== OBSERVACIONES GENERALES ===');
+    if(notas.notas) L.push('Notas: '+notas.notas);
+    if(notas.anomalias) L.push('Anomalías: '+notas.anomalias);
+    if(notas.compromisos) L.push('Compromisos:\n'+notas.compromisos);
+    if(notas.oportunidades) L.push('Oportunidades comerciales: '+notas.oportunidades);
+  }
+
+  var totalFG=(globalPhotos.anom||[]).length+(globalPhotos.op||[]).length;
+  if(totalFG>0) L.push('\n=== FOTOS GENERALES ===\nAnomalías/Oportunidades: '+totalFG+' foto(s) adjunta(s)');
+
+  if(typeof sendPrompt==='function'){
+    sendPrompt(L.join('\n'));
+  } else {
+    showToast('Función de envío no disponible en este entorno');
+  }
+}
+
+// ════════════════════════════════
+// INIT
+// ════════════════════════════════
+window.addEventListener('load', function() {
+  setHeaderH();
+  setNavH();
+  document.getElementById('nav-next').onclick = nuevaVisita;
+  document.getElementById('f-fecha').valueAsDate = new Date();
+  // Cerrar modal al tocar overlay
+  document.getElementById('modal-equipo').addEventListener('click', function(e){
+    if(e.target===this) cerrarModal();
+  });
+});
+
+window.addEventListener('resize', function(){ setHeaderH(); setNavH(); });
+</script>
+</body>
+</html>
